@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-20 0:57:04 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Status" table="status" catalog="logistics">
+        <id name="statusId" type="string">
+            <column name="statusID" length="2" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="30" not-null="true" />
+        </property>
+        <set name="goodses" table="goodsstatus" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="statusID" length="2" not-null="true" />
+            </key>
+            <many-to-many entity-name="Goods">
+                <column name="goodsID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
