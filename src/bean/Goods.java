@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-20 0:54:45 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-20 1:58:58 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,10 +10,10 @@ import java.util.Set;
 public class Goods implements java.io.Serializable {
 
 	private Integer goodsId;
-	private Districtcenter districtcenterByReceiveDistrictCenter;
-	private Districtcenter districtcenterBySendDestrictCenter;
-	private Provincecenter provincecenterBySendProvinceCenter;
-	private Provincecenter provincecenterByReceiveProvinceCenter;
+	private DistrictCenter districtCenterByReceiveDistrictCenter;
+	private DistrictCenter districtCenterBySendDestrictCenter;
+	private ProvinceCenter provinceCenterBySendProvinceCenter;
+	private ProvinceCenter provinceCenterByReceiveProvinceCenter;
 	private String senderName;
 	private String senderPhone;
 	private String senderProvince;
@@ -24,8 +24,7 @@ public class Goods implements java.io.Serializable {
 	private String receiverProvince;
 	private String receiverCity;
 	private String receiverAddress;
-	private String status;
-	private Set statuses = new HashSet(0);
+	private Set conditionses = new HashSet(0);
 
 	public Goods() {
 	}
@@ -45,15 +44,15 @@ public class Goods implements java.io.Serializable {
 		this.receiverAddress = receiverAddress;
 	}
 
-	public Goods(Districtcenter districtcenterByReceiveDistrictCenter,
-			Districtcenter districtcenterBySendDestrictCenter, Provincecenter provincecenterBySendProvinceCenter,
-			Provincecenter provincecenterByReceiveProvinceCenter, String senderName, String senderPhone,
+	public Goods(DistrictCenter districtCenterByReceiveDistrictCenter,
+			DistrictCenter districtCenterBySendDestrictCenter, ProvinceCenter provinceCenterBySendProvinceCenter,
+			ProvinceCenter provinceCenterByReceiveProvinceCenter, String senderName, String senderPhone,
 			String senderProvince, String senderCity, String senderAddress, String receiverName, String receiverPhone,
-			String receiverProvince, String receiverCity, String receiverAddress, String status, Set statuses) {
-		this.districtcenterByReceiveDistrictCenter = districtcenterByReceiveDistrictCenter;
-		this.districtcenterBySendDestrictCenter = districtcenterBySendDestrictCenter;
-		this.provincecenterBySendProvinceCenter = provincecenterBySendProvinceCenter;
-		this.provincecenterByReceiveProvinceCenter = provincecenterByReceiveProvinceCenter;
+			String receiverProvince, String receiverCity, String receiverAddress, Set conditionses) {
+		this.districtCenterByReceiveDistrictCenter = districtCenterByReceiveDistrictCenter;
+		this.districtCenterBySendDestrictCenter = districtCenterBySendDestrictCenter;
+		this.provinceCenterBySendProvinceCenter = provinceCenterBySendProvinceCenter;
+		this.provinceCenterByReceiveProvinceCenter = provinceCenterByReceiveProvinceCenter;
 		this.senderName = senderName;
 		this.senderPhone = senderPhone;
 		this.senderProvince = senderProvince;
@@ -64,8 +63,7 @@ public class Goods implements java.io.Serializable {
 		this.receiverProvince = receiverProvince;
 		this.receiverCity = receiverCity;
 		this.receiverAddress = receiverAddress;
-		this.status = status;
-		this.statuses = statuses;
+		this.conditionses = conditionses;
 	}
 
 	public Integer getGoodsId() {
@@ -76,36 +74,36 @@ public class Goods implements java.io.Serializable {
 		this.goodsId = goodsId;
 	}
 
-	public Districtcenter getDistrictcenterByReceiveDistrictCenter() {
-		return this.districtcenterByReceiveDistrictCenter;
+	public DistrictCenter getDistrictCenterByReceiveDistrictCenter() {
+		return this.districtCenterByReceiveDistrictCenter;
 	}
 
-	public void setDistrictcenterByReceiveDistrictCenter(Districtcenter districtcenterByReceiveDistrictCenter) {
-		this.districtcenterByReceiveDistrictCenter = districtcenterByReceiveDistrictCenter;
+	public void setDistrictCenterByReceiveDistrictCenter(DistrictCenter districtCenterByReceiveDistrictCenter) {
+		this.districtCenterByReceiveDistrictCenter = districtCenterByReceiveDistrictCenter;
 	}
 
-	public Districtcenter getDistrictcenterBySendDestrictCenter() {
-		return this.districtcenterBySendDestrictCenter;
+	public DistrictCenter getDistrictCenterBySendDestrictCenter() {
+		return this.districtCenterBySendDestrictCenter;
 	}
 
-	public void setDistrictcenterBySendDestrictCenter(Districtcenter districtcenterBySendDestrictCenter) {
-		this.districtcenterBySendDestrictCenter = districtcenterBySendDestrictCenter;
+	public void setDistrictCenterBySendDestrictCenter(DistrictCenter districtCenterBySendDestrictCenter) {
+		this.districtCenterBySendDestrictCenter = districtCenterBySendDestrictCenter;
 	}
 
-	public Provincecenter getProvincecenterBySendProvinceCenter() {
-		return this.provincecenterBySendProvinceCenter;
+	public ProvinceCenter getProvinceCenterBySendProvinceCenter() {
+		return this.provinceCenterBySendProvinceCenter;
 	}
 
-	public void setProvincecenterBySendProvinceCenter(Provincecenter provincecenterBySendProvinceCenter) {
-		this.provincecenterBySendProvinceCenter = provincecenterBySendProvinceCenter;
+	public void setProvinceCenterBySendProvinceCenter(ProvinceCenter provinceCenterBySendProvinceCenter) {
+		this.provinceCenterBySendProvinceCenter = provinceCenterBySendProvinceCenter;
 	}
 
-	public Provincecenter getProvincecenterByReceiveProvinceCenter() {
-		return this.provincecenterByReceiveProvinceCenter;
+	public ProvinceCenter getProvinceCenterByReceiveProvinceCenter() {
+		return this.provinceCenterByReceiveProvinceCenter;
 	}
 
-	public void setProvincecenterByReceiveProvinceCenter(Provincecenter provincecenterByReceiveProvinceCenter) {
-		this.provincecenterByReceiveProvinceCenter = provincecenterByReceiveProvinceCenter;
+	public void setProvinceCenterByReceiveProvinceCenter(ProvinceCenter provinceCenterByReceiveProvinceCenter) {
+		this.provinceCenterByReceiveProvinceCenter = provinceCenterByReceiveProvinceCenter;
 	}
 
 	public String getSenderName() {
@@ -188,20 +186,12 @@ public class Goods implements java.io.Serializable {
 		this.receiverAddress = receiverAddress;
 	}
 
-	public String getStatus() {
-		return this.status;
+	public Set getConditionses() {
+		return this.conditionses;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public Set getStatuses() {
-		return this.statuses;
-	}
-
-	public void setStatuses(Set statuses) {
-		this.statuses = statuses;
+	public void setConditionses(Set conditionses) {
+		this.conditionses = conditionses;
 	}
 
 }

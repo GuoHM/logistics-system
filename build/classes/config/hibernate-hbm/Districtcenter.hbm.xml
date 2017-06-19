@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 0:57:04 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 1:58:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Districtcenter" table="districtcenter" catalog="logistics">
+    <class name="DistrictCenter" table="DistrictCenter" catalog="logistics">
         <id name="centerId" type="string">
             <column name="centerID" length="10" />
             <generator class="assigned" />
         </id>
         <property name="district" type="string">
-            <column name="district" length="10" />
+            <column name="district" length="10" not-null="true" />
         </property>
         <property name="city" type="string">
-            <column name="city" length="10" />
+            <column name="city" length="10" not-null="true" />
         </property>
         <property name="province" type="string">
-            <column name="province" length="10" />
+            <column name="province" length="10" not-null="true" />
         </property>
-        <property name="password" type="string">
-            <column name="password" length="15" />
+        <property name="pwd" type="string">
+            <column name="pwd" length="15" not-null="true" />
         </property>
-        <set name="goodsesForSendDestrictCenter" table="goods" inverse="true" lazy="true" fetch="select">
+        <set name="goodsesForSendDestrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="sendDestrictCenter" length="10" />
             </key>
             <one-to-many class="Goods" />
         </set>
-        <set name="goodsesForReceiveDistrictCenter" table="goods" inverse="true" lazy="true" fetch="select">
+        <set name="goodsesForReceiveDistrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="receiveDistrictCenter" length="10" />
             </key>

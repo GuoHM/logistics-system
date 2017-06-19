@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 0:57:04 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 1:58:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Goods" table="goods" catalog="logistics">
+    <class name="Goods" table="Goods" catalog="logistics">
         <id name="goodsId" type="java.lang.Integer">
             <column name="goodsID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="districtcenterByReceiveDistrictCenter" class="Districtcenter" fetch="select">
+        <many-to-one name="districtCenterByReceiveDistrictCenter" class="DistrictCenter" fetch="select">
             <column name="receiveDistrictCenter" length="10" />
         </many-to-one>
-        <many-to-one name="districtcenterBySendDestrictCenter" class="Districtcenter" fetch="select">
+        <many-to-one name="districtCenterBySendDestrictCenter" class="DistrictCenter" fetch="select">
             <column name="sendDestrictCenter" length="10" />
         </many-to-one>
-        <many-to-one name="provincecenterBySendProvinceCenter" class="Provincecenter" fetch="select">
+        <many-to-one name="provinceCenterBySendProvinceCenter" class="ProvinceCenter" fetch="select">
             <column name="sendProvinceCenter" length="10" />
         </many-to-one>
-        <many-to-one name="provincecenterByReceiveProvinceCenter" class="Provincecenter" fetch="select">
+        <many-to-one name="provinceCenterByReceiveProvinceCenter" class="ProvinceCenter" fetch="select">
             <column name="receiveProvinceCenter" length="10" />
         </many-to-one>
         <property name="senderName" type="string">
@@ -50,15 +50,12 @@
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
         </property>
-        <property name="status" type="string">
-            <column name="status" length="2" />
-        </property>
-        <set name="statuses" table="goodsstatus" inverse="false" lazy="true" fetch="select">
+        <set name="conditionses" table="GoodsStatus" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="goodsID" not-null="true" />
             </key>
-            <many-to-many entity-name="Status">
-                <column name="statusID" length="2" not-null="true" />
+            <many-to-many entity-name="Conditions">
+                <column name="conditionID" length="2" not-null="true" />
             </many-to-many>
         </set>
     </class>

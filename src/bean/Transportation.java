@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-20 0:54:45 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-20 1:58:58 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,20 +12,22 @@ public class Transportation implements java.io.Serializable {
 	private String transportationId;
 	private String departure;
 	private String destintion;
-	private Set provincecenters = new HashSet(0);
+	private Set provinceCenters = new HashSet(0);
 
 	public Transportation() {
 	}
 
-	public Transportation(String transportationId) {
-		this.transportationId = transportationId;
-	}
-
-	public Transportation(String transportationId, String departure, String destintion, Set provincecenters) {
+	public Transportation(String transportationId, String departure, String destintion) {
 		this.transportationId = transportationId;
 		this.departure = departure;
 		this.destintion = destintion;
-		this.provincecenters = provincecenters;
+	}
+
+	public Transportation(String transportationId, String departure, String destintion, Set provinceCenters) {
+		this.transportationId = transportationId;
+		this.departure = departure;
+		this.destintion = destintion;
+		this.provinceCenters = provinceCenters;
 	}
 
 	public String getTransportationId() {
@@ -52,12 +54,12 @@ public class Transportation implements java.io.Serializable {
 		this.destintion = destintion;
 	}
 
-	public Set getProvincecenters() {
-		return this.provincecenters;
+	public Set getProvinceCenters() {
+		return this.provinceCenters;
 	}
 
-	public void setProvincecenters(Set provincecenters) {
-		this.provincecenters = provincecenters;
+	public void setProvinceCenters(Set provinceCenters) {
+		this.provinceCenters = provinceCenters;
 	}
 
 }
