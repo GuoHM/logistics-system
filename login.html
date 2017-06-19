@@ -6,105 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/main.js"></script>
 </head>
-
-
 <body onload="today()">
-<div class="container">
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>        </button>
-            <a class="navbar-brand" href="#" name="date"></a>
-        </div>
-        <div class="collapse navbar-collapse menubar-left">
-            <ul class="nav navbar-nav">
-                <li><a href="index.html"><span class="glyphicon glyphicon-home">首页</span></a></li>
-                <li><a href="index.html"><span class="glyphicon glyphicon-envelope">寄快递</span></a></li>
-                <li><a href="news.html"><span class="glyphicon glyphicon glyphicon-lock">网点查询</span></a></li>
-                <li><a href="info.html"><span class="glyphicon glyphicon-book">运费查询</span></a></li>
-                <li><a href="info.html"><span class="glyphicon glyphicon-th">关于我们</span></a></li>
-                <li><a href="warning.html"><span class="glyphicon glyphicon-star">注意事项</span></a></li>
-            </ul>
-        </div><!-- /.nav-collapse -->
-        <div class="btn-group menubar-right">
-            <button name="login" type="button" class="btn btn-default">
-                <a href="login.html" style="color:black;"><span class="glyphicon glyphicon-user">登录</span></a>
-            </button>
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>        </button>
+        <a class="navbar-brand" href="#" name="date"></a>
+    </div>
+    <div class="collapse navbar-collapse menubar-left">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home">首页</span></a></li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-envelope">寄快递</span></a></li>
+            <li><a href="news.html"><span class="glyphicon glyphicon glyphicon-lock">网点查询</span></a></li>
+            <li><a href="info.html"><span class="glyphicon glyphicon-book">运费查询</span></a></li>
+            <li><a href="info.html"><span class="glyphicon glyphicon-th">关于我们</span></a></li>
+            <li><a href="warning.html"><span class="glyphicon glyphicon-star">注意事项</span></a></li>
+        </ul>
+    </div><!-- /.nav-collapse -->
+
+</div>
+
+<div class="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default panel-default1">
+                    <div class="panel-heading"><h3 style="text-align: center">欢迎登录</h3></div>
+                    <hr>
+                    <div class="panel-body">
+                        <form class="form-horizontal"  method="POST" action="login.action" >
+
+                            <div class="form-group">
+
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <input type="mobile"
+                                           class="form-control form-control1 form-control2"
+                                           placeholder="账号：" id="account" name="account" maxlength="11"
+                                           value="" data-error="账号不能为空" required="">
+                                    <div class="help-block with-errors"></div>
+
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <!--label class="col-md-4 control-label">密码</label-->
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <input type="password"
+                                           class="form-control form-control1 form-control4"
+                                           placeholder="密码：" id="password" name="password"
+                                           data-error="密码不能为空" required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <div>
+                                    <label>
+                                        <input type="radio" name="man" value="1" checked>区县营业点
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="women" value="2">省分拣中心
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="women" value="2">管理员
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <button type="submit"
+                                            class="btn btn-primary btn-block btn-btn1 disabled">
+                                        <i class="fa fa-btn fa-sign-in"></i>登录
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-1"></div>
+
+                                <div class="col-md-1"></div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
-<div class="maincontent login-size">
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-5 column">
-                <div class="row clearfix">
-                    <div class="col-md-12 column">
-                        <h2 class="text-center">
-                            登录
-                        </h2>
-                    </div>
-                </div>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group text-center">
-                        <label class="col-sm-3 control-label">用户名:</label>
-                        <div class="col-sm-8 text-center">
-                            <input type="text" class="form-control" id="" />
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <label class="col-sm-3 control-label">密码:</label>
-                        <div class="col-sm-8 text-center">
-                            <input type="password" class="form-control" id="" />
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <label class="col-sm-3 control-label">类别：</label>
-                        <div>
-                            <label>
-                                <input type="radio" name="man" value="1" checked>区县营业点
-                            </label>
-                            <label>
-                                <input type="radio" name="women" value="2">省分拣中心
-                            </label>
-                            <label>
-                                <input type="radio" name="women" value="2">管理员
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <label class="checkbox-inline">
-                            <input type="submit" value="提交">
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="reset" value="重置">
-                        </label>
-                        <label class="checkbox-inline">
-                            <a href="regist.html" style="color:black;">
-                                <input type="button" value="注册" >
-                            </a>
-                        </label>
-                        <label class="checkbox-inline">
-                            <a href="index.html" style="color:black;">
-                                <input type="button" value="返回" >
-                            </a>
-                        </label>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- jQuery (Bootstrap 插件需要引入) -->
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- 包含了所有编译插件 -->
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 
 </body>
