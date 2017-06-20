@@ -1,19 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 21:08:03 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Conditions" table="Conditions" catalog="logistics">
+    <class name="bean.Conditions" table="Conditions" catalog="logistics">
         <id name="conditionId" type="string">
             <column name="conditionID" length="2" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="goodsStatus" class="GoodsStatus" update="false" insert="false" fetch="select">
-            <column name="goodsID" />
-            <column name="conditionID" length="2" not-null="true" unique="true" />
-        </many-to-one>
         <property name="description" type="string">
             <column name="description" length="30" not-null="true" />
         </property>
+        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="conditionID" length="2" not-null="true" />
+            </key>
+            <one-to-many class="bean.GoodsStatus" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 21:08:03 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="GoodsStatus" table="GoodsStatus" catalog="logistics">
-        <composite-id name="id" class="GoodsStatusId">
+    <class name="bean.GoodsStatus" table="GoodsStatus" catalog="logistics">
+        <composite-id name="id" class="bean.GoodsStatusId">
             <key-property name="goodsId" type="int">
                 <column name="goodsID" />
             </key-property>
@@ -12,19 +12,11 @@
                 <column name="conditionID" length="2" />
             </key-property>
         </composite-id>
-        <set name="conditionses" table="Conditions" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="goodsID" />
-                <column name="conditionID" length="2" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="Conditions" />
-        </set>
-        <set name="goodses" table="Goods" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="goodsID" not-null="true" unique="true" />
-                <column name="conditionID" length="2" />
-            </key>
-            <one-to-many class="Goods" />
-        </set>
+        <many-to-one name="goods" class="bean.Goods" update="false" insert="false" fetch="select">
+            <column name="goodsID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="conditions" class="bean.Conditions" update="false" insert="false" fetch="select">
+            <column name="conditionID" length="2" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

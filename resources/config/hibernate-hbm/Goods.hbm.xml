@@ -1,27 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 21:08:03 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Goods" table="Goods" catalog="logistics">
+    <class name="bean.Goods" table="Goods" catalog="logistics">
         <id name="goodsId" type="int">
             <column name="goodsID" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="districtCenterByReceiveDistrictCenter" class="DistrictCenter" fetch="select">
+        <many-to-one name="districtCenterByReceiveDistrictCenter" class="bean.DistrictCenter" fetch="select">
             <column name="receiveDistrictCenter" />
         </many-to-one>
-        <many-to-one name="districtCenterBySendDestrictCenter" class="DistrictCenter" fetch="select">
+        <many-to-one name="districtCenterBySendDestrictCenter" class="bean.DistrictCenter" fetch="select">
             <column name="sendDestrictCenter" />
         </many-to-one>
-        <many-to-one name="goodsStatus" class="GoodsStatus" update="false" insert="false" fetch="select">
-            <column name="goodsID" not-null="true" unique="true" />
-            <column name="conditionID" length="2" />
-        </many-to-one>
-        <many-to-one name="provinceCenterBySendProvinceCenter" class="ProvinceCenter" fetch="select">
+        <many-to-one name="provinceCenterBySendProvinceCenter" class="bean.ProvinceCenter" fetch="select">
             <column name="sendProvinceCenter" />
         </many-to-one>
-        <many-to-one name="provinceCenterByReceiveProvinceCenter" class="ProvinceCenter" fetch="select">
+        <many-to-one name="provinceCenterByReceiveProvinceCenter" class="bean.ProvinceCenter" fetch="select">
             <column name="receiveProvinceCenter" />
         </many-to-one>
         <property name="senderName" type="string">
@@ -54,5 +50,11 @@
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
         </property>
+        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="goodsID" not-null="true" />
+            </key>
+            <one-to-many class="bean.GoodsStatus" />
+        </set>
     </class>
 </hibernate-mapping>
