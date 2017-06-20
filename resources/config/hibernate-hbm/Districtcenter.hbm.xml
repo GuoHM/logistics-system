@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 1:58:31 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 14:58:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="DistrictCenter" table="DistrictCenter" catalog="logistics">
-        <id name="centerId" type="string">
-            <column name="centerID" length="10" />
-            <generator class="assigned" />
+    <class name="bean.DistrictCenter" table="DistrictCenter" catalog="logistics">
+        <id name="centerId" type="java.lang.Integer">
+            <column name="centerID" />
+            <generator class="identity" />
         </id>
         <property name="district" type="string">
             <column name="district" length="10" not-null="true" />
@@ -22,13 +22,13 @@
         </property>
         <set name="goodsesForSendDestrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="sendDestrictCenter" length="10" />
+                <column name="sendDestrictCenter" />
             </key>
             <one-to-many class="Goods" />
         </set>
         <set name="goodsesForReceiveDistrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="receiveDistrictCenter" length="10" />
+                <column name="receiveDistrictCenter" />
             </key>
             <one-to-many class="Goods" />
         </set>
