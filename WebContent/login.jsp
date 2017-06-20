@@ -40,7 +40,7 @@
                     <div class="panel-heading"><h3 style="text-align: center">欢迎登录</h3></div>
                     <hr>
                     <div class="panel-body">
-                        <form class="form-horizontal"  method="POST" action="login.action" >
+                      <s:form  method="POST" class="form-horizontal" role="form" action="login">
 
                             <div class="form-group">
 
@@ -98,7 +98,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                       </s:form>
                     </div>
                 </div>
             </div>
