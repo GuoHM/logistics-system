@@ -11,31 +11,7 @@
     <link rel="stylesheet" href="css/news-style.css">
 </head>
 <body onload="today()"  data-spy="scroll" data-target="#myScrollspy">
-<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>        </button>
-        <a class="navbar-brand" href="#" name="date"></a>
-    </div>
-    <div class="collapse navbar-collapse menubar-left">
-        <ul class="nav navbar-nav">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home">首页</span></a></li>
-            <li><a href="index.html"><span class="glyphicon glyphicon-envelope">寄快递</span></a></li>
-            <li><a href="news.html"><span class="glyphicon glyphicon glyphicon-lock">网点查询</span></a></li>
-            <li><a href="info.html"><span class="glyphicon glyphicon-book">运费查询</span></a></li>
-            <li><a href="info.html"><span class="glyphicon glyphicon-th">关于我们</span></a></li>
-            <li><a href="warning.html"><span class="glyphicon glyphicon-star">注意事项</span></a></li>
-        </ul>
-    </div><!-- /.nav-collapse -->
-    <div class="btn-group menubar-right">
-        <button name="login" type="button" class="btn btn-default">
-            <a href="login.html" style="color:black;"><span class="glyphicon glyphicon-user">登录</span></a>
-        </button>
-    </div>
-</div>
+<jsp:include page="ToolsPage/header.jsp"></jsp:include>
 
 <div class="maincontent">
     <div class="container">
