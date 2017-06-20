@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-20 1:58:58 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-20 14:57:33 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class DistrictCenter implements java.io.Serializable {
 
-	private String centerId;
+	private Integer centerId;
 	private String district;
 	private String city;
 	private String province;
@@ -20,17 +20,15 @@ public class DistrictCenter implements java.io.Serializable {
 	public DistrictCenter() {
 	}
 
-	public DistrictCenter(String centerId, String district, String city, String province, String pwd) {
-		this.centerId = centerId;
+	public DistrictCenter(String district, String city, String province, String pwd) {
 		this.district = district;
 		this.city = city;
 		this.province = province;
 		this.pwd = pwd;
 	}
 
-	public DistrictCenter(String centerId, String district, String city, String province, String pwd,
-			Set goodsesForSendDestrictCenter, Set goodsesForReceiveDistrictCenter) {
-		this.centerId = centerId;
+	public DistrictCenter(String district, String city, String province, String pwd, Set goodsesForSendDestrictCenter,
+			Set goodsesForReceiveDistrictCenter) {
 		this.district = district;
 		this.city = city;
 		this.province = province;
@@ -39,11 +37,11 @@ public class DistrictCenter implements java.io.Serializable {
 		this.goodsesForReceiveDistrictCenter = goodsesForReceiveDistrictCenter;
 	}
 
-	public String getCenterId() {
+	public Integer getCenterId() {
 		return this.centerId;
 	}
 
-	public void setCenterId(String centerId) {
+	public void setCenterId(Integer centerId) {
 		this.centerId = centerId;
 	}
 
