@@ -19,7 +19,7 @@
 </tr>
 <tr>
 <td>2017.6.20</td>
-<td>Upload the beans and hibernate mapping files,minnor changes in the login pages</td>
+<td>Upload the beans and hibernate mapping files,minnor changes in the login page and front page</td>
 <td>Guo Haoming</td>
 </tr>
 </table>
