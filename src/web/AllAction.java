@@ -44,7 +44,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				DistrictCenter districtCenter = districtCenterService
 						.getDistrictCenterByIDAndPwd(userid, password);
 				if (districtCenter == null) {
-					addActionError("ÓÃ»§ÃûÃÜÂë´íÎó");
+					addActionError("ç”¨æˆ·åå¯†ç é”™è¯¯");
 					return INPUT;
 				} else {
 					context.getSession().put("login", districtCenter);
@@ -59,7 +59,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				ProvinceCenter provinceCenter = provinceCenterService
 						.getProvinceCenterByIDAndPwd(userid, password);
 				if (provinceCenter == null) {
-					addActionError("ÓÃ»§ÃûÃÜÂë´íÎó");
+					addActionError("ç”¨æˆ·åå¯†ç é”™è¯¯");
 					return INPUT;
 				} else {
 					context.getSession().put("login", provinceCenter);
@@ -74,7 +74,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				Admin admin = adminService.getAdminByLoginAndPassword(userid,
 						password);
 				if (admin == null) {
-					addActionError("ÓÃ»§ÃûÃÜÂë´íÎó");
+					addActionError("ç”¨æˆ·åå¯†ç é”™è¯¯");
 					return INPUT;
 				} else {
 					context.getSession().put("login", admin);
