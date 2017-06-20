@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-20 14:58:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="bean.Goods" table="Goods" catalog="logistics">
+        <id name="goodsId" type="java.lang.Integer">
+            <column name="goodsID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="districtCenterByReceiveDistrictCenter" class="DistrictCenter" fetch="select">
+            <column name="receiveDistrictCenter" />
+        </many-to-one>
+        <many-to-one name="districtCenterBySendDestrictCenter" class="DistrictCenter" fetch="select">
+            <column name="sendDestrictCenter" />
+        </many-to-one>
+        <many-to-one name="provinceCenterBySendProvinceCenter" class="ProvinceCenter" fetch="select">
+            <column name="sendProvinceCenter" />
+        </many-to-one>
+        <many-to-one name="provinceCenterByReceiveProvinceCenter" class="ProvinceCenter" fetch="select">
+            <column name="receiveProvinceCenter" />
+        </many-to-one>
+        <property name="senderName" type="string">
+            <column name="senderName" length="10" not-null="true" />
+        </property>
+        <property name="senderPhone" type="string">
+            <column name="senderPhone" length="11" not-null="true" />
+        </property>
+        <property name="senderProvince" type="string">
+            <column name="senderProvince" length="8" not-null="true" />
+        </property>
+        <property name="senderCity" type="string">
+            <column name="senderCity" length="8" not-null="true" />
+        </property>
+        <property name="senderAddress" type="string">
+            <column name="senderAddress" length="50" not-null="true" />
+        </property>
+        <property name="receiverName" type="string">
+            <column name="receiverName" length="10" not-null="true" />
+        </property>
+        <property name="receiverPhone" type="string">
+            <column name="receiverPhone" length="11" not-null="true" />
+        </property>
+        <property name="receiverProvince" type="string">
+            <column name="receiverProvince" length="8" not-null="true" />
+        </property>
+        <property name="receiverCity" type="string">
+            <column name="receiverCity" length="8" not-null="true" />
+        </property>
+        <property name="receiverAddress" type="string">
+            <column name="receiverAddress" length="50" not-null="true" />
+        </property>
+        <set name="conditionses" table="GoodsStatus" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="goodsID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Conditions">
+                <column name="conditionID" length="2" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
