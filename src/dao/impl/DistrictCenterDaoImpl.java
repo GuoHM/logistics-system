@@ -14,7 +14,7 @@ public class DistrictCenterDaoImpl extends HibernateDaoSupport implements IDistr
         DistrictCenter user = null;
         try {
             session = getSession();
-            user = (DistrictCenter) session.createQuery(hql).setParameter(0, login).setParameter(1, password)
+            user = (DistrictCenter) session.createQuery(hql).setParameter(0, Integer.parseInt(login)).setParameter(1, password)
                     .uniqueResult();
         } finally {
             releaseSession(session);

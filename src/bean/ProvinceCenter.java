@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-20 21:05:36 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-20 23:04:44 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,31 +10,29 @@ import java.util.Set;
 public class ProvinceCenter implements java.io.Serializable {
 
 	private int centerId;
-	private TransportationManagement transportationManagement;
 	private String province;
 	private String pwd;
 	private Set goodsesForSendProvinceCenter = new HashSet(0);
 	private Set goodsesForReceiveProvinceCenter = new HashSet(0);
+	private Set transportationManagements = new HashSet(0);
 
 	public ProvinceCenter() {
 	}
 
-	public ProvinceCenter(int centerId, TransportationManagement transportationManagement, String province,
-			String pwd) {
+	public ProvinceCenter(int centerId, String province, String pwd) {
 		this.centerId = centerId;
-		this.transportationManagement = transportationManagement;
 		this.province = province;
 		this.pwd = pwd;
 	}
 
-	public ProvinceCenter(int centerId, TransportationManagement transportationManagement, String province, String pwd,
-			Set goodsesForSendProvinceCenter, Set goodsesForReceiveProvinceCenter) {
+	public ProvinceCenter(int centerId, String province, String pwd, Set goodsesForSendProvinceCenter,
+			Set goodsesForReceiveProvinceCenter, Set transportationManagements) {
 		this.centerId = centerId;
-		this.transportationManagement = transportationManagement;
 		this.province = province;
 		this.pwd = pwd;
 		this.goodsesForSendProvinceCenter = goodsesForSendProvinceCenter;
 		this.goodsesForReceiveProvinceCenter = goodsesForReceiveProvinceCenter;
+		this.transportationManagements = transportationManagements;
 	}
 
 	public int getCenterId() {
@@ -43,14 +41,6 @@ public class ProvinceCenter implements java.io.Serializable {
 
 	public void setCenterId(int centerId) {
 		this.centerId = centerId;
-	}
-
-	public TransportationManagement getTransportationManagement() {
-		return this.transportationManagement;
-	}
-
-	public void setTransportationManagement(TransportationManagement transportationManagement) {
-		this.transportationManagement = transportationManagement;
 	}
 
 	public String getProvince() {
@@ -83,6 +73,14 @@ public class ProvinceCenter implements java.io.Serializable {
 
 	public void setGoodsesForReceiveProvinceCenter(Set goodsesForReceiveProvinceCenter) {
 		this.goodsesForReceiveProvinceCenter = goodsesForReceiveProvinceCenter;
+	}
+
+	public Set getTransportationManagements() {
+		return this.transportationManagements;
+	}
+
+	public void setTransportationManagements(Set transportationManagements) {
+		this.transportationManagements = transportationManagements;
 	}
 
 }

@@ -11,7 +11,7 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 	        ProvinceCenter user = null;
 	        try {
 	            session = getSession();
-	            user = (ProvinceCenter) session.createQuery(hql).setParameter(0, login).setParameter(1, password)
+	            user = (ProvinceCenter) session.createQuery(hql).setParameter(0, Integer.parseInt(login)).setParameter(1, password)
 	                    .uniqueResult();
 	        } finally {
 	            releaseSession(session);
