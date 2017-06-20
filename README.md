@@ -27,6 +27,11 @@
 <td>Add login fuction</td>
 <td>Yang HanXiao</td>
 </tr>
+<tr>
+<td>2017.6.21</td>
+<td>Minor changes in the login function,upload some district center pages</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
