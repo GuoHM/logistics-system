@@ -22,6 +22,11 @@
 <td>Upload the beans and hibernate mapping files,minnor changes in the login page and front page</td>
 <td>Guo Haoming</td>
 </tr>
+<tr>
+<td>2017.6.20</td>
+<td>Add login fuction</td>
+<td>Yang HanXiao</td>
+</tr>
 </table>
 
 <h3>Author</h3>
