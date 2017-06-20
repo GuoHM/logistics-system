@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 14:58:09 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 21:08:03 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.Admin" table="Admin" catalog="logistics">
+    <class name="Admin" table="Admin" catalog="logistics">
         <id name="adminId" type="string">
             <column name="adminID" length="5" />
             <generator class="assigned" />

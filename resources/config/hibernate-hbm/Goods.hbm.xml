@@ -1,18 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 14:58:09 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-20 21:08:03 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.Goods" table="Goods" catalog="logistics">
-        <id name="goodsId" type="java.lang.Integer">
+    <class name="Goods" table="Goods" catalog="logistics">
+        <id name="goodsId" type="int">
             <column name="goodsID" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <many-to-one name="districtCenterByReceiveDistrictCenter" class="DistrictCenter" fetch="select">
             <column name="receiveDistrictCenter" />
         </many-to-one>
         <many-to-one name="districtCenterBySendDestrictCenter" class="DistrictCenter" fetch="select">
             <column name="sendDestrictCenter" />
+        </many-to-one>
+        <many-to-one name="goodsStatus" class="GoodsStatus" update="false" insert="false" fetch="select">
+            <column name="goodsID" not-null="true" unique="true" />
+            <column name="conditionID" length="2" />
         </many-to-one>
         <many-to-one name="provinceCenterBySendProvinceCenter" class="ProvinceCenter" fetch="select">
             <column name="sendProvinceCenter" />
@@ -50,13 +54,5 @@
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
         </property>
-        <set name="conditionses" table="GoodsStatus" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="goodsID" not-null="true" />
-            </key>
-            <many-to-many entity-name="Conditions">
-                <column name="conditionID" length="2" not-null="true" />
-            </many-to-many>
-        </set>
     </class>
 </hibernate-mapping>
