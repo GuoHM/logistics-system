@@ -1,0 +1,40 @@
+
+.content p {
+    font-size: 15px;
+    text-indent: 30px;
+    font-style: normal;
+}
+
+.content address {
+    color: red;
+    font-family: "Adobe 黑体 Std R";
+    font-style: italic;
+}
+
+h1 {
+    color: blue;
+}
+
+.content h5 {
+    color: rgba(178, 12, 14, 0.92);
+    font-size: 17px;
+    font-family: "Adobe 黑体 Std R";
+}
+
+.content h4 {
+    font-size: 22px;
+    font-family: "Adobe 黑体 Std R";
+    color: #1D62F0;
+}
+
+.foot {
+    width: 100%;
+    text-align: right;
+    font-size: 13px;
+    font-family: "Adobe 黑体 Std R";
+    font-style: italic;
+}
+
+.content strong {
+    color: red;
+}
