@@ -1,5 +1,7 @@
 package web;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -145,7 +147,26 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	        return SUCCESS;
 	    }
 	
-	
+	@SuppressWarnings("deprecation")
+	public String getGoodsID(){
+		Date d=new Date();
+		String s=d.getYear()+"";
+		s+=d.getMonth();
+		s+=d.getDay();
+		s+=d.getHours();
+		s+=d.getMinutes();
+		s+=d.getSeconds();
+		s+=(int)(Math.random()*10)+"";
+		s+=(int)(Math.random()*10)+"";
+		s+=(int)(Math.random()*10)+"";
+		s+=(int)(Math.random()*10)+"";
+		
+		if(s!=null){
+			return s;
+		}
+		else
+			return "false";
+	}
 	
 	public String logout() {
         context.getSession().remove("login");
