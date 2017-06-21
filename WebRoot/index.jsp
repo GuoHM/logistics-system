@@ -89,7 +89,7 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="info.jsp" style="color: black">
+				<a class="btn" href="sendGoods.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-envelope">寄快递</span>
 					</h2>

@@ -15,10 +15,6 @@
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
-				<div class="col-xs-2 column">
-					<jsp:include page="sidebar.jsp"></jsp:include>
-				</div>
-
 				<div class="col-xs-5 column">
 					<jsp:include page="../ToolsPage/sendGoodsForm.jsp"></jsp:include>
 				</div>
