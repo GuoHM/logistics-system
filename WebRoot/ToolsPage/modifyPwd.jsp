@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<form class="form-horizontal" role="form" method="post" id="modifyPwd"
-	action="modifyPwd">
+<form class="form-horizontal" role="form" method="post"
+	action="modifyPwd" id="modifyPwd">
 	<s:actionerror />
 	<s:actionmessage />
 	<div class="form-group">
@@ -35,6 +35,3 @@
 		</div>
 	</div>
 </form>
-<link rel="stylesheet" href="../css/bootstrapValidator.min.css">
-<script src="../js/bootstrapValidator.min.js"></script>
-<script src="../js/validator/modifyPwdValidator.js"></script>

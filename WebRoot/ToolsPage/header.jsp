@@ -40,7 +40,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="<%=basePath%>/sendGoods.jsp">
+				<a href="<%=basePath%>/index.jsp">
 					<span class="glyphicon glyphicon-envelope">寄快递</span>
 				</a>
 			</li>
@@ -50,8 +50,8 @@
 				</a>
 			</li>
 			<li>
-				<a href="<%=basePath%>/searchGoods.jsp">
-					<span class="glyphicon glyphicon-book">快递查询</span>
+				<a href="<%=basePath%>/info.jsp">
+					<span class="glyphicon glyphicon-book">运费查询</span>
 				</a>
 			</li>
 			<li>

@@ -7,24 +7,24 @@
 <title>修改密码</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body onload="today()">
-	<jsp:include page="ToolsPage/header.jsp"></jsp:include>
+	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
-				<div class="col-xs-8 column">
-					<jsp:include page="ToolsPage/sendGoodsForm.jsp"></jsp:include>
+				<div class="col-xs-5 column">
+					<jsp:include page="../ToolsPage/sendGoodsForm.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script src="js/jquery.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/main.js"></script>
 </body>
 </html>
