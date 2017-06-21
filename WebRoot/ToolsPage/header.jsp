@@ -35,32 +35,32 @@
 	<div class="collapse navbar-collapse menubar-left">
 		<ul class="nav navbar-nav">
 			<li>
-				<a href="index.jsp">
+				<a href="<%=basePath%>/index.jsp">
 					<span class="glyphicon glyphicon-home">首页</span>
 				</a>
 			</li>
 			<li>
-				<a href="index.jsp">
+				<a href="<%=basePath%>/index.jsp">
 					<span class="glyphicon glyphicon-envelope">寄快递</span>
 				</a>
 			</li>
 			<li>
-				<a href="news.jsp">
+				<a href="<%=basePath%>/news.jsp">
 					<span class="glyphicon glyphicon glyphicon-lock">网点查询</span>
 				</a>
 			</li>
 			<li>
-				<a href="info.jsp">
+				<a href="<%=basePath%>/info.jsp">
 					<span class="glyphicon glyphicon-book">运费查询</span>
 				</a>
 			</li>
 			<li>
-				<a href="info.jsp">
+				<a href="<%=basePath%>/info.jsp">
 					<span class="glyphicon glyphicon-th">关于我们</span>
 				</a>
 			</li>
 			<li>
-				<a href="warning.jsp">
+				<a href="<%=basePath%>/warning.jsp">
 					<span class="glyphicon glyphicon-star">注意事项</span>
 				</a>
 			</li>
@@ -92,10 +92,10 @@
 	item1.innerHTML = "管理";
 	switch (type) {
 	case 1:
-	    item1.setAttribute("href", "<%=basePath%>/NormalUserPages/NormalUser.jsp");
+	    item1.setAttribute("href", "<%=basePath%>/DistrictCenterPages/districtCenter.jsp");
 	    break;
 	case 2:
-	    item1.setAttribute("href", "<%=basePath%>/SchoolUserPages/SchoolUser.jsp");
+	    item1.setAttribute("href", "<%=basePath%>/ProvinceCenterPages/provinceCenter.jsp");
 	    break;
 	case 3:
 	    item1.setAttribute("href", "<%=basePath%>/AdminUserPages/AdminUser.jsp");
