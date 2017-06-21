@@ -32,6 +32,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private String userid;
 	private String password;
 	private int type;
+	private String newpassword;
 
 	public String login() throws Exception {
 		// LoginInfo login = null;
@@ -44,7 +45,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				DistrictCenter districtCenter = districtCenterService
 						.getDistrictCenterByIDAndPwd(userid, password);
 				if (districtCenter == null) {
-					addActionError("用户名密码错误");
+					addActionError("账号或密码输入有误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", districtCenter);
@@ -59,7 +60,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				ProvinceCenter provinceCenter = provinceCenterService
 						.getProvinceCenterByIDAndPwd(userid, password);
 				if (provinceCenter == null) {
-					addActionError("用户名密码错误");
+					addActionError("账号或密码输入有误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", provinceCenter);
@@ -74,7 +75,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				Admin admin = adminService.getAdminByLoginAndPassword(userid,
 						password);
 				if (admin == null) {
-					addActionError("用户名密码错误");
+					addActionError("账号或密码输入有误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", admin);
@@ -90,6 +91,67 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		}
 		return INPUT;
 	}
+	
+	 public String modifyPwd() {
+	        String type = (String) context.getSession().get("type");
+	        try {
+	            switch (type) {
+	            /**
+	             * DistrictCenter modifypwd
+	             */
+	            case "1": {
+	            	DistrictCenter user = (DistrictCenter) context.getSession().get("login");
+	                if (user.getPwd().equals(password)) {
+	                    user.setPwd(newpassword);
+	                    districtCenterService.save(user);
+	                    return "districtCenter";
+	                } else {
+	                    addActionError("旧密码输入错误");
+	                    return "inputdistrictCenter";
+	                }
+	            }
+	            /**
+	             * ProvinceCenter modifypwd
+	             */
+	            case "2": {
+	            	ProvinceCenter user = (ProvinceCenter) context.getSession().get("login");
+	                if (user.getPwd().equals(password)) {
+	                    user.setPwd(newpassword);
+	                    provinceCenterService.save(user);
+	                    return "provinceCenter";
+	                } else {
+	                    addActionError("旧密码输入错误");
+	                    return "inputprovinceCenter";
+	                }
+	            }
+	            /**
+	             *  Admin modifypwd
+	             */
+	            case "3": {
+	                Admin user = (Admin) context.getSession().get("login");
+	                if (user.getPwd().equals(password)) {
+	                    user.setPwd(newpassword);
+	                    adminService.save(user);
+	                    return "admin";
+	                } else {
+	                    addActionError("旧密码输入错误");
+	                    return "inputadmin";
+	                }
+	            }
+	            }
+	        } catch (Exception e) {
+	            logger.error(e);
+	        }
+	        return SUCCESS;
+	    }
+	
+	
+	
+	public String logout() {
+        context.getSession().remove("login");
+        context.getSession().remove("type");
+        return SUCCESS;
+    }
 
 	public ActionContext getContext() {
 		return context;
@@ -167,6 +229,20 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the newpassword
+	 */
+	public String getNewpassword() {
+		return newpassword;
+	}
+
+	/**
+	 * @param newpassword the newpassword to set
+	 */
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
 	}
 
 }

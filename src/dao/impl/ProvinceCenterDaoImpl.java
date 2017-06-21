@@ -3,7 +3,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import bean.ProvinceCenter;
 import dao.IProvinceCenterDao;
-public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvinceCenterDao {    //¸ù¾ÝÊäÈëÕËºÅÃÜÂë·ÃÎÊÊý¾Ý¿â£¬²é¿´ÓÃ»§ÊÇ·ñ´æÔÚ
+public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvinceCenterDao {    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â£¬ï¿½é¿´ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	 public ProvinceCenter getProvinceCenterByIDAndPwd(String login, String password) throws Exception {
 	        // TODO Auto-generated method stub
 	        String hql = "from ProvinceCenter where centerId=? and pwd=?";
@@ -18,5 +18,10 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 	        }
 	        return user;
 	    }
+
+	@Override
+	public void save(ProvinceCenter user) throws Exception {
+		   getHibernateTemplate().saveOrUpdate(user);
+	}
 
 }

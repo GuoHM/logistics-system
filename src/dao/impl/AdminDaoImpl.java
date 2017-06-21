@@ -3,7 +3,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import bean.Admin;
 import dao.IAdminDao;
-public class AdminDaoImpl extends HibernateDaoSupport implements IAdminDao {    //¸ù¾ÝÊäÈëÕËºÅÃÜÂë·ÃÎÊÊý¾Ý¿â£¬²é¿´ÓÃ»§ÊÇ·ñ´æÔÚ
+public class AdminDaoImpl extends HibernateDaoSupport implements IAdminDao {    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â£¬ï¿½é¿´ï¿½Ã»ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
 	 public Admin getAdminByIDAndPwd(String login, String password) throws Exception {
 	        // TODO Auto-generated method stub
 	        String hql = "from Admin where adminId=? and pwd=?";
@@ -18,4 +18,10 @@ public class AdminDaoImpl extends HibernateDaoSupport implements IAdminDao {    
 	        }
 	        return user;
 	    }
+
+	public void save(Admin user) throws Exception {
+
+		        getHibernateTemplate().saveOrUpdate(user);
+		    }
+
 }

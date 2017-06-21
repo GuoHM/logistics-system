@@ -15,6 +15,12 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 		}
 		return districtCenterDao.getDistrictCenterByIDAndPwd(login, password);
 	}
+	public void save(DistrictCenter user) throws Exception {
+	if(user!=null){
+		districtCenterDao.save(user);
+	}
+		
+	}
 
 	public IDistrictCenterDao getDistrictCenterDao() {
 		return districtCenterDao;
@@ -23,5 +29,7 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 	public void setDistrictCenterDao(IDistrictCenterDao districtCenterDao) {
 		this.districtCenterDao = districtCenterDao;
 	}
+
+
 
 }

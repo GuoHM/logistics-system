@@ -17,6 +17,12 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 		return provinceCenterDao.getProvinceCenterByIDAndPwd(login, password);
 	}
 
+	public void save(ProvinceCenter user) throws Exception {
+		if(user!=null){
+			provinceCenterDao.save(user);
+		}
+	  
+	}
 	public IProvinceCenterDao getProvinceCenterDao() {
 		return provinceCenterDao;
 	}
@@ -24,5 +30,6 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 	public void setProvinceCenterDao(IProvinceCenterDao provinceCenterDao) {
 		this.provinceCenterDao = provinceCenterDao;
 	}
+
 
 }

@@ -16,6 +16,12 @@ public class AdminServiceImpl implements IAdminService {
 		}
 		return adminDao.getAdminByIDAndPwd(login, password);
 	}
+	public void save(Admin user) throws Exception {
+		   if (user != null) {
+			   adminDao.save(user);
+		   }
+		
+	}
 
 	public IAdminDao getAdminDao() {
 		return adminDao;
@@ -24,5 +30,7 @@ public class AdminServiceImpl implements IAdminService {
 	public void setAdminDao(IAdminDao adminDao) {
 		this.adminDao = adminDao;
 	}
+
+
 
 }

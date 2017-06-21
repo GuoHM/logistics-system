@@ -22,6 +22,12 @@ public class DistrictCenterDaoImpl extends HibernateDaoSupport implements IDistr
         return user;
 	}
 
+	@Override
+	public void save(DistrictCenter user) throws Exception {
+		   getHibernateTemplate().saveOrUpdate(user);
+		
+	}
+
 }
 
 
