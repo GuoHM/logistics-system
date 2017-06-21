@@ -32,6 +32,11 @@
 <td>Minor changes in the login function,upload some district center pages</td>
 <td>Guo Haoming</td>
 </tr>
+<tr>
+<td>2017.6.21</td>
+<td>Add modify password function</td>
+<td>Yang Hanxiao</td>
+</tr>
 </table>
 
 <h3>Author</h3>
