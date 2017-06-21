@@ -7,7 +7,7 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav ">
 		<li>
-			<a href="index.html">
+			<a href="<%=basePath%>/DistrictCenterPages/sendGoods.jsp">
 				<span>寄件</span>
 			</a>
 		</li>

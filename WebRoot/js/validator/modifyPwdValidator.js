@@ -6,19 +6,13 @@ $(document).ready(function() {
 	    validating: 'glyphicon glyphicon-refresh'
 	},
 	fields: {
-	    passwordnew: {
-		message:'密码无效',
+	    newpassword: {
 		validators: {
 		    notEmpty: {
-			message: '密码不能为空'
+			message: '新密码不能为空'
 		    },
-		    stringLength: {
-			min: 6,
-			max: 30,
-			message: '密码长度必须在6到30之间'
-		    },
-		    identical: {//相同
-			field: 'passwordnew', //需要进行比较的input name值
+		    identical: {//鐩稿悓
+			field: 'newpassword', //闇�杩涜姣旇緝鐨刬nput name鍊�
 			message: '两次密码不一致'
 		    },
 		    regexp: {
@@ -28,21 +22,16 @@ $(document).ready(function() {
 		}
 	    },
 	    passwordrepeat: {
-		message: '密码无效',
+		
 		validators: {
 		    notEmpty: {
-			message: '用户名不能为空'
+			message: '新密码不能为空'
 		    },
-		    stringLength: {
-			min: 6,
-			max: 30,
-			message: '密码长度必须在6到30之间'
-		    },
-		    identical: {//相同
-			field: 'passwordnew',
+		    identical: {//鐩稿悓
+			field: 'newpassword',
 			message: '两次密码不一致'
 		    },
-		    regexp: {//匹配规则
+		    regexp: {//鍖归厤瑙勫垯
 			regexp: /^[a-zA-Z0-9_\.]+$/,
 			message: '只能由字母，数字，下划线组成'
 		    }
@@ -50,7 +39,7 @@ $(document).ready(function() {
 	    },
 	}
     })
-    .on('success.form.bv', function(e) {//点击提交之后
+    .on('success.form.bv', function(e) {//鐐瑰嚮鎻愪氦涔嬪悗
 	// Prevent form submission
 	e.preventDefault();
 
@@ -60,7 +49,7 @@ $(document).ready(function() {
 	// Get the BootstrapValidator instance
 	var bv = $form.data('bootstrapValidator');
 
-	// Use Ajax to submit form data 提交至form标签中的action，result自定义
+	// Use Ajax to submit form data 鎻愪氦鑷砯orm鏍囩涓殑action锛宺esult鑷畾涔�
 	$.post($form.attr('action'), $form.serialize(), function(result) {
 //	    do something...
 	});
