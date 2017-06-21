@@ -6,4 +6,6 @@
     <bean id="districtCenterDao" class="dao.impl.DistrictCenterDaoImpl"></bean>
     <bean id="adminDao" class="dao.impl.AdminDaoImpl"></bean>
     <bean id="provinceCenterDao" class="dao.impl.ProvinceCenterDaoImpl"></bean>
+     <bean id="goodsDao" class="dao.impl.GoodsDaoImpl"></bean>
+     
 </beans>

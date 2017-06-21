@@ -18,6 +18,12 @@
             <result name="inputprovinceCenter">/ProvinceCenterPages/modifyPassword.jsp</result>
             <result name="inputadmin">/AdminPages/modifyPassword.jsp</result>
         </action>
+         <action name="getGoodsID" method="getGoodsID" class="allAction">
+            <result name=s>/ToolsPage/sendGoodsForm.jsp</result>
+        </action>
+         <action name="addGoods" method="addGoods" class="districtCenterAction">
+            <result name="addSuccess">/index.jsp</result>
+        </action>
 		 <action name="logout" method="logout" class="allAction">
             <result name="success">/index.jsp</result>
         </action>
