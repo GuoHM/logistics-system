@@ -37,6 +37,11 @@
 <td>Add modify password function and add Goods function</td>
 <td>Yang Hanxiao</td>
 </tr>
+<tr>
+<td>2017.6.22</td>
+<td>Minor changes in modify password function</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
