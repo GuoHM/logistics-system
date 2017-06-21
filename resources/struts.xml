@@ -2,13 +2,25 @@
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
-        <struts>
-          <package name="cac-root" extends="struts-default" namespace="/">
-<action name="login" method="login" class="allAction">
-            <result name="input">/login.jsp</result>
-             <result name="districtCenter">/index.jsp</result>
-               <result name="provinceCenter">/index.jsp</result>
-                 <result name="admin">/index.jsp</result>
+<struts>
+	<package name="cac-root" extends="struts-default" namespace="/">
+	     <global-results>
+	          <result name="error_login">login.jsp</result>
+           <result name="districtCenter">/DistrictCenterPages/districtCenter.jsp</result>
+			<result name="provinceCenter">/ProvinceCenterPages/provinceCenter.jsp</result>
+			<result name="admin">/AdminCenterPages/admin.jsp</result>
+        </global-results>
+		<action name="login" method="login" class="allAction">
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="modifyPwd" method="modifyPwd" class="allAction">
+            <result name="inputdistrictCenter">/DistrictCenterPages/modifyPassword.jsp</result>
+            <result name="inputprovinceCenter">/ProvinceCenterPages/modifyPassword.jsp</result>
+            <result name="inputadmin">/AdminPages/modifyPassword.jsp</result>
         </action>
-</package>
+		 <action name="logout" method="logout" class="allAction">
+            <result name="success">/index.jsp</result>
+        </action>
+        
+	</package>
 </struts>
