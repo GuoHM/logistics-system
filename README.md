@@ -29,7 +29,7 @@
 </tr>
 <tr>
 <td>2017.6.21</td>
-<td>Minor changes in the login function,upload some district center pages</td>
+<td>Minor changes in the login function,upload some district center pages and send goods pages</td>
 <td>Guo Haoming</td>
 </tr>
 <tr>
