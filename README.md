@@ -34,7 +34,7 @@
 </tr>
 <tr>
 <td>2017.6.21</td>
-<td>Add modify password function</td>
+<td>Add modify password function and add Goods function</td>
 <td>Yang Hanxiao</td>
 </tr>
 </table>
