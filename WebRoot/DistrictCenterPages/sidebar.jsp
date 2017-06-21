@@ -5,12 +5,7 @@
 			+ path + "/";
 %>
 <nav class="hidden-print hidden-xs hidden-sm affix">
-	<ul class="nav ">
-		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/sendGoods.jsp">
-				<span>寄件</span>
-			</a>
-		</li>
+	<ul class="nav">
 		<li>
 			<a href="elements.html">
 				<span>分拣</span>

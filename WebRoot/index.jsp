@@ -62,13 +62,12 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="info.jsp" style="color: black">
+				<a class="btn" href="searchGoods.jsp" style="color: black">
 					<h2>
-						<span class="glyphicon glyphicon-star">运费查询</span>
+						<span class="glyphicon glyphicon-star">快递查询</span>
 					</h2>
 				</a>
-				<p>查询您的快递运费</p>
-
+				<p>查询您的快递</p>
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
 				<a class="btn" href="info.jsp" style="color: black">

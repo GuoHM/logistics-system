@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<form class="form-horizontal" role="form" method="post"
+<form class="form-horizontal" role="form" method="post" id="modifyPwd"
 	action="modifyPwd">
 	<s:actionerror />
 	<s:actionmessage />

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>修改密码</title>
+<title>查询快递</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="css/style.css">
@@ -15,8 +15,17 @@
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
-				<div class="col-xs-8 column">
-					<jsp:include page="ToolsPage/sendGoodsForm.jsp"></jsp:include>
+				<div class="col-xs-10 column">
+					<form class="form-inline" role="form" action="">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">单号：</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" name="goodsID"
+									required="required">
+							</div>
+						</div>
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
 				</div>
 			</div>
 		</div>
