@@ -16,11 +16,11 @@
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-xs-10 column">
-					<form class="form-inline" role="form" action="">
+					<form class="form-inline" role="form" action="searchGoodsByID">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">单号：</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="goodsID"
+								<input type="text" class="form-control" name="searchGoodsId"
 									required="required">
 							</div>
 						</div>

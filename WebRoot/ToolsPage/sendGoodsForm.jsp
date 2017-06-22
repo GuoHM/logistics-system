@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <form class="form-horizontal" role="form" method="post"
-	action="fillInfo" id="fillinfo">
+	action="addGoods" id="addGoods">
 	<h3>收件人信息</h3>
 	<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 	<div class="form-group">
