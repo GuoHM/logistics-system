@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@page import="bean.Goods"%>
 <%
 	Goods goods = (Goods) session.getAttribute("getGoodsByID");
-    System.out.println(goods);
 	if (goods == null) {
 		goods = new Goods();
 	}
@@ -33,14 +33,18 @@
 				</div>
 
 				<div class="col-xs-10 column">
-					<form class="form-inline" role="form" action="searchGoodsByID">
+					<form class="form-inline" role="form" action="searchGoodsByIDModify">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">单号：</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="searchGoodsId" required="required">
 							</div>
 						</div>
-						<button type="submit" class="btn btn-default">提交</button>
+						<div class="form-group">
+							<button type="submit" class="btn btn-default">提交</button>
+						</div>
+						<s:actionerror />
+						<s:actionmessage />
 					</form>
 					<form class="form-horizontal" role="form" method="post" action="modifyGoodsinfo"
 						id="modifyGoodsinfo">
@@ -171,7 +175,7 @@
 	<script type="text/javascript">
     $(function() {
     $("#senderProvince option[value='<%=goods.getSenderProvince()%>']").attr("selected","selected");
-    $("#receiverProvince option[value='<%=goods.getReceiverProvince()%>']") .attr("selected", "selected");
+    $("#receiverProvince option[value='<%=goods.getReceiverProvince()%>']").attr("selected", "selected");
 	});
     </script>
 	<!-- 包含了所有编译插件 -->
