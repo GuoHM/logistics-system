@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body onload="today()">
-	<jsp:include page="/ToolsPage/header.jsp"></jsp:include>
+	<jsp:include page="ToolsPage/header.jsp"></jsp:include>
 	<div class="background-color">
 		<div class="container">
 			<div class="carousel slide carousel-size" id="carousel-871299">
@@ -62,13 +62,12 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="info.jsp" style="color: black">
+				<a class="btn" href="searchGoods.jsp" style="color: black">
 					<h2>
-						<span class="glyphicon glyphicon-star">运费查询</span>
+						<span class="glyphicon glyphicon-star">快递查询</span>
 					</h2>
 				</a>
-				<p>查询您的快递运费</p>
-
+				<p>查询您的快递</p>
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
 				<a class="btn" href="info.jsp" style="color: black">
@@ -89,7 +88,7 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="getGoodsID.action" style="color: black">
+				<a class="btn" href="sendGoods.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-envelope">寄快递</span>
 					</h2>

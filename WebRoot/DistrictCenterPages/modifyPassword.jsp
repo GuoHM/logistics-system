@@ -8,7 +8,6 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/bootstrapValidator.min.css">
 </head>
 <body onload="today()">
 	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
@@ -28,8 +27,6 @@
 	<script src="../js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
 	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/bootstrapValidator.min.js"></script>
-	<script src="../js/validator/modifyPwdValidator.js"></script>
 	<script src="../js/main.js"></script>
 </body>
 </html>
