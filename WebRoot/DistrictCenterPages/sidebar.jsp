@@ -17,7 +17,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="charts.html">
+			<a href="<%=basePath%>/DistrictCenterPages/modifyGoodsInfo.jsp">
 				<span>查询</span>
 			</a>
 		</li>
