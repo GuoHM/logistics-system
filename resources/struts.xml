@@ -25,7 +25,10 @@
             <result name="addSuccess">/showGoodsInfo.jsp</result>
         </action>
          <action name="searchGoodsByID" method="searchByGoodsID" class="DistrictCenterAction">
-            <result name="searchSuccess">/</result>
+            <result name="searchSuccess">/DistrictCenter/modifyGoodsInfo</result>
+        </action>
+         <action name="modifyGoodsinfo" method="modifyGoodsinfo" class="DistrictCenterAction">
+            <result name="modifyGoodsinfoSuccess">/DistrictCenter/modifyGoodsInfo</result>
         </action>
 		 <action name="logout" method="logout" class="allAction">
             <result name="success">/index.jsp</result>

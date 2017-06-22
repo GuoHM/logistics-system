@@ -32,6 +32,9 @@
         <property name="senderCity" type="string">
             <column name="senderCity" length="8" not-null="true" />
         </property>
+        <property name="senderDistrict" type="string">
+            <column name="senderDistrict" length="15" not-null="true" />
+        </property>
         <property name="senderAddress" type="string">
             <column name="senderAddress" length="50" not-null="true" />
         </property>
@@ -46,6 +49,9 @@
         </property>
         <property name="receiverCity" type="string">
             <column name="receiverCity" length="8" not-null="true" />
+        </property>
+        <property name="receiverDistrict" type="string">
+            <column name="receiverDistrict" length="15" not-null="true" />
         </property>
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
