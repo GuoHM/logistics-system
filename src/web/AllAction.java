@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import bean.Admin;
 import bean.DistrictCenter;
 import bean.ProvinceCenter;
+import bean.Goods;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,7 @@ import org.apache.log4j.Logger;
 import service.IAdminService;
 import service.IDistrictCenterService;
 import service.IProvinceCenterService;
+import service.IGoodsService;
 
 public class AllAction extends ActionSupport implements ServletRequestAware {
 
@@ -30,11 +32,24 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private IDistrictCenterService districtCenterService;
 	private IProvinceCenterService provinceCenterService;
 	private IAdminService adminService;
+	private IGoodsService goodsService;
 
 	private String userid;
 	private String password;
 	private int type;
 	private String newpassword;
+	 private String goodsId;
+		private String senderName;
+		private String senderPhone;
+		private String senderProvince;
+		private String senderCity;
+		private String senderAddress;
+		private String receiverName;
+		private String receiverPhone;
+		private String receiverProvince;
+		private String receiverCity;
+		private String receiverAddress;
+
 
 	public String login() throws Exception {
 		// LoginInfo login = null;
@@ -162,10 +177,31 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		s+=(int)(Math.random()*10)+"";
 		
 		if(s!=null){
-			return s;
+			context.getSession().put("goodsID", s);
+			return "getSuccess";
 		}
 		else
-			return "false";
+			return "getfalse";
+	}
+	
+	public String addGoods() throws Exception {
+		Goods goods=new Goods();
+		goods.setGoodsId(goodsId);
+		goods.setSenderName(senderName);
+		goods.setSenderPhone(senderPhone);
+		goods.setSenderProvince(senderProvince);
+		goods.setSenderCity(senderCity);
+		goods.setSenderAddress(senderAddress);
+		goods.setReceiverName(receiverName);
+		goods.setReceiverPhone(receiverPhone);
+		goods.setReceiverProvince(receiverProvince);
+		goods.setReceiverCity(receiverCity);
+		goods.setReceiverAddress(receiverAddress);
+		goodsService.save(goods);
+		if(goods!=null){
+			return "addSuccess";
+		}
+		return "addFalse";
 	}
 	
 	public String logout() {
@@ -264,6 +300,174 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	 */
 	public void setNewpassword(String newpassword) {
 		this.newpassword = newpassword;
+	}
+
+	/**
+	 * @return the goodsService
+	 */
+	public IGoodsService getGoodsService() {
+		return goodsService;
+	}
+
+	/**
+	 * @param goodsService the goodsService to set
+	 */
+	public void setGoodsService(IGoodsService goodsService) {
+		this.goodsService = goodsService;
+	}
+
+	/**
+	 * @return the goodsId
+	 */
+	public String getGoodsId() {
+		return goodsId;
+	}
+
+	/**
+	 * @param goodsId the goodsId to set
+	 */
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	/**
+	 * @return the senderName
+	 */
+	public String getSenderName() {
+		return senderName;
+	}
+
+	/**
+	 * @param senderName the senderName to set
+	 */
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
+
+	/**
+	 * @return the senderPhone
+	 */
+	public String getSenderPhone() {
+		return senderPhone;
+	}
+
+	/**
+	 * @param senderPhone the senderPhone to set
+	 */
+	public void setSenderPhone(String senderPhone) {
+		this.senderPhone = senderPhone;
+	}
+
+	/**
+	 * @return the senderProvince
+	 */
+	public String getSenderProvince() {
+		return senderProvince;
+	}
+
+	/**
+	 * @param senderProvince the senderProvince to set
+	 */
+	public void setSenderProvince(String senderProvince) {
+		this.senderProvince = senderProvince;
+	}
+
+	/**
+	 * @return the senderCity
+	 */
+	public String getSenderCity() {
+		return senderCity;
+	}
+
+	/**
+	 * @param senderCity the senderCity to set
+	 */
+	public void setSenderCity(String senderCity) {
+		this.senderCity = senderCity;
+	}
+
+	/**
+	 * @return the senderAddress
+	 */
+	public String getSenderAddress() {
+		return senderAddress;
+	}
+
+	/**
+	 * @param senderAddress the senderAddress to set
+	 */
+	public void setSenderAddress(String senderAddress) {
+		this.senderAddress = senderAddress;
+	}
+
+	/**
+	 * @return the receiverName
+	 */
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	/**
+	 * @param receiverName the receiverName to set
+	 */
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
+	/**
+	 * @return the receiverPhone
+	 */
+	public String getReceiverPhone() {
+		return receiverPhone;
+	}
+
+	/**
+	 * @param receiverPhone the receiverPhone to set
+	 */
+	public void setReceiverPhone(String receiverPhone) {
+		this.receiverPhone = receiverPhone;
+	}
+
+	/**
+	 * @return the receiverProvince
+	 */
+	public String getReceiverProvince() {
+		return receiverProvince;
+	}
+
+	/**
+	 * @param receiverProvince the receiverProvince to set
+	 */
+	public void setReceiverProvince(String receiverProvince) {
+		this.receiverProvince = receiverProvince;
+	}
+
+	/**
+	 * @return the receiverCity
+	 */
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+
+	/**
+	 * @param receiverCity the receiverCity to set
+	 */
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+
+	/**
+	 * @return the receiverAddress
+	 */
+	public String getReceiverAddress() {
+		return receiverAddress;
+	}
+
+	/**
+	 * @param receiverAddress the receiverAddress to set
+	 */
+	public void setReceiverAddress(String receiverAddress) {
+		this.receiverAddress = receiverAddress;
 	}
 
 }

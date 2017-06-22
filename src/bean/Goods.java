@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class Goods implements java.io.Serializable {
 
-	private int goodsId;
+	private String goodsId;
 	private DistrictCenter districtCenterByReceiveDistrictCenter;
 	private DistrictCenter districtCenterBySendDestrictCenter;
 	private ProvinceCenter provinceCenterBySendProvinceCenter;
@@ -29,7 +29,7 @@ public class Goods implements java.io.Serializable {
 	public Goods() {
 	}
 
-	public Goods(int goodsId, String senderName, String senderPhone, String senderProvince, String senderCity,
+	public Goods(String goodsId, String senderName, String senderPhone, String senderProvince, String senderCity,
 			String senderAddress, String receiverName, String receiverPhone, String receiverProvince,
 			String receiverCity, String receiverAddress) {
 		this.goodsId = goodsId;
@@ -45,7 +45,7 @@ public class Goods implements java.io.Serializable {
 		this.receiverAddress = receiverAddress;
 	}
 
-	public Goods(int goodsId, DistrictCenter districtCenterByReceiveDistrictCenter,
+	public Goods(String goodsId, DistrictCenter districtCenterByReceiveDistrictCenter,
 			DistrictCenter districtCenterBySendDestrictCenter, ProvinceCenter provinceCenterBySendProvinceCenter,
 			ProvinceCenter provinceCenterByReceiveProvinceCenter, String senderName, String senderPhone,
 			String senderProvince, String senderCity, String senderAddress, String receiverName, String receiverPhone,
@@ -68,11 +68,11 @@ public class Goods implements java.io.Serializable {
 		this.goodsStatuses = goodsStatuses;
 	}
 
-	public int getGoodsId() {
+	public String getGoodsId() {
 		return this.goodsId;
 	}
 
-	public void setGoodsId(int goodsId) {
+	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
 	}
 

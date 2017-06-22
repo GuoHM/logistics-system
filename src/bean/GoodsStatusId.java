@@ -6,22 +6,22 @@ package bean;
  */
 public class GoodsStatusId implements java.io.Serializable {
 
-	private int goodsId;
+	private String goodsId;
 	private String conditionId;
 
 	public GoodsStatusId() {
 	}
 
-	public GoodsStatusId(int goodsId, String conditionId) {
+	public GoodsStatusId(String goodsId, String conditionId) {
 		this.goodsId = goodsId;
 		this.conditionId = conditionId;
 	}
 
-	public int getGoodsId() {
+	public String getGoodsId() {
 		return this.goodsId;
 	}
 
-	public void setGoodsId(int goodsId) {
+	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
 	}
 
