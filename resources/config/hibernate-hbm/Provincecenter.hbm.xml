@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="ProvinceCenter" table="ProvinceCenter" catalog="logistics">
+    <class name="bean.ProvinceCenter" table="ProvinceCenter" catalog="logistics">
         <id name="centerId" type="java.lang.Integer">
             <column name="centerID" />
             <generator class="identity" />
@@ -18,19 +18,19 @@
             <key>
                 <column name="sendProvinceCenter" />
             </key>
-            <one-to-many class="Goods" />
+            <one-to-many class="bean.Goods" />
         </set>
         <set name="goodsesForReceiveProvinceCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="receiveProvinceCenter" />
             </key>
-            <one-to-many class="Goods" />
+            <one-to-many class="bean.Goods" />
         </set>
         <set name="transportationManagements" table="TransportationManagement" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="centerID" not-null="true" />
             </key>
-            <one-to-many class="TransportationManagement" />
+            <one-to-many class="bean.TransportationManagement" />
         </set>
     </class>
 </hibernate-mapping>

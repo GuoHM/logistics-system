@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Conditions" table="Conditions" catalog="logistics">
+    <class name="bean.Conditions" table="Conditions" catalog="logistics">
         <id name="conditionId" type="string">
             <column name="conditionID" length="2" />
             <generator class="assigned" />
@@ -15,7 +15,7 @@
             <key>
                 <column name="conditionID" length="2" not-null="true" />
             </key>
-            <one-to-many class="GoodsStatus" />
+            <one-to-many class="bean.GoodsStatus" />
         </set>
     </class>
 </hibernate-mapping>

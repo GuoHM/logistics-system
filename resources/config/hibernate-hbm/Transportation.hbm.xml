@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Transportation" table="Transportation" catalog="logistics">
+    <class name="bean.Transportation" table="Transportation" catalog="logistics">
         <id name="transportationId" type="string">
             <column name="transportationID" length="5" />
             <generator class="assigned" />
@@ -18,7 +18,7 @@
             <key>
                 <column name="transportationID" length="5" not-null="true" />
             </key>
-            <one-to-many class="TransportationManagement" />
+            <one-to-many class="bean.TransportationManagement" />
         </set>
     </class>
 </hibernate-mapping>
