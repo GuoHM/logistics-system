@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-20 23:04:44 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-22 14:40:54 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class ProvinceCenter implements java.io.Serializable {
 
-	private int centerId;
+	private Integer centerId;
 	private String province;
 	private String pwd;
 	private Set goodsesForSendProvinceCenter = new HashSet(0);
@@ -19,15 +19,13 @@ public class ProvinceCenter implements java.io.Serializable {
 	public ProvinceCenter() {
 	}
 
-	public ProvinceCenter(int centerId, String province, String pwd) {
-		this.centerId = centerId;
+	public ProvinceCenter(String province, String pwd) {
 		this.province = province;
 		this.pwd = pwd;
 	}
 
-	public ProvinceCenter(int centerId, String province, String pwd, Set goodsesForSendProvinceCenter,
+	public ProvinceCenter(String province, String pwd, Set goodsesForSendProvinceCenter,
 			Set goodsesForReceiveProvinceCenter, Set transportationManagements) {
-		this.centerId = centerId;
 		this.province = province;
 		this.pwd = pwd;
 		this.goodsesForSendProvinceCenter = goodsesForSendProvinceCenter;
@@ -35,11 +33,11 @@ public class ProvinceCenter implements java.io.Serializable {
 		this.transportationManagements = transportationManagements;
 	}
 
-	public int getCenterId() {
+	public Integer getCenterId() {
 		return this.centerId;
 	}
 
-	public void setCenterId(int centerId) {
+	public void setCenterId(Integer centerId) {
 		this.centerId = centerId;
 	}
 
