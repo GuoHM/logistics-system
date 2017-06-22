@@ -53,7 +53,6 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private String senderDistrict;
 	private String receiverDistrict;
 
-
 	public String login() throws Exception {
 		// LoginInfo login = null;
 		try {
@@ -62,8 +61,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			 * districtCenter login
 			 */
 			case 1: {
-				DistrictCenter districtCenter = districtCenterService
-						.getDistrictCenterByIDAndPwd(userid, password);
+				DistrictCenter districtCenter = districtCenterService.getDistrictCenterByIDAndPwd(userid, password);
 				if (districtCenter == null) {
 					addActionError("账号或密码输入有误");
 					return INPUT;
@@ -77,8 +75,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			 * provinceCenter login
 			 */
 			case 2: {
-				ProvinceCenter provinceCenter = provinceCenterService
-						.getProvinceCenterByIDAndPwd(userid, password);
+				ProvinceCenter provinceCenter = provinceCenterService.getProvinceCenterByIDAndPwd(userid, password);
 				if (provinceCenter == null) {
 					addActionError("账号或密码输入有误");
 					return INPUT;
@@ -92,8 +89,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			 * admin login
 			 */
 			case 3: {
-				Admin admin = adminService.getAdminByLoginAndPassword(userid,
-						password);
+				Admin admin = adminService.getAdminByLoginAndPassword(userid, password);
 				if (admin == null) {
 					addActionError("账号或密码输入有误");
 					return INPUT;
@@ -145,7 +141,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				}
 			}
 			/**
-			 *  Admin modifypwd
+			 * Admin modifypwd
 			 */
 			case "3": {
 				Admin user = (Admin) context.getSession().get("login");
@@ -166,26 +162,25 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	@SuppressWarnings("deprecation")
-	public String getGoodsID(){
-		SimpleDateFormat f=new SimpleDateFormat("MMddHHmmss");
-		Date date=new Date();
-		String s=f.format(date);
-		s+=(int)(Math.random()*10)+"";
-		s+=(int)(Math.random()*10)+"";
-		s+=(int)(Math.random()*10)+"";
-		s+=(int)(Math.random()*10)+"";
+	public String getGoodsID() {
+		SimpleDateFormat f = new SimpleDateFormat("MMddHHmmss");
+		Date date = new Date();
+		String s = f.format(date);
+		s += (int) (Math.random() * 10) + "";
+		s += (int) (Math.random() * 10) + "";
+		s += (int) (Math.random() * 10) + "";
+		s += (int) (Math.random() * 10) + "";
 		System.out.println(s);
-		if(s!=null){
+		if (s != null) {
 			context.getSession().put("goodsID", s);
 			return "getSuccess";
-		}
-		else
+		} else
 			return "getfalse";
 	}
 
 	public String addGoods() throws Exception {
-		Goods goods=new Goods();
-		goods.setGoodsId((String)context.getSession().get("goodsID"));
+		Goods goods = new Goods();
+		goods.setGoodsId((String) context.getSession().get("goodsID"));
 		goods.setSenderName(senderName);
 		goods.setSenderPhone(senderPhone);
 		goods.setSenderProvince(senderProvince);
@@ -199,8 +194,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		goods.setReceiverDistrict(receiverDistrict);
 		goods.setSenderDistrict(senderDistrict);
 		goodsService.save(goods);
-		if(goods!=null){
-			context.getSession().put("goodsinfo",goods);
+		if (goods != null) {
+			context.getSession().put("goodsinfo", goods);
 			return "addSuccess";
 		}
 		return "addFalse";
@@ -240,8 +235,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		return districtCenterService;
 	}
 
-	public void setDistrictCenterService(
-			IDistrictCenterService districtCenterService) {
+	public void setDistrictCenterService(IDistrictCenterService districtCenterService) {
 		this.districtCenterService = districtCenterService;
 	}
 
@@ -249,8 +243,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		return provinceCenterService;
 	}
 
-	public void setProvinceCenterService(
-			IProvinceCenterService provinceCenterService) {
+	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
 		this.provinceCenterService = provinceCenterService;
 	}
 
@@ -298,7 +291,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param newpassword the newpassword to set
+	 * @param newpassword
+	 *            the newpassword to set
 	 */
 	public void setNewpassword(String newpassword) {
 		this.newpassword = newpassword;
@@ -312,7 +306,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param goodsService the goodsService to set
+	 * @param goodsService
+	 *            the goodsService to set
 	 */
 	public void setGoodsService(IGoodsService goodsService) {
 		this.goodsService = goodsService;
@@ -326,7 +321,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param goodsId the goodsId to set
+	 * @param goodsId
+	 *            the goodsId to set
 	 */
 	public void setGoodsId(String goodsId) {
 		this.goodsId = goodsId;
@@ -340,7 +336,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderName the senderName to set
+	 * @param senderName
+	 *            the senderName to set
 	 */
 	public void setSenderName(String senderName) {
 		this.senderName = senderName;
@@ -354,7 +351,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderPhone the senderPhone to set
+	 * @param senderPhone
+	 *            the senderPhone to set
 	 */
 	public void setSenderPhone(String senderPhone) {
 		this.senderPhone = senderPhone;
@@ -368,7 +366,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderProvince the senderProvince to set
+	 * @param senderProvince
+	 *            the senderProvince to set
 	 */
 	public void setSenderProvince(String senderProvince) {
 		this.senderProvince = senderProvince;
@@ -382,7 +381,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderCity the senderCity to set
+	 * @param senderCity
+	 *            the senderCity to set
 	 */
 	public void setSenderCity(String senderCity) {
 		this.senderCity = senderCity;
@@ -396,7 +396,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderAddress the senderAddress to set
+	 * @param senderAddress
+	 *            the senderAddress to set
 	 */
 	public void setSenderAddress(String senderAddress) {
 		this.senderAddress = senderAddress;
@@ -410,7 +411,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverName the receiverName to set
+	 * @param receiverName
+	 *            the receiverName to set
 	 */
 	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
@@ -424,7 +426,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverPhone the receiverPhone to set
+	 * @param receiverPhone
+	 *            the receiverPhone to set
 	 */
 	public void setReceiverPhone(String receiverPhone) {
 		this.receiverPhone = receiverPhone;
@@ -438,7 +441,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverProvince the receiverProvince to set
+	 * @param receiverProvince
+	 *            the receiverProvince to set
 	 */
 	public void setReceiverProvince(String receiverProvince) {
 		this.receiverProvince = receiverProvince;
@@ -452,7 +456,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverCity the receiverCity to set
+	 * @param receiverCity
+	 *            the receiverCity to set
 	 */
 	public void setReceiverCity(String receiverCity) {
 		this.receiverCity = receiverCity;
@@ -466,7 +471,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverAddress the receiverAddress to set
+	 * @param receiverAddress
+	 *            the receiverAddress to set
 	 */
 	public void setReceiverAddress(String receiverAddress) {
 		this.receiverAddress = receiverAddress;
@@ -480,7 +486,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param senderDistrict the senderDistrict to set
+	 * @param senderDistrict
+	 *            the senderDistrict to set
 	 */
 	public void setSenderDistrict(String senderDistrict) {
 		this.senderDistrict = senderDistrict;
@@ -494,12 +501,11 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @param receiverDistrict the receiverDistrict to set
+	 * @param receiverDistrict
+	 *            the receiverDistrict to set
 	 */
 	public void setReceiverDistrict(String receiverDistrict) {
 		this.receiverDistrict = receiverDistrict;
 	}
-	
-	
 
 }

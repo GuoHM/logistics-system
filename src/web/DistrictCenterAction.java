@@ -26,11 +26,14 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String receiverProvince;
 	private String receiverCity;
 	private String receiverAddress;
+	private String senderDistrict;
+	private String receiverDistrict;
 
 	public String searchByGoodsID() throws Exception {  //根据单号查询快递单信息
 		Goods goods = new Goods();
 		goods = goodsService.getGoodsBygoodsId(searchGoodsId);
 		if (goods != null) {
+			context.getSession().put("searchGoodsId", searchGoodsId);
 			context.getSession().put("getGoodsByID", goods);
 			return "searchSuccess";
 		} else
@@ -39,7 +42,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 	public String modifyGoodsinfo()throws Exception{ //单号查询显示后，进行修改
 		Goods goods = new Goods();
-		goods.setGoodsId((String)context.getSession().get(searchGoodsId));
+		goods.setGoodsId(goodsId);
 		goods.setSenderName(senderName);
 		goods.setSenderPhone(senderPhone);
 		goods.setSenderProvince(senderProvince);
@@ -50,9 +53,12 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		goods.setReceiverProvince(receiverProvince);
 		goods.setReceiverCity(receiverCity);
 		goods.setReceiverAddress(receiverAddress);
+		goods.setSenderDistrict(senderDistrict);
+		goods.setReceiverDistrict(receiverDistrict);
 //		goods.setDistrictCenterBySendDestrictCenter(districtCenterBySendDestrictCenter);
 		goodsService.save(goods);
 		if(goods!=null){
+		
 			return "modifyGoodsinfoSuccess";
 		}
 		else
@@ -318,5 +324,31 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		// TODO Auto-generated method stub
 
 	}
+	/**
+	 * @return the senderDistrict
+	 */
+	public String getSenderDistrict() {
+		return senderDistrict;
+	}
+	/**
+	 * @param senderDistrict the senderDistrict to set
+	 */
+	public void setSenderDistrict(String senderDistrict) {
+		this.senderDistrict = senderDistrict;
+	}
+	/**
+	 * @return the receiverDistrict
+	 */
+	public String getReceiverDistrict() {
+		return receiverDistrict;
+	}
+	/**
+	 * @param receiverDistrict the receiverDistrict to set
+	 */
+	public void setReceiverDistrict(String receiverDistrict) {
+		this.receiverDistrict = receiverDistrict;
+	}
+	
+	
 	
 }
