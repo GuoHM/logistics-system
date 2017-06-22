@@ -39,17 +39,19 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private String password;
 	private int type;
 	private String newpassword;
-	 private String goodsId;
-		private String senderName;
-		private String senderPhone;
-		private String senderProvince;
-		private String senderCity;
-		private String senderAddress;
-		private String receiverName;
-		private String receiverPhone;
-		private String receiverProvince;
-		private String receiverCity;
-		private String receiverAddress;
+	private String goodsId;
+	private String senderName;
+	private String senderPhone;
+	private String senderProvince;
+	private String senderCity;
+	private String senderAddress;
+	private String receiverName;
+	private String receiverPhone;
+	private String receiverProvince;
+	private String receiverCity;
+	private String receiverAddress;
+	private String senderDistrict;
+	private String receiverDistrict;
 
 
 	public String login() throws Exception {
@@ -109,65 +111,65 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		}
 		return INPUT;
 	}
-	
-	 public String modifyPwd() {
-	        String type = (String) context.getSession().get("type");
-	        try {
-	            switch (type) {
-	            /**
-	             * DistrictCenter modifypwd
-	             */
-	            case "1": {
-	            	DistrictCenter user = (DistrictCenter) context.getSession().get("login");
-	                if (user.getPwd().equals(password)) {
-	                    user.setPwd(newpassword);
-	                    districtCenterService.save(user);
-	                    return "districtCenter";
-	                } else {
-	                    addActionError("旧密码输入错误");
-	                    return "inputdistrictCenter";
-	                }
-	            }
-	            /**
-	             * ProvinceCenter modifypwd
-	             */
-	            case "2": {
-	            	ProvinceCenter user = (ProvinceCenter) context.getSession().get("login");
-	                if (user.getPwd().equals(password)) {
-	                    user.setPwd(newpassword);
-	                    provinceCenterService.save(user);
-	                    return "provinceCenter";
-	                } else {
-	                    addActionError("旧密码输入错误");
-	                    return "inputprovinceCenter";
-	                }
-	            }
-	            /**
-	             *  Admin modifypwd
-	             */
-	            case "3": {
-	                Admin user = (Admin) context.getSession().get("login");
-	                if (user.getPwd().equals(password)) {
-	                    user.setPwd(newpassword);
-	                    adminService.save(user);
-	                    return "admin";
-	                } else {
-	                    addActionError("旧密码输入错误");
-	                    return "inputadmin";
-	                }
-	            }
-	            }
-	        } catch (Exception e) {
-	            logger.error(e);
-	        }
-	        return SUCCESS;
-	    }
-	
+
+	public String modifyPwd() {
+		String type = (String) context.getSession().get("type");
+		try {
+			switch (type) {
+			/**
+			 * DistrictCenter modifypwd
+			 */
+			case "1": {
+				DistrictCenter user = (DistrictCenter) context.getSession().get("login");
+				if (user.getPwd().equals(password)) {
+					user.setPwd(newpassword);
+					districtCenterService.save(user);
+					return "districtCenter";
+				} else {
+					addActionError("旧密码输入错误");
+					return "inputdistrictCenter";
+				}
+			}
+			/**
+			 * ProvinceCenter modifypwd
+			 */
+			case "2": {
+				ProvinceCenter user = (ProvinceCenter) context.getSession().get("login");
+				if (user.getPwd().equals(password)) {
+					user.setPwd(newpassword);
+					provinceCenterService.save(user);
+					return "provinceCenter";
+				} else {
+					addActionError("旧密码输入错误");
+					return "inputprovinceCenter";
+				}
+			}
+			/**
+			 *  Admin modifypwd
+			 */
+			case "3": {
+				Admin user = (Admin) context.getSession().get("login");
+				if (user.getPwd().equals(password)) {
+					user.setPwd(newpassword);
+					adminService.save(user);
+					return "admin";
+				} else {
+					addActionError("旧密码输入错误");
+					return "inputadmin";
+				}
+			}
+			}
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		return SUCCESS;
+	}
+
 	@SuppressWarnings("deprecation")
 	public String getGoodsID(){
 		SimpleDateFormat f=new SimpleDateFormat("MMddHHmmss");
-        Date date=new Date();
-        String s=f.format(date);
+		Date date=new Date();
+		String s=f.format(date);
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
@@ -180,7 +182,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		else
 			return "getfalse";
 	}
-	
+
 	public String addGoods() throws Exception {
 		Goods goods=new Goods();
 		goods.setGoodsId((String)context.getSession().get("goodsID"));
@@ -194,6 +196,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		goods.setReceiverProvince(receiverProvince);
 		goods.setReceiverCity(receiverCity);
 		goods.setReceiverAddress(receiverAddress);
+		goods.setReceiverDistrict(receiverDistrict);
+		goods.setSenderDistrict(senderDistrict);
 		goodsService.save(goods);
 		if(goods!=null){
 			context.getSession().put("goodsinfo",goods);
@@ -201,12 +205,12 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		}
 		return "addFalse";
 	}
-	
+
 	public String logout() {
-        context.getSession().remove("login");
-        context.getSession().remove("type");
-        return SUCCESS;
-    }
+		context.getSession().remove("login");
+		context.getSession().remove("type");
+		return SUCCESS;
+	}
 
 	public ActionContext getContext() {
 		return context;
@@ -467,5 +471,35 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	public void setReceiverAddress(String receiverAddress) {
 		this.receiverAddress = receiverAddress;
 	}
+
+	/**
+	 * @return the senderDistrict
+	 */
+	public String getSenderDistrict() {
+		return senderDistrict;
+	}
+
+	/**
+	 * @param senderDistrict the senderDistrict to set
+	 */
+	public void setSenderDistrict(String senderDistrict) {
+		this.senderDistrict = senderDistrict;
+	}
+
+	/**
+	 * @return the receiverDistrict
+	 */
+	public String getReceiverDistrict() {
+		return receiverDistrict;
+	}
+
+	/**
+	 * @param receiverDistrict the receiverDistrict to set
+	 */
+	public void setReceiverDistrict(String receiverDistrict) {
+		this.receiverDistrict = receiverDistrict;
+	}
+	
+	
 
 }

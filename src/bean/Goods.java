@@ -33,7 +33,7 @@ public class Goods implements java.io.Serializable {
 
 	public Goods(String goodsId, String senderName, String senderPhone, String senderProvince, String senderCity,
 			String senderAddress, String receiverName, String receiverPhone, String receiverProvince,
-			String receiverCity, String receiverAddress) {
+			String receiverCity, String receiverAddress,String senderDistrict,String receiverDistrict) {
 		this.goodsId = goodsId;
 		this.senderName = senderName;
 		this.senderPhone = senderPhone;
@@ -45,13 +45,15 @@ public class Goods implements java.io.Serializable {
 		this.receiverProvince = receiverProvince;
 		this.receiverCity = receiverCity;
 		this.receiverAddress = receiverAddress;
+		this.senderDistrict=senderDistrict;
+		this.receiverDistrict=receiverDistrict;
 	}
 
 	public Goods(String goodsId, DistrictCenter districtCenterByReceiveDistrictCenter,
 			DistrictCenter districtCenterBySendDestrictCenter, ProvinceCenter provinceCenterBySendProvinceCenter,
 			ProvinceCenter provinceCenterByReceiveProvinceCenter, String senderName, String senderPhone,
 			String senderProvince, String senderCity, String senderAddress, String receiverName, String receiverPhone,
-			String receiverProvince, String receiverCity, String receiverAddress, Set goodsStatuses) {
+			String receiverProvince, String receiverCity, String receiverAddress, Set goodsStatuses,String senderDistrict,String receiverDistrict) {
 		this.goodsId = goodsId;
 		this.districtCenterByReceiveDistrictCenter = districtCenterByReceiveDistrictCenter;
 		this.districtCenterBySendDestrictCenter = districtCenterBySendDestrictCenter;
@@ -68,6 +70,8 @@ public class Goods implements java.io.Serializable {
 		this.receiverCity = receiverCity;
 		this.receiverAddress = receiverAddress;
 		this.goodsStatuses = goodsStatuses;
+		this.senderDistrict=senderDistrict;
+		this.receiverDistrict=receiverDistrict;
 	}
 
 	public String getGoodsId() {
@@ -225,6 +229,6 @@ public class Goods implements java.io.Serializable {
 	public void setReceiverDistrict(String receiverDistrict) {
 		this.receiverDistrict = receiverDistrict;
 	}
-	
+
 
 }
