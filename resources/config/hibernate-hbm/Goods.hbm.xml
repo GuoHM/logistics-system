@@ -4,8 +4,8 @@
 <!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="bean.Goods" table="Goods" catalog="logistics">
-        <id name="goodsId" type="int">
-            <column name="goodsID" />
+        <id name="goodsId" type="string">
+            <column name="goodsID" length="12" />
             <generator class="assigned" />
         </id>
         <many-to-one name="districtCenterByReceiveDistrictCenter" class="bean.DistrictCenter" fetch="select">

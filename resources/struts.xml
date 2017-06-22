@@ -19,9 +19,9 @@
             <result name="inputadmin">/AdminPages/modifyPassword.jsp</result>
         </action>
          <action name="getGoodsID" method="getGoodsID" class="allAction">
-            <result name=s>/ToolsPage/sendGoodsForm.jsp</result>
+            <result name="getSucess">/ToolsPage/sendGoodsForm.jsp</result>
         </action>
-         <action name="addGoods" method="addGoods" class="districtCenterAction">
+         <action name="addGoods" method="addGoods" class="allAction">
             <result name="addSuccess">/index.jsp</result>
         </action>
 		 <action name="logout" method="logout" class="allAction">

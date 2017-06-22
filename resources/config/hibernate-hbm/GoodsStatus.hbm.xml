@@ -5,8 +5,8 @@
 <hibernate-mapping>
     <class name="bean.GoodsStatus" table="GoodsStatus" catalog="logistics">
         <composite-id name="id" class="bean.GoodsStatusId">
-            <key-property name="goodsId" type="int">
-                <column name="goodsID" />
+            <key-property name="goodsId" type="string">
+                <column name="goodsID" legth="12" />
             </key-property>
             <key-property name="conditionId" type="string">
                 <column name="conditionID" length="2" />
