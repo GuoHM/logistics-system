@@ -39,7 +39,7 @@
 </tr>
 <tr>
 <td>2017.6.22</td>
-<td>Minor changes in modify password function</td>
+<td>Minor changes in modify password function,upload modify goods info pages</td>
 <td>Guo Haoming</td>
 </tr>
 <tr>
