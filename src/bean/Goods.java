@@ -18,11 +18,13 @@ public class Goods implements java.io.Serializable {
 	private String senderPhone;
 	private String senderProvince;
 	private String senderCity;
+	private String senderDistrict;
 	private String senderAddress;
 	private String receiverName;
 	private String receiverPhone;
 	private String receiverProvince;
 	private String receiverCity;
+	private String receiverDistrict;
 	private String receiverAddress;
 	private Set goodsStatuses = new HashSet(0);
 
@@ -195,5 +197,34 @@ public class Goods implements java.io.Serializable {
 	public void setGoodsStatuses(Set goodsStatuses) {
 		this.goodsStatuses = goodsStatuses;
 	}
+
+	/**
+	 * @return the senderDistrict
+	 */
+	public String getSenderDistrict() {
+		return senderDistrict;
+	}
+
+	/**
+	 * @param senderDistrict the senderDistrict to set
+	 */
+	public void setSenderDistrict(String senderDistrict) {
+		this.senderDistrict = senderDistrict;
+	}
+
+	/**
+	 * @return the receiverDistrict
+	 */
+	public String getReceiverDistrict() {
+		return receiverDistrict;
+	}
+
+	/**
+	 * @param receiverDistrict the receiverDistrict to set
+	 */
+	public void setReceiverDistrict(String receiverDistrict) {
+		this.receiverDistrict = receiverDistrict;
+	}
+	
 
 }

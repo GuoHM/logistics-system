@@ -50,6 +50,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		goods.setReceiverProvince(receiverProvince);
 		goods.setReceiverCity(receiverCity);
 		goods.setReceiverAddress(receiverAddress);
+//		goods.setDistrictCenterBySendDestrictCenter(districtCenterBySendDestrictCenter);
 		goodsService.save(goods);
 		if(goods!=null){
 			return "modifyGoodsinfoSuccess";
@@ -57,6 +58,21 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		else
 			return "modifyGoodsinfoFalse";
 	}
+//	public String printGoodsinfo() throws Exception {  //打印快递单信息
+//		Goods goods = new Goods();
+//		goods.setGoodsId((String)context.getSession().get(searchGoodsId));
+//		goods.setSenderName(senderName);
+//		goods.setSenderPhone(senderPhone);
+//		goods.setSenderProvince(senderProvince);
+//		goods.setSenderCity(senderCity);
+//		goods.setSenderAddress(senderAddress);
+//		goods.setReceiverName(receiverName);
+//		goods.setReceiverPhone(receiverPhone);
+//		goods.setReceiverProvince(receiverProvince);
+//		goods.setReceiverCity(receiverCity);
+//		goods.setReceiverAddress(receiverAddress);
+//
+//	}
 
 	/**
 	 * @return the context
