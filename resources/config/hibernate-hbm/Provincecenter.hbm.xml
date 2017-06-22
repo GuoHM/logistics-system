@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.ProvinceCenter" table="ProvinceCenter" catalog="logistics">
-        <id name="centerId" type="int">
+    <class name="ProvinceCenter" table="ProvinceCenter" catalog="logistics">
+        <id name="centerId" type="java.lang.Integer">
             <column name="centerID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="province" type="string">
             <column name="province" length="10" not-null="true" />
@@ -18,19 +18,19 @@
             <key>
                 <column name="sendProvinceCenter" />
             </key>
-            <one-to-many class="bean.Goods" />
+            <one-to-many class="Goods" />
         </set>
         <set name="goodsesForReceiveProvinceCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="receiveProvinceCenter" />
             </key>
-            <one-to-many class="bean.Goods" />
+            <one-to-many class="Goods" />
         </set>
         <set name="transportationManagements" table="TransportationManagement" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="centerID" not-null="true" />
             </key>
-            <one-to-many class="bean.TransportationManagement" />
+            <one-to-many class="TransportationManagement" />
         </set>
     </class>
 </hibernate-mapping>

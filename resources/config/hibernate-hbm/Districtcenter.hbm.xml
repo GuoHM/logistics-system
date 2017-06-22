@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-20 23:05:14 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.DistrictCenter" table="DistrictCenter" catalog="logistics">
+    <class name="DistrictCenter" table="DistrictCenter" catalog="logistics">
         <id name="centerId" type="java.lang.Integer">
             <column name="centerID" />
             <generator class="identity" />
@@ -24,13 +24,13 @@
             <key>
                 <column name="sendDestrictCenter" />
             </key>
-            <one-to-many class="bean.Goods" />
+            <one-to-many class="Goods" />
         </set>
         <set name="goodsesForReceiveDistrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="receiveDistrictCenter" />
             </key>
-            <one-to-many class="bean.Goods" />
+            <one-to-many class="Goods" />
         </set>
     </class>
 </hibernate-mapping>
