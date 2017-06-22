@@ -17,11 +17,6 @@
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/modifyGoodsInfo.jsp">
-				<span>查询</span>
-			</a>
-		</li>
-		<li>
 			<a href="<%=basePath%>/DistrictCenterPages/modifyPassword.jsp">
 				<span>修改密码</span>
 			</a>

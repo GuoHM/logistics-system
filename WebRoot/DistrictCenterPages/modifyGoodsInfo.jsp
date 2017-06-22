@@ -23,6 +23,13 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
+<script type="text/javascript">
+function myFun()
+{
+alert("修改成功");
+
+}
+</script>
 <body onload="today()">
 	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
 	<div class="maincontent">
@@ -155,7 +162,7 @@
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline">
-									<input type="submit" value="提交" class="btn btn-default">
+									<input type="submit" value="提交" class="btn btn-default" onclick="myFun()">
 								</label>
 								<label class="checkbox-inline">
 									<input type="reset" value="重置" class="btn btn-default">
