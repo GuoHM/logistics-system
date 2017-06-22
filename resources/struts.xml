@@ -24,8 +24,13 @@
          <action name="addGoods" method="addGoods" class="allAction">
             <result name="addSuccess">/showGoodsInfo.jsp</result>
         </action>
-         <action name="searchGoodsByID" method="searchByGoodsID" class="districtCenterAction">
+         <action name="searchGoodsByIDModify" method="searchByGoodsID" class="districtCenterAction">
             <result name="searchSuccess">/DistrictCenterPages/modifyGoodsInfo.jsp</result>
+            <result name="input">/DistrictCenterPages/modifyGoodsInfo.jsp</result>
+        </action>
+         <action name="searchGoodsByID" method="searchByGoodsID" class="districtCenterAction">
+            <result name="searchSuccess">/searchGoods.jsp</result>
+            <result name="input">/searchGoods.jsp</result>
         </action>
          <action name="modifyGoodsinfo" method="modifyGoodsinfo" class="districtCenterAction">
             <result name="modifyGoodsinfoSuccess">/DistrictCenterPages/modifyGoodsInfo.jsp</result>
