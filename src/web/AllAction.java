@@ -166,16 +166,16 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	public String getGoodsID(){
 		Date d=new Date();
 		String s=d.getYear()+"";
-		s+=d.getMonth();
-		s+=d.getDay();
-		s+=d.getHours();
-		s+=d.getMinutes();
-		s+=d.getSeconds();
+		s+=d.getMonth()+"";
+		s+=d.getDay()+"";
+		s+=d.getHours()+"";
+		s+=d.getMinutes()+"";
+		s+=d.getSeconds()+"";
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
-		
+		System.out.println(s);
 		if(s!=null){
 			context.getSession().put("goodsID", s);
 			return "getSuccess";
