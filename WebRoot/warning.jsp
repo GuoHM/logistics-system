@@ -125,14 +125,12 @@
 			<!--end of the important information-->
 		</div>
 	</div>
-	</div>
-	</div>
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="row copyright">
 			<div class="col-md-12 text-center">
 				<p>
-					<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> <small class="block">作者：郭浩明，杨含笑</small>
+					<small class="block">Copyright © 2017 Guo Haoming,Yang Hanxiao.All rights reserved.</small>
 				</p>
 			</div>
 		</div>
