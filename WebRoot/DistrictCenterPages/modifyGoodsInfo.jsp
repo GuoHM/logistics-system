@@ -4,6 +4,12 @@
 <%
 	Goods goods = (Goods) session.getAttribute("getGoodsByID");
 %>
+<%!public String change(String s) {
+        if (s != null) {
+            return s;
+        }
+        return "";
+    }%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +28,19 @@
 				<div class="col-xs-2 column">
 					<jsp:include page="sidebar.jsp"></jsp:include>
 				</div>
+
 				<div class="col-xs-10 column">
+					<form class="form-inline" role="form" action="adminListStudent">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">单号：</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="searchGoodsId"
+									required="required">
+							</div>
+						</div>
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
+					<h3>单号：<%=change(goods.getGoodsId()) %></h3>
 					<form class="form-horizontal" role="form" method="post"
 						action="fillInfo" id="fillinfo">
 						<h3>收件人信息</h3>
@@ -31,14 +49,14 @@
 							<label class="col-sm-4 control-label">收件人姓名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="receiverName"
-									required="required" value="<%=goods.getReceiverName()%>">
+									required="required" value="<%=change(goods.getReceiverName())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">收件人电话</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="receiverPhone"
-									required="required" value="<%=goods.getReceiverPhone()%>">
+									required="required" value="<%=change(goods.getReceiverPhone())%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -55,14 +73,14 @@
 							<label class="col-sm-4 control-label">收件人城市</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="receiverCity"
-									required="required" value="<%=goods.getReceiverCity()%>">
+									required="required" value="<%=change(goods.getReceiverCity())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">收件人地址</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="receiverAddress"
-									required="required" value="<%=goods.getReceiverAddress()%>">
+									required="required" value="<%=change(goods.getReceiverAddress())%>">
 							</div>
 						</div>
 						<h3>寄件人信息</h3>
@@ -71,14 +89,14 @@
 							<label class="col-sm-4 control-label">寄件人姓名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="senderName"
-									required="required" value="<%=goods.getSenderName()%>">
+									required="required" value="<%=change(goods.getSenderName())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">寄件人电话</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="senderPhone"
-									required="required" value="<%=goods.getSenderPhone()%>">
+									required="required" value="<%=change(goods.getSenderPhone())%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -95,14 +113,14 @@
 							<label class="col-sm-4 control-label">寄件人城市</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="senderCity"
-									required="required">
+									required="required" value="<%=change(goods.getSenderCity())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">寄件人地址</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="senderAddress"
-									required="required" value="<%=goods.getSenderAddress()%>">
+									required="required" value="<%=change(goods.getSenderAddress())%>">
 							</div>
 						</div>
 						<div class="form-group">
