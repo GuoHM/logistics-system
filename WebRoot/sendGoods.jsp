@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-xs-5 column">
-                <h2><%=goodsId %></h2>
+                <h2>您的快递单号：<%=goodsId %></h2>
                     <jsp:include page="/ToolsPage/sendGoodsForm.jsp"></jsp:include>
                 </div>
             </div>
