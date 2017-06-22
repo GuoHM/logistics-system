@@ -13,8 +13,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	ActionContext context = ActionContext.getContext();
 	protected HttpServletRequest servletRequest = null;
 	Logger logger = Logger.getLogger(AllAction.class);
-	private IGoodsService goodsService;   
-	private String searchGoodsId; //输入的要查询单号
+	private IGoodsService goodsService;
+	private String searchGoodsId; // 输入的要查询单号
 	private String goodsId;
 	private String senderName;
 	private String senderPhone;
@@ -29,18 +29,19 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String senderDistrict;
 	private String receiverDistrict;
 
-	public String searchByGoodsID() throws Exception {  //根据单号查询快递单信息
+	public String searchByGoodsID() throws Exception { // 根据单号查询快递单信息
 		Goods goods = new Goods();
 		goods = goodsService.getGoodsBygoodsId(searchGoodsId);
 		if (goods != null) {
-			context.getSession().put("searchGoodsId", searchGoodsId);
 			context.getSession().put("getGoodsByID", goods);
 			return "searchSuccess";
-		} else
-			return "searchFalse";
-
+		} else {
+			addActionError("找不到该快递，请确认您的单号信息");
+			return INPUT;
+		}
 	}
-	public String modifyGoodsinfo()throws Exception{ //单号查询显示后，进行修改
+
+	public String modifyGoodsinfo() throws Exception { // 单号查询显示后，进行修改
 		Goods goods = new Goods();
 		goods.setGoodsId(goodsId);
 		goods.setSenderName(senderName);
@@ -55,30 +56,30 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		goods.setReceiverAddress(receiverAddress);
 		goods.setSenderDistrict(senderDistrict);
 		goods.setReceiverDistrict(receiverDistrict);
-//		goods.setDistrictCenterBySendDestrictCenter(districtCenterBySendDestrictCenter);
+		// goods.setDistrictCenterBySendDestrictCenter(districtCenterBySendDestrictCenter);
 		goodsService.save(goods);
-		if(goods!=null){
-		
+		if (goods != null) {
 			return "modifyGoodsinfoSuccess";
-		}
-		else
+		} else {
 			return "modifyGoodsinfoFalse";
+		}
+
 	}
-//	public String printGoodsinfo() throws Exception {  //打印快递单信息
-//		Goods goods = new Goods();
-//		goods.setGoodsId((String)context.getSession().get(searchGoodsId));
-//		goods.setSenderName(senderName);
-//		goods.setSenderPhone(senderPhone);
-//		goods.setSenderProvince(senderProvince);
-//		goods.setSenderCity(senderCity);
-//		goods.setSenderAddress(senderAddress);
-//		goods.setReceiverName(receiverName);
-//		goods.setReceiverPhone(receiverPhone);
-//		goods.setReceiverProvince(receiverProvince);
-//		goods.setReceiverCity(receiverCity);
-//		goods.setReceiverAddress(receiverAddress);
-//
-//	}
+	// public String printGoodsinfo() throws Exception { //打印快递单信息
+	// Goods goods = new Goods();
+	// goods.setGoodsId((String)context.getSession().get(searchGoodsId));
+	// goods.setSenderName(senderName);
+	// goods.setSenderPhone(senderPhone);
+	// goods.setSenderProvince(senderProvince);
+	// goods.setSenderCity(senderCity);
+	// goods.setSenderAddress(senderAddress);
+	// goods.setReceiverName(receiverName);
+	// goods.setReceiverPhone(receiverPhone);
+	// goods.setReceiverProvince(receiverProvince);
+	// goods.setReceiverCity(receiverCity);
+	// goods.setReceiverAddress(receiverAddress);
+	//
+	// }
 
 	/**
 	 * @return the context
@@ -324,31 +325,35 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		// TODO Auto-generated method stub
 
 	}
+
 	/**
 	 * @return the senderDistrict
 	 */
 	public String getSenderDistrict() {
 		return senderDistrict;
 	}
+
 	/**
-	 * @param senderDistrict the senderDistrict to set
+	 * @param senderDistrict
+	 *            the senderDistrict to set
 	 */
 	public void setSenderDistrict(String senderDistrict) {
 		this.senderDistrict = senderDistrict;
 	}
+
 	/**
 	 * @return the receiverDistrict
 	 */
 	public String getReceiverDistrict() {
 		return receiverDistrict;
 	}
+
 	/**
-	 * @param receiverDistrict the receiverDistrict to set
+	 * @param receiverDistrict
+	 *            the receiverDistrict to set
 	 */
 	public void setReceiverDistrict(String receiverDistrict) {
 		this.receiverDistrict = receiverDistrict;
 	}
-	
-	
-	
+
 }
