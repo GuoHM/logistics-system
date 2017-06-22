@@ -47,6 +47,11 @@
 <td>Add produce goodsid function,add goodsinfo function and modify goodsinfo function</td>
 <td>Yang HanXiao</td>
 </tr>
+<tr>
+<td>2017.6.23</td>
+<td>Changes in modify goods function and search goods function</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
