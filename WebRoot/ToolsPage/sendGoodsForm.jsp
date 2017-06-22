@@ -35,6 +35,13 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-4 control-label">收件人区县</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" name="receiverDistrict"
+				required="required">
+		</div>
+	</div>
+	<div class="form-group">
 		<label class="col-sm-4 control-label">收件人地址</label>
 		<div class="col-sm-7">
 			<input type="text" class="form-control" name="receiverAddress"
@@ -70,6 +77,13 @@
 		<label class="col-sm-4 control-label">寄件人城市</label>
 		<div class="col-sm-7">
 			<input type="text" class="form-control" name="senderCity"
+				required="required">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-4 control-label">寄件人区县</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" name="senderDistrict"
 				required="required">
 		</div>
 	</div>

@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="col-xs-10 column">
-					<form class="form-inline" role="form" action="adminListStudent">
+					<form class="form-inline" role="form" action="searchGoodsByID">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">单号：</label>
 							<div class="col-sm-6">
@@ -42,7 +42,7 @@
 					</form>
 					<h3>单号：<%=change(goods.getGoodsId()) %></h3>
 					<form class="form-horizontal" role="form" method="post"
-						action="fillInfo" id="fillinfo">
+						action="modifyGoodsinfo" id="fillinfo">
 						<h3>收件人信息</h3>
 						<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 						<div class="form-group">
