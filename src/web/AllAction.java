@@ -1,5 +1,6 @@
 package web;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -164,13 +165,9 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	
 	@SuppressWarnings("deprecation")
 	public String getGoodsID(){
-		Date d=new Date();
-		String s=d.getYear()+"";
-		s+=d.getMonth()+"";
-		s+=d.getDay()+"";
-		s+=d.getHours()+"";
-		s+=d.getMinutes()+"";
-		s+=d.getSeconds()+"";
+		SimpleDateFormat f=new SimpleDateFormat("MMddHHmmss");
+        Date date=new Date();
+        String s=f.format(date);
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
 		s+=(int)(Math.random()*10)+"";
@@ -186,7 +183,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	
 	public String addGoods() throws Exception {
 		Goods goods=new Goods();
-		goods.setGoodsId(goodsId);
+		goods.setGoodsId((String)context.getSession().get("goodsID"));
 		goods.setSenderName(senderName);
 		goods.setSenderPhone(senderPhone);
 		goods.setSenderProvince(senderProvince);
@@ -199,6 +196,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		goods.setReceiverAddress(receiverAddress);
 		goodsService.save(goods);
 		if(goods!=null){
+			context.getSession().put("goodsinfo",goods);
 			return "addSuccess";
 		}
 		return "addFalse";

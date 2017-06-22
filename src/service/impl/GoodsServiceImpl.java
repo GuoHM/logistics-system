@@ -11,9 +11,18 @@ public class GoodsServiceImpl implements IGoodsService{
 		if(goods!=null){
 			goodsDao.save(goods);
 		}
-
-		
+	
 	}
+	public Goods getGoodsBygoodsId(String goodsId) {  //根据单号查询单号信息
+		// TODO Auto-generated method stub
+		Goods goods=goodsDao.getGoodsBygoodsId(goodsId);
+		if(goods!=null){
+			return goods;
+		}
+		else
+			return null;
+	}
+
 	/**
 	 * @return the goodsDao
 	 */

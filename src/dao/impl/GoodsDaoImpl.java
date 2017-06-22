@@ -15,7 +15,7 @@ public class GoodsDaoImpl  extends HibernateDaoSupport implements IGoodsDao{
 	}
 
 	@Override
-	public Goods getGoodsBygoodsId(int goodsId) {
+	public Goods getGoodsBygoodsId(String goodsId) {
 		  String hql = "from Goods where goodsId=?";
 	        Session session = null;
 	        Goods goods = null;

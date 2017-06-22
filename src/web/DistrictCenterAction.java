@@ -1,31 +1,21 @@
 package web;
 
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts2.interceptor.ServletRequestAware;
-
-import bean.DistrictCenter;
 import bean.Goods;
-import bean.ProvinceCenter;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
-
-import service.IDistrictCenterService;
-
+import service.IGoodsService;
 
 public class DistrictCenterAction extends ActionSupport implements ServletRequestAware {
-
 	private static final long serialVersionUID = 1405926533311347411L;
 	ActionContext context = ActionContext.getContext();
 	protected HttpServletRequest servletRequest = null;
 	Logger logger = Logger.getLogger(AllAction.class);
-
-	private IDistrictCenterService districtCenterService;
-
-
+	private IGoodsService goodsService;   
+	private String searchGoodsId; //输入的要查询单号
+	private String goodsId;
 	private String senderName;
 	private String senderPhone;
 	private String senderProvince;
@@ -37,9 +27,19 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String receiverCity;
 	private String receiverAddress;
 
-	public String addGoods() throws Exception {
-		Goods goods=new Goods();
+	public String searchByGoodsID() throws Exception {  //根据单号查询快递单信息
+		Goods goods = new Goods();
+		goods = goodsService.getGoodsBygoodsId(searchGoodsId);
+		if (goods != null) {
+			context.getSession().put("getGoodsByID", goods);
+			return "searchSuccess";
+		} else
+			return "searchFalse";
 
+	}
+	public String modifyGoodsinfo()throws Exception{ //单号查询显示后，进行修改
+		Goods goods = new Goods();
+		goods.setGoodsId((String)context.getSession().get(searchGoodsId));
 		goods.setSenderName(senderName);
 		goods.setSenderPhone(senderPhone);
 		goods.setSenderProvince(senderProvince);
@@ -50,20 +50,12 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		goods.setReceiverProvince(receiverProvince);
 		goods.setReceiverCity(receiverCity);
 		goods.setReceiverAddress(receiverAddress);
-
-		districtCenterService.enroll(goods);
+		goodsService.save(goods);
 		if(goods!=null){
-			return "addSuccess";
+			return "modifyGoodsinfoSuccess";
 		}
-		return "addFalse";
-
-
-	}
-
-	@Override
-	public void setServletRequest(HttpServletRequest arg0) {
-		// TODO Auto-generated method stub
-
+		else
+			return "modifyGoodsinfoFalse";
 	}
 
 	/**
@@ -74,7 +66,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param context the context to set
+	 * @param context
+	 *            the context to set
 	 */
 	public void setContext(ActionContext context) {
 		this.context = context;
@@ -88,31 +81,57 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param logger the logger to set
+	 * @param logger
+	 *            the logger to set
 	 */
 	public void setLogger(Logger logger) {
 		this.logger = logger;
 	}
 
 	/**
-	 * @return the districtCenterService
+	 * @return the goodsService
 	 */
-	public IDistrictCenterService getDistrictCenterService() {
-		return districtCenterService;
+	public IGoodsService getGoodsService() {
+		return goodsService;
 	}
 
 	/**
-	 * @param districtCenterService the districtCenterService to set
+	 * @param goodsService
+	 *            the goodsService to set
 	 */
-	public void setDistrictCenterService(IDistrictCenterService districtCenterService) {
-		this.districtCenterService = districtCenterService;
+	public void setGoodsService(IGoodsService goodsService) {
+		this.goodsService = goodsService;
 	}
 
-	
 	/**
-	 * @return the districtCenterByReceiveDistrictCenter
+	 * @return the searchGoodsId
 	 */
+	public String getSearchGoodsId() {
+		return searchGoodsId;
+	}
 
+	/**
+	 * @param searchGoodsId
+	 *            the searchGoodsId to set
+	 */
+	public void setSearchGoodsId(String searchGoodsId) {
+		this.searchGoodsId = searchGoodsId;
+	}
+
+	/**
+	 * @return the goodsId
+	 */
+	public String getGoodsId() {
+		return goodsId;
+	}
+
+	/**
+	 * @param goodsId
+	 *            the goodsId to set
+	 */
+	public void setGoodsId(String goodsId) {
+		this.goodsId = goodsId;
+	}
 
 	/**
 	 * @return the senderName
@@ -122,7 +141,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param senderName the senderName to set
+	 * @param senderName
+	 *            the senderName to set
 	 */
 	public void setSenderName(String senderName) {
 		this.senderName = senderName;
@@ -136,7 +156,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param senderPhone the senderPhone to set
+	 * @param senderPhone
+	 *            the senderPhone to set
 	 */
 	public void setSenderPhone(String senderPhone) {
 		this.senderPhone = senderPhone;
@@ -150,7 +171,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param senderProvince the senderProvince to set
+	 * @param senderProvince
+	 *            the senderProvince to set
 	 */
 	public void setSenderProvince(String senderProvince) {
 		this.senderProvince = senderProvince;
@@ -164,7 +186,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param senderCity the senderCity to set
+	 * @param senderCity
+	 *            the senderCity to set
 	 */
 	public void setSenderCity(String senderCity) {
 		this.senderCity = senderCity;
@@ -178,7 +201,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param senderAddress the senderAddress to set
+	 * @param senderAddress
+	 *            the senderAddress to set
 	 */
 	public void setSenderAddress(String senderAddress) {
 		this.senderAddress = senderAddress;
@@ -192,7 +216,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param receiverName the receiverName to set
+	 * @param receiverName
+	 *            the receiverName to set
 	 */
 	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
@@ -206,7 +231,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param receiverPhone the receiverPhone to set
+	 * @param receiverPhone
+	 *            the receiverPhone to set
 	 */
 	public void setReceiverPhone(String receiverPhone) {
 		this.receiverPhone = receiverPhone;
@@ -220,7 +246,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param receiverProvince the receiverProvince to set
+	 * @param receiverProvince
+	 *            the receiverProvince to set
 	 */
 	public void setReceiverProvince(String receiverProvince) {
 		this.receiverProvince = receiverProvince;
@@ -234,7 +261,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param receiverCity the receiverCity to set
+	 * @param receiverCity
+	 *            the receiverCity to set
 	 */
 	public void setReceiverCity(String receiverCity) {
 		this.receiverCity = receiverCity;
@@ -248,7 +276,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param receiverAddress the receiverAddress to set
+	 * @param receiverAddress
+	 *            the receiverAddress to set
 	 */
 	public void setReceiverAddress(String receiverAddress) {
 		this.receiverAddress = receiverAddress;
@@ -268,5 +297,10 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		return servletRequest;
 	}
 
+	@Override
+	public void setServletRequest(HttpServletRequest arg0) {
+		// TODO Auto-generated method stub
 
+	}
+	
 }
