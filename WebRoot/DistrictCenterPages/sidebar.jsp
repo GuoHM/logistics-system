@@ -7,6 +7,11 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav">
 		<li>
+			<a href="<%=basePath%>/DistrictCenterPages/modifyGoodsInfo.jsp">
+				<span>修改订单</span>
+			</a>
+		</li>
+		<li>
 			<a href="elements.html">
 				<span>分拣</span>
 			</a>
