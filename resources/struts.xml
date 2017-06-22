@@ -19,7 +19,7 @@
             <result name="inputadmin">/AdminPages/modifyPassword.jsp</result>
         </action>
          <action name="getGoodsID" method="getGoodsID" class="allAction">
-            <result name="getSucess">/ToolsPage/sendGoodsForm.jsp</result>
+            <result name="getSuccess">/sendGoods.jsp</result>
         </action>
          <action name="addGoods" method="addGoods" class="allAction">
             <result name="addSuccess">/index.jsp</result>
