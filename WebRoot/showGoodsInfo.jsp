@@ -25,13 +25,17 @@
 					</h3>
 					<h4>快递信息</h4>
 					<label>收件人姓名：<%=goodsinfo.getReceiverName()%></label><br /> <label>收件人省份：<%=goodsinfo.getReceiverProvince()%></label><br />
-					<label>收件人城市：<%=goodsinfo.getReceiverCity()%></label><br /> <label>收件人地址：<%=goodsinfo.getReceiverAddress() %></label><br />
+					<label>收件人城市：<%=goodsinfo.getReceiverCity()%></label><br /> 
+					<label>收件人区县：<%=goodsinfo.getReceiverDistrict() %></label><br /> 
+					<label>收件人地址：<%=goodsinfo.getReceiverAddress() %></label><br />
 					<label>收件人电话：<%=goodsinfo.getReceiverPhone() %></label><br /> 
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>寄件人姓名：<%=goodsinfo.getSenderName() %></label><br />
-					<label>寄件人省份：<%=goodsinfo.getSenderProvince() %></label><br /> <label>寄件人城市：<%=goodsinfo.getSenderCity() %></label><br />
+					<label>寄件人省份：<%=goodsinfo.getSenderProvince() %></label><br />
+					 <label>寄件人城市：<%=goodsinfo.getSenderCity() %></label><br />
+					 <label>寄件人区县：<%=goodsinfo.getSenderDistrict() %></label><br />
 					<label>寄件人地址：<%=goodsinfo.getSenderAddress() %></label><br /> <label>寄件人电话：<%=goodsinfo.getSenderPhone() %></label><br />
-					<button onclick="window.location='index.jsp'">返回首页</button>
+					<button class="btn btn-default" onclick="window.location='index.jsp'">返回首页</button>
 				</div>
 			</div>
 		</div>
