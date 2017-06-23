@@ -49,7 +49,7 @@
 </tr>
 <tr>
 <td>2017.6.23</td>
-<td>Changes in modify goods function and search goods function</td>
+<td>Changes in modify goods function and search goods function,upload some pages and fix bug</td>
 <td>Guo Haoming</td>
 </tr>
 <tr>
