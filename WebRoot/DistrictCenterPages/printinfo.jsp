@@ -22,7 +22,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>查询快递</title>
+<title>打印订单</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/style.css">
@@ -55,7 +55,6 @@
 					<label>
 						单号：<%=change(goodsinfo.getGoodsId())%></label>
 					<br />
-					<input type="hidden" name="names" value="<%=goodsinfo.getGoodsId()%>"></input>
 					<h4 style="color: red;">收件人信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>
@@ -97,11 +96,11 @@
 					<label>
 						寄件人电话：<%=change(goodsinfo.getSenderPhone())%></label>
 					<br />
-					<form class="form-inline" role="form" action="printinfo">
-						
+					<form role="form" action="printinfo">
 						<div class="form-group">
 							<button type="submit" class="btn btn-default">打印</button>
 						</div>
+						<input type="hidden" name="goodsId" value="<%=goodsinfo.getGoodsId()%>"></input>
 						
 					</form>
 				</div>

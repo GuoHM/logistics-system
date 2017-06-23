@@ -17,7 +17,8 @@
 			return s;
 		}
 		return "";
-	}%>
+	}
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +52,31 @@
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<%
 						ResourceBundle res = ResourceBundle.getBundle("status");
-						String s;
+						String s = null;
 						if (goodsStatus != null) {
 							for (GoodsStatus n : goodsStatus) {
-								s = res.getString(n.getConditions().getConditionId()) + "，单号：" + goodsinfo.getGoodsId();
-								out.println("<label>" + s + "</label>");
+								switch (n.getConditions().getConditionId()) {
+								case "1":
+									s = res.getString(n.getConditions().getConditionId()) + "单号：" + n.getGoods().getGoodsId();
+									break;
+								case "2":
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
+											n.getGoods().getSenderDistrict());
+									break;
+								case "3":
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
+											n.getGoods().getSenderProvince());
+									break;
+								case "4":
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
+											n.getGoods().getReceiverProvince());
+									break;
+								case "5":
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
+											n.getGoods().getReceiverDistrict());
+									break;
+								}
+								out.println("<label>" + s + "</label><br/>");
 							}
 						}
 					%>
