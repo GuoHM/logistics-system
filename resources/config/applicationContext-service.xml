@@ -7,4 +7,6 @@
     <bean id="provinceCenterService" class="service.impl.ProvinCenterServiceImpl"></bean>
     <bean id="adminService" class="service.impl.AdminServiceImpl"></bean>
      <bean id="goodsService" class="service.impl.GoodsServiceImpl"></bean>
+     <bean id="goodsStatusService" class="service.impl.GoodsStatusServiceImpl"></bean>
+     <bean id="conditionsService" class="service.impl.ConditionsServiceImpl"></bean>
 </beans>

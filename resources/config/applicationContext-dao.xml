@@ -7,5 +7,6 @@
     <bean id="adminDao" class="dao.impl.AdminDaoImpl"></bean>
     <bean id="provinceCenterDao" class="dao.impl.ProvinceCenterDaoImpl"></bean>
     <bean id="goodsDao" class="dao.impl.GoodsDaoImpl"></bean>
-     
+    <bean id="goodsStatusDao" class="dao.impl.GoodsStatusDaoImpl"></bean>
+    <bean id="conditionsDao" class="dao.impl.ConditionsDaoImpl"></bean>
 </beans>

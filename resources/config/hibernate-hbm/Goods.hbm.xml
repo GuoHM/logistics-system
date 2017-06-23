@@ -56,7 +56,7 @@
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
         </property>
-        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="true" fetch="select">
+        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="goodsID" length="15" not-null="true" />
             </key>

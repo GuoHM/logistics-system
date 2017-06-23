@@ -11,7 +11,7 @@
         <property name="description" type="string">
             <column name="description" length="30" not-null="true" />
         </property>
-        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="true" fetch="select">
+        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="conditionID" length="2" not-null="true" />
             </key>

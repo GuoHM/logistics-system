@@ -20,13 +20,13 @@
         <property name="pwd" type="string">
             <column name="pwd" length="15" not-null="true" />
         </property>
-        <set name="goodsesForSendDestrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
+        <set name="goodsesForSendDestrictCenter" table="Goods" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="sendDestrictCenter" />
             </key>
             <one-to-many class="bean.Goods" />
         </set>
-        <set name="goodsesForReceiveDistrictCenter" table="Goods" inverse="true" lazy="true" fetch="select">
+        <set name="goodsesForReceiveDistrictCenter" table="Goods" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="receiveDistrictCenter" />
             </key>
