@@ -46,7 +46,7 @@
 			<li><a href="<%=basePath%>/index.jsp"> <span
 					class="glyphicon glyphicon-home">首页</span> </a>
 			</li>
-			<li><a href="<%=basePath%>/sendGoods.jsp"> <span
+			<li><a href="getGoodsID.action"> <span
 					class="glyphicon glyphicon-envelope">寄快递</span> </a>
 			</li>
 			<li><a href="<%=basePath%>/news.jsp"> <span
@@ -66,7 +66,7 @@
 	<!-- /.nav-collapse -->
 	<div class="btn-group menubar-right">
 		<c:choose>
-			<c:when test="${isLogin }">
+			<c:when test="<%=isLogin %>">
 				<jsp:include page="loginButton.jsp"></jsp:include>
 			</c:when>
 			<c:otherwise>

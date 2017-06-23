@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@page import="bean.Goods"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="bean.*"%>
+<%@page import="java.util.*"%>
 <%
 	Goods goodsinfo = (Goods) session.getAttribute("getGoodsByID");
+	List<GoodsStatus> goodsStatus = (List<GoodsStatus>) session.getAttribute("statuslist");
+	System.out.println(goodsStatus);
 	if (goodsinfo == null) {
 		goodsinfo = new Goods();
+
 	}
 %>
 <%!public String change(String s) {
@@ -42,12 +47,15 @@
 						<s:actionerror />
 						<s:actionmessage />
 					</form>
-					<h4 style="color:red;">快递信息</h4>
+					<h4 style="color: red;">快递状态</h4>
+					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
+					
+					<h4 style="color: red;">快递信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>
 						单号：<%=change(goodsinfo.getGoodsId())%></label>
 					<br />
-					<h4 style="color:red;">收件人信息</h4>
+					<h4 style="color: red;">收件人信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>
 						收件人姓名：<%=change(goodsinfo.getReceiverName())%></label>
@@ -67,7 +75,7 @@
 					<label>
 						收件人电话：<%=change(goodsinfo.getReceiverPhone())%></label>
 					<br />
-					<h4 style="color:red;">寄件人信息</h4>
+					<h4 style="color: red;">寄件人信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 
 					<label>
@@ -88,8 +96,7 @@
 					<label>
 						寄件人电话：<%=change(goodsinfo.getSenderPhone())%></label>
 					<br />
-					<h4 style="color:red;">快递状态</h4>
-					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
+
 					<button class="btn btn-default" onclick="window.location='index.jsp'">返回首页</button>
 				</div>
 			</div>
