@@ -32,8 +32,15 @@
             <result name="searchSuccess">/searchGoods.jsp</result>
             <result name="input">/searchGoods.jsp</result>
         </action>
+         <action name="searchGoodsByIDPrint" method="searchByGoodsID" class="districtCenterAction">
+            <result name="searchSuccess">/DistrictCenterPages/printinfo.jsp</result>
+            <result name="input">/DistrictCenterPages/printinfo.jsp</result>
+        </action>
          <action name="modifyGoodsinfo" method="modifyGoodsinfo" class="districtCenterAction">
             <result name="modifyGoodsinfoSuccess">/DistrictCenterPages/modifyGoodsInfo.jsp</result>
+        </action>
+         <action name="printinfo" method="addStatus" class="districtCenterAction">
+            <result name="saveStatusSuccess">/DistrictCenterPages/printinfo.jsp</result>
         </action>
 		 <action name="logout" method="logout" class="allAction">
             <result name="success">/index.jsp</result>
