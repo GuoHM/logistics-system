@@ -11,15 +11,19 @@ import bean.Admin;
 import bean.DistrictCenter;
 import bean.ProvinceCenter;
 import bean.Goods;
+import bean.GoodsStatus;
+import bean.GoodsStatusId;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 
 import service.IAdminService;
+import service.IConditionsService;
 import service.IDistrictCenterService;
 import service.IProvinceCenterService;
 import service.IGoodsService;
+import service.IGoodsStatusService;
 
 public class AllAction extends ActionSupport implements ServletRequestAware {
 
@@ -34,6 +38,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private IProvinceCenterService provinceCenterService;
 	private IAdminService adminService;
 	private IGoodsService goodsService;
+	private IGoodsStatusService goodsStatusService;
+	private IConditionsService conditionsService;
 
 	private String userid;
 	private String password;
@@ -194,6 +200,14 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		goods.setReceiverDistrict(receiverDistrict);
 		goods.setSenderDistrict(senderDistrict);
 		goodsService.save(goods);
+		GoodsStatusId goodsStatusId = new GoodsStatusId();
+		goodsStatusId.setGoodsId(goods.getGoodsId());
+		goodsStatusId.setConditionId("1");
+		GoodsStatus goodsStatus = new GoodsStatus();
+		goodsStatus.setId(goodsStatusId);
+		goodsStatus.setGoods(goods);
+		goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("1"));
+		goodsStatusService.save(goodsStatus);
 		if (goods != null) {
 			context.getSession().put("goodsinfo", goods);
 			return "addSuccess";
@@ -507,5 +521,35 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	public void setReceiverDistrict(String receiverDistrict) {
 		this.receiverDistrict = receiverDistrict;
 	}
+
+	/**
+	 * @return the goodsStatusService
+	 */
+	public IGoodsStatusService getGoodsStatusService() {
+		return goodsStatusService;
+	}
+
+	/**
+	 * @param goodsStatusService the goodsStatusService to set
+	 */
+	public void setGoodsStatusService(IGoodsStatusService goodsStatusService) {
+		this.goodsStatusService = goodsStatusService;
+	}
+
+	/**
+	 * @return the conditionsService
+	 */
+	public IConditionsService getConditionsService() {
+		return conditionsService;
+	}
+
+	/**
+	 * @param conditionsService the conditionsService to set
+	 */
+	public void setConditionsService(IConditionsService conditionsService) {
+		this.conditionsService = conditionsService;
+	}
+	
+	
 
 }

@@ -1,39 +1,75 @@
 package service.impl;
 
+import java.util.List;
+
+import bean.Conditions;
 import bean.Goods;
+import bean.GoodsStatus;
+import bean.GoodsStatusId;
 import dao.IGoodsDao;
 import service.IGoodsService;
 
-public class GoodsServiceImpl implements IGoodsService{
+public class GoodsServiceImpl implements IGoodsService {
 	private IGoodsDao goodsDao;
+
+
 	@Override
 	public void save(Goods goods) throws Exception {
-		if(goods!=null){
+		if (goods != null) {
 			goodsDao.save(goods);
 		}
-	
+
 	}
-	public Goods getGoodsBygoodsId(String goodsId) {  //根据单号查询单号信息
+
+	public Goods getGoodsBygoodsId(String goodsId) { // 根据单号查询单号信息
 		// TODO Auto-generated method stub
-		Goods goods=goodsDao.getGoodsBygoodsId(goodsId);
-		if(goods!=null){
+		Goods goods = goodsDao.getGoodsBygoodsId(goodsId);
+		if (goods != null) {
 			return goods;
-		}
-		else
+		} else
 			return null;
 	}
 
+	public List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception {
+		if (senderCity != null && senderDistrict != null) {
+			return goodsDao.getGoodsByDistrict(senderCity, senderDistrict);
+		} else
+			return null;
+	}
+
+	// public List<GoodsStatus> getGoodsStatusBygoodsId(String goodsId) throws
+	// Exception {
+	// List<GoodsStatus> liststatus=null;
+	// Goods goods=new Goods();
+	// Conditions conditions=new Conditions();
+	// goodsDao.get
+	// if(goodsId!=null){
+	// goods=goodsDao.getGoodsBygoodsId(goodsId);
+	// conditions=goodsDao.getdescriptionByconditionID(conditionID);
+	// return status;
+	// }
+	// else
+	// return null;
+	// }
 	/**
 	 * @return the goodsDao
 	 */
 	public IGoodsDao getGoodsDao() {
 		return goodsDao;
 	}
+
 	/**
-	 * @param goodsDao the goodsDao to set
+	 * @param goodsDao
+	 *            the goodsDao to set
 	 */
 	public void setGoodsDao(IGoodsDao goodsDao) {
 		this.goodsDao = goodsDao;
+	}
+
+	@Override
+	public List<GoodsStatus> getGoodsStatusBygoodsId(String goodsId) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
