@@ -40,7 +40,6 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String receiverAddress;
 	private String senderDistrict;
 	private String receiverDistrict;
-	private String names;
 
 	public String searchByGoodsID() throws Exception { // 根据单号查询快递单信息
 		Goods goods = new Goods();
@@ -101,21 +100,19 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 	
 	public String addStatus() throws Exception {//保存状态信息，并将区县营业点加入goods表中
-		
 		Goods goods=new Goods();
-		goods=goodsService.getGoodsBygoodsId(names);
+		goods=goodsService.getGoodsBygoodsId(goodsId);
 		GoodsStatusId goodsStatusId = new GoodsStatusId();
-		goodsStatusId.setGoodsId(names);
+		goodsStatusId.setGoodsId(goodsId);
 		goodsStatusId.setConditionId("2");
 		GoodsStatus goodsStatus = new GoodsStatus();
 		goodsStatus.setId(goodsStatusId);
 		DistrictCenter district = (DistrictCenter)context.getSession().get("login");
 		System.out.println(goods);
-		System.out.println(names);
-
+		System.out.println(goodsId);
 		goods.setDistrictCenterBySendDestrictCenter(district);
 		goodsService.save(goods);
-		goods=goodsService.getGoodsBygoodsId(names);
+		goods=goodsService.getGoodsBygoodsId(goodsId);
 		goodsStatus.setGoods(goods);
 		goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("2"));
 		goodsStatusService.save(goodsStatus);
@@ -447,18 +444,5 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		this.conditionsService = conditionsService;
 	}
 
-	/**
-	 * @return the names
-	 */
-	public String getNames() {
-		return names;
-	}
-
-	/**
-	 * @param names the names to set
-	 */
-	public void setNames(String names) {
-		this.names = names;
-	}
 
 }
