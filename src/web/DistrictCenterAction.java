@@ -8,10 +8,13 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import bean.DistrictCenter;
 import bean.Goods;
 import bean.GoodsStatus;
+import bean.GoodsStatusId;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
+
+import service.IConditionsService;
 import service.IGoodsService;
 import service.IGoodsStatusService;
 
@@ -22,8 +25,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	Logger logger = Logger.getLogger(AllAction.class);
 	private IGoodsService goodsService;
 	private IGoodsStatusService goodsStatusService;
+	private IConditionsService conditionsService;
 	private String searchGoodsId; // 输入的要查询单号
-	private DistrictCenter login;//区县营业点登陆对象
 	private String goodsId;
 	private String senderName;
 	private String senderPhone;
@@ -37,6 +40,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String receiverAddress;
 	private String senderDistrict;
 	private String receiverDistrict;
+	private String names;
 
 	public String searchByGoodsID() throws Exception { // 根据单号查询快递单信息
 		Goods goods = new Goods();
@@ -75,16 +79,51 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 			return "modifyGoodsinfoFalse";
 		}
 	
-	public String getGoodsByDistrict() throws Exception{//获取当前区县营业点所有快递单
-		List<Goods> list;
-		list=goodsService.getGoodsByDistrict(login.getCity(),login.getDistrict());
-		
+	@SuppressWarnings({ "null", "unused" })
+	public String getGoodsByDistrict() throws Exception{//获取当前区县营业点未发送到省的的所有快递单
+		List<Goods> list=null;
+		List<Goods> list2=null;
+//		list=goodsService.getGoodsByDistrict(login.getCity(),login.getDistrict());
 		if(list!=null){
-			context.getSession().put("list1", list);
+			for(int i=0;i<list.size();i++){
+				Goods goods=new Goods();
+				if(goods.getDistrictCenterBySendDestrictCenter()==null)
+	    		list2.add(list.get(i));		
+			}
+		}
+			if(list2!=null){
+			context.getSession().put("DistrictList", list2);
 			return "getGoodsByDistrictSuccess";
 		}
+		
 		else
-			return "getGoodsByDistrictFalse";
+			return "getGoodsByDistrictFalse";	
+	}
+	
+	public String addStatus() throws Exception {//保存状态信息，并将区县营业点加入goods表中
+		
+		Goods goods=new Goods();
+		goods=goodsService.getGoodsBygoodsId(names);
+		GoodsStatusId goodsStatusId = new GoodsStatusId();
+		goodsStatusId.setGoodsId(names);
+		goodsStatusId.setConditionId("2");
+		GoodsStatus goodsStatus = new GoodsStatus();
+		goodsStatus.setId(goodsStatusId);
+		DistrictCenter district = (DistrictCenter)context.getSession().get("login");
+		System.out.println(goods);
+		System.out.println(names);
+
+		goods.setDistrictCenterBySendDestrictCenter(district);
+		goodsService.save(goods);
+		goods=goodsService.getGoodsBygoodsId(names);
+		goodsStatus.setGoods(goods);
+		goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("2"));
+		goodsStatusService.save(goodsStatus);
+		if(goodsStatus!=null){
+			return "saveStatusSuccess";
+		}
+		else
+			return "saveStatusFalse";
 		
 	}
 	// public String printGoodsinfo() throws Exception { //打印快递单信息
@@ -392,18 +431,34 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		this.goodsStatusService = goodsStatusService;
 	}
 
+	
+
 	/**
-	 * @return the login
+	 * @return the conditionsService
 	 */
-	public DistrictCenter getLogin() {
-		return login;
+	public IConditionsService getConditionsService() {
+		return conditionsService;
 	}
 
 	/**
-	 * @param login the login to set
+	 * @param conditionsService the conditionsService to set
 	 */
-	public void setLogin(DistrictCenter login) {
-		this.login = login;
+	public void setConditionsService(IConditionsService conditionsService) {
+		this.conditionsService = conditionsService;
+	}
+
+	/**
+	 * @return the names
+	 */
+	public String getNames() {
+		return names;
+	}
+
+	/**
+	 * @param names the names to set
+	 */
+	public void setNames(String names) {
+		this.names = names;
 	}
 
 }

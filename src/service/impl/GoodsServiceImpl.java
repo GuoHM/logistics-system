@@ -30,7 +30,7 @@ public class GoodsServiceImpl implements IGoodsService {
 			return null;
 	}
 
-	public List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception {
+	public List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception {//根据城市和区县营业点筛选出所有订单链表，包含已成交订单
 		if (senderCity != null && senderDistrict != null) {
 			return goodsDao.getGoodsByDistrict(senderCity, senderDistrict);
 		} else
@@ -64,12 +64,6 @@ public class GoodsServiceImpl implements IGoodsService {
 	 */
 	public void setGoodsDao(IGoodsDao goodsDao) {
 		this.goodsDao = goodsDao;
-	}
-
-	@Override
-	public List<GoodsStatus> getGoodsStatusBygoodsId(String goodsId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

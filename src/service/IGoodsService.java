@@ -13,5 +13,4 @@ public interface IGoodsService {
 
 	List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception;
 
-	List<GoodsStatus> getGoodsStatusBygoodsId(String goodsId) throws Exception;
 }

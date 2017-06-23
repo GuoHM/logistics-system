@@ -214,7 +214,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		}
 		return "addFalse";
 	}
-
+	
 	public String logout() {
 		context.getSession().remove("login");
 		context.getSession().remove("type");

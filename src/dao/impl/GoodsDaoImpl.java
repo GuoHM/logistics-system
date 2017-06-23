@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import bean.Conditions;
 import bean.Goods;
+import bean.GoodsStatus;
 import bean.GoodsStatusId;
 import dao.IGoodsDao;
 
