@@ -52,6 +52,11 @@
 <td>Changes in modify goods function and search goods function</td>
 <td>Guo Haoming</td>
 </tr>
+<tr>
+<td>2017.6.23</td>
+<td>Add print function and showDistrictlist function</td>
+<td>Yang HanXiao</td>
+</tr>
 </table>
 
 <h3>Author</h3>
