@@ -25,16 +25,19 @@
 <title>查询快递</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body onload="today()">
-	<jsp:include page="ToolsPage/header.jsp"></jsp:include>
+	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
+				<div class="col-xs-2 column">
+					<jsp:include page="sidebar.jsp"></jsp:include>
+				</div>
 				<div class="col-xs-10 column">
-					<form class="form-inline" role="form" action="searchGoodsByID">
+					<form class="form-inline" role="form" action="searchGoodsByIDPrint">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">单号：</label>
 							<div class="col-sm-7">
@@ -47,23 +50,12 @@
 						<s:actionerror />
 						<s:actionmessage />
 					</form>
-					<h4 style="color: red;">快递状态</h4>
-					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
-					<%
-						ResourceBundle res = ResourceBundle.getBundle("status");
-						String s;
-						if (goodsStatus != null) {
-							for (GoodsStatus n : goodsStatus) {
-								s = res.getString(n.getConditions().getConditionId()) + "，单号：" + goodsinfo.getGoodsId();
-								out.println("<label>" + s + "</label>");
-							}
-						}
-					%>
 					<h4 style="color: red;">快递信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>
 						单号：<%=change(goodsinfo.getGoodsId())%></label>
 					<br />
+					<input type="hidden" name="names" value="<%=goodsinfo.getGoodsId()%>"></input>
 					<h4 style="color: red;">收件人信息</h4>
 					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 					<label>
@@ -105,8 +97,13 @@
 					<label>
 						寄件人电话：<%=change(goodsinfo.getSenderPhone())%></label>
 					<br />
-
-					<button class="btn btn-default" onclick="window.location='index.jsp'">返回首页</button>
+					<form class="form-inline" role="form" action="printinfo">
+						
+						<div class="form-group">
+							<button type="submit" class="btn btn-default">打印</button>
+						</div>
+						
+					</form>
 				</div>
 			</div>
 		</div>
@@ -116,9 +113,9 @@
 		session.removeAttribute("statuslist");
 	%>
 
-	<script src="js/jquery.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/main.js"></script>
 </body>
 </html>

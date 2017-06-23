@@ -12,8 +12,8 @@
 			</a>
 		</li>
 		<li>
-			<a href="elements.html">
-				<span>分拣</span>
+			<a href="<%=basePath%>/DistrictCenterPages/printinfo.jsp">
+				<span>打印订单</span>
 			</a>
 		</li>
 		<li>
