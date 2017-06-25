@@ -38,14 +38,87 @@
                         out.print("<td>" + n.getGoodsId() + "</td>");
                         out.print("<td>" + n.getSenderProvince() + "</td>");
                         out.print("<td>" + n.getReceiverProvince() + "</td>");
-                        out.print("<td><a href=\" \"\">查看</a>&nbsp;");
+                        out.print("<td><a href=\"viewGoods?currentGoods=" + n.getGoodsId() + "\">查看</a>");
                         out.print("</tr>");
                     }
+                }
+                Goods goodsinfo = (Goods)session.getAttribute("goodsInfo");
+                if(goodsinfo==null) {
+                	goodsinfo=new Goods();
                 }
             %>
 		</tbody>
 	</table>
 </div>
+
+<div class="modal fade" id="showGoods" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">快递信息</h4>
+					<h3>
+						单号：<%=goodsinfo.getGoodsId()%>
+					</h3>
+					<h4>快递信息</h4>
+					<label>
+						收件人姓名：<%=goodsinfo.getReceiverName()%></label>
+					<br />
+					<label>
+						收件人省份：<%=goodsinfo.getReceiverProvince()%></label>
+					<br />
+					<label>
+						收件人城市：<%=goodsinfo.getReceiverCity()%></label>
+					<br />
+					<label>
+						收件人区县：<%=goodsinfo.getReceiverDistrict()%></label>
+					<br />
+					<label>
+						收件人地址：<%=goodsinfo.getReceiverAddress()%></label>
+					<br />
+					<label>
+						收件人电话：<%=goodsinfo.getReceiverPhone()%></label>
+					<br />
+					<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
+					<label>
+						寄件人姓名：<%=goodsinfo.getSenderName()%></label>
+					<br />
+					<label>
+						寄件人省份：<%=goodsinfo.getSenderProvince()%></label>
+					<br />
+					<label>
+						寄件人城市：<%=goodsinfo.getSenderCity()%></label>
+					<br />
+					<label>
+						寄件人区县：<%=goodsinfo.getSenderDistrict()%></label>
+					<br />
+					<label>
+						寄件人地址：<%=goodsinfo.getSenderAddress()%></label>
+					<br />
+					<label>
+						寄件人电话：<%=goodsinfo.getSenderPhone()%></label>
+					<br />
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+var show = "<%=show%>";
+    $(function() {
+	if (show == "show") {
+	    $('#showGoods').modal({
+		keyboard : true
+	    })
+	}
+
+    });
+</script>
+<%
+	session.removeAttribute("show");
+%>
+
 
 
 

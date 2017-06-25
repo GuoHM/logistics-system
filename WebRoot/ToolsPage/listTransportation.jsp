@@ -39,27 +39,29 @@
 							out.print("<td>" + centerProvincearray[i][0] + "</td>");
 							out.print("<td>" + centerProvincearray[i][1] + "</td>");
 							out.print("<td><a href=\"viewTransportation?depature=" + depature + "&destination="
-									+ centerProvincearray[i][0] + "\">查看车辆</a>");
+									+ centerProvincearray[i][0] + "&amount=" + centerProvincearray[i][1] + "\">查看车辆</a>");
 							out.print("</tr>");
 						}
 					}
 				}
+				String amount = (String)session.getAttribute("amount");
 			%>
 		</tbody>
 	</table>
 </div>
 
-<div class="modal fade" id="showTransportation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-	aria-hidden="true">
+<div class="modal fade" id="showTransportation" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="myModalLabel">选择车辆</h4>
+				<label>当前货物量：<%=amount %></label>
 				<table class="table table-hover" id="showWorksTable">
 					<thead>
 						<tr>
-						<th data-field="departure">车号</th>
+							<th data-field="departure">车号</th>
 							<th data-field="departure">出发地</th>
 							<th data-field="capacity">目的地</th>
 							<th data-field="capacity">载货量</th>
@@ -72,10 +74,10 @@
 							if (list != null) {
 								for (Transportation n : list) {
 									out.print("<tr>");
-									out.print("<td>"+n.getTransportationId()+"</td>");
-									out.print("<td>"+n.getDeparture()+"</td>");
-									out.print("<td>"+n.getDestintion()+"</td>");
-									out.print("<td>"+n.getCapacity()+"</td>");
+									out.print("<td>" + n.getTransportationId() + "</td>");
+									out.print("<td>" + n.getDeparture() + "</td>");
+									out.print("<td>" + n.getDestintion() + "</td>");
+									out.print("<td>" + n.getCapacity() + "</td>");
 									out.print("<td><a href=>选择</a>");
 									out.print("</tr>");
 								}

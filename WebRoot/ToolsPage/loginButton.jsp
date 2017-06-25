@@ -11,7 +11,7 @@
 	登录<span class="caret"></span>
 </button>
 <ul class="dropdown-menu" role="menu">
-	<li><a href="<%=basePath%>/regist.jsp" id="item1">管理</a>
+	<li><a href="" id="item1">管理</a>
 	</li>
 	<li><a href="logout.action" id="item2">注销用户</a>
 	</li>

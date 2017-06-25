@@ -70,7 +70,7 @@
 				<jsp:include page="loginButton.jsp"></jsp:include>
 			</c:when>
 			<c:otherwise>
-				<button type="button" class="btn btn-default" onclick="window.location='login.jsp'">登录</button>
+				<button type="button" class="btn btn-default" onclick="window.location='<%=basePath %>/login.jsp'">登录</button>
 			</c:otherwise>
 		</c:choose>
 	</div>

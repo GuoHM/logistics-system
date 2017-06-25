@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <head>
 <meta charset="UTF-8">
 <title>物流管理系统</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath %>css/style.css">
+<link rel="stylesheet" href="<%=basePath %>css/bootstrap.css">
 </head>
 <body onload="today()">
 	<jsp:include page="ToolsPage/header.jsp"></jsp:include>
@@ -21,19 +26,19 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="" src="img/mainpage1.jpg" class="img-responsive center-block" />
+						<img alt="" src="<%=basePath %>/img/mainpage1.jpg" class="img-responsive center-block" />
 						<div class="carousel-caption">
 							<h2>物流管理系统</h2>
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="img/mainpage.jpg" class="img-responsive center-block" />
+						<img alt="" src="<%=basePath %>/img/mainpage.jpg" class="img-responsive center-block" />
 						<div class="carousel-caption">
 							<h4>竭诚为您服务</h4>
 						</div>
 					</div>
 					<div class="item">
-						<img alt="" src="img/mainpage2.jpg" class="img-responsive center-block" />
+						<img alt="" src="<%=basePath %>/img/mainpage2.jpg" class="img-responsive center-block" />
 						<div class="carousel-caption">
 							<h4>竭诚为您服务</h4>
 						</div>
@@ -53,7 +58,7 @@
 		<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 		<div class="row clearfix">
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="info.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/info.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-comment">网点查询</span>
 					</h2>
@@ -62,7 +67,7 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="searchGoods.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/searchGoods.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-star">快递查询</span>
 					</h2>
@@ -70,7 +75,7 @@
 				<p>查询您的快递</p>
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="info.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/info.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-inbox">关于我们</span>
 					</h2>
@@ -79,7 +84,7 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="warning.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/warning.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-th-list">注意事项</span>
 					</h2>
@@ -97,7 +102,7 @@
 
 			</div>
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="login.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/login.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-user">登录</span>
 					</h2>
@@ -117,9 +122,9 @@
 		</div>
 	</footer>
 	<!-- jQuery (Bootstrap 插件需要引入) -->
-	<script src="js/jquery.min.js"></script>
+	<script src="<%=basePath %>/js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="<%=basePath %>/js/bootstrap.min.js"></script>
+	<script src="<%=basePath %>/js/main.js"></script>
 </body>
 </html>
