@@ -5,4 +5,5 @@
     default-autowire="byName" default-lazy-init="true">
     <bean id="allAction" class="web.AllAction" scope="prototype"></bean>
    <bean id="districtCenterAction" class="web.DistrictCenterAction" scope="prototype"></bean>
+    <bean id="provinceCenterAction" class="web.ProvinceCenterAction" scope="prototype"></bean>
 </beans>
