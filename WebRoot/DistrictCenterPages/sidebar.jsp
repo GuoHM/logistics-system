@@ -17,7 +17,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/sort.jsp">
+			<a href="getGoodsByDistrict.action">
 				<span>分拣</span>
 			</a>
 		</li>

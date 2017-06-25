@@ -31,7 +31,7 @@
 		</thead>
 		<tbody>
 			<%
-                List<Goods> goodslist = (List<Goods>) session.getAttribute("teamslist");
+                List<Goods> goodslist = (List<Goods>) session.getAttribute("DistrictList");
                 if (goodslist != null) {
                     for (Goods n : goodslist) {
                         out.print("<tr>");
@@ -46,7 +46,7 @@
 		</tbody>
 	</table>
 </div>
-<form class="form-horizontal" role="form" method="post" action="">
+<form class="form-horizontal" role="form" method="post" action="senditsDistrict">
 	<div class="form-group" >
 		<div class="col-sm-offset-2 col-sm-10">
 			<label class="checkbox-inline"> <input type="submit"
