@@ -23,22 +23,24 @@
 	<table class="table table-hover" id="showWorksTable">
 		<thead>
 			<tr>
-				<th data-field="goodsId" data-sortable="true">快递单号</th>
-				<th data-field="sendProvince">寄送省份</th>
-				<th data-field="receiveProvince">发往省份</th>
-				<th class="col-xs-2" data-field="action">查看详细信息</th>
+				<th data-field="transportationId" data-sortable="true">车号</th>
+				<th data-field="departure">出发地</th>
+				<th data-field="destination">目的地</th>
+				<th data-field="capacity">载货量</th>
+				<th class="col-xs-2" data-field="action">选择</th>
 			</tr>
 		</thead>
 		<tbody>
 			<%
-                List<Goods> goodslist = (List<Goods>) session.getAttribute("DistrictList");
-                if (goodslist != null) {
-                    for (Goods n : goodslist) {
+                List<Transportation> transportationlist = (List<Transportation>) session.getAttribute("DistrictList");
+                if (transportationlist != null) {
+                    for (Transportation n : transportationlist) {
                         out.print("<tr>");
-                        out.print("<td>" + n.getGoodsId() + "</td>");
-                        out.print("<td>" + n.getSenderProvince() + "</td>");
-                        out.print("<td>" + n.getReceiverProvince() + "</td>");
-                        out.print("<td><a href=\" \"\">查看</a>&nbsp;");
+                        out.print("<td>" + n.getTransportationId() + "</td>");
+                        out.print("<td>" + n.getDeparture() + "</td>");
+                        out.print("<td>" + n.getDestintion() + "</td>");
+                        out.print("<td>" + n.getCapacity() + "</td>");
+                        out.print("<td><a href=\" \"\">选择</a>&nbsp;");
                         out.print("</tr>");
                     }
                 }

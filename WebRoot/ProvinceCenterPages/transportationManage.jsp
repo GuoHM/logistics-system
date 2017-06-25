@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>分拣</title>
+<title>运输管理</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/style.css">
@@ -20,16 +20,7 @@
 					<jsp:include page="sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-xs-10 column">
-					<jsp:include page="../ToolsPage/listSortGoods.jsp"></jsp:include>
-					<form class="form-horizontal" role="form" method="post"
-						action="senditsDistrict">
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<label class="checkbox-inline"> <input type="submit"
-									value="发往省分拣中心" class="btn btn-default"> </label>
-							</div>
-						</div>
-					</form>
+					<jsp:include page="../ToolsPage/listTransportation.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

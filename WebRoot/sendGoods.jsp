@@ -13,8 +13,8 @@
 <title>寄快递</title>
 <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>/css/style.css">
+<link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
 </head>
 <body onload="today()">
     <jsp:include page="/ToolsPage/header.jsp"></jsp:include>
@@ -28,9 +28,9 @@
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
+    <script src="<%=basePath%>/js/jquery.min.js"></script>
     <!-- 包含了所有编译插件 -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="<%=basePath%>/js/bootstrap.min.js"></script>
+    <script src="<%=basePath%>/js/main.js"></script>
 </body>
 </html>
