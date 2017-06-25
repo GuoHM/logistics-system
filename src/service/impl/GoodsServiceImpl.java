@@ -30,9 +30,9 @@ public class GoodsServiceImpl implements IGoodsService {
 			return null;
 	}
 
-	public List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception {//根据城市和区县营业点筛选出所有订单链表，包含已成交订单
-		if (senderCity != null && senderDistrict != null) {
-			return goodsDao.getGoodsByDistrict(senderCity, senderDistrict);
+	public List<Goods> getGoodsByDistrict(String district,String city, String province) throws Exception {//根据城市和区县营业点筛选出所有订单链表，包含已成交订单
+		if (district != null && city != null&& province != null) {
+			return goodsDao.getGoodsByDistrict(district, city,province);
 		} else
 			return null;
 	}

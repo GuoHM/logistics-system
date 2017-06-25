@@ -24,4 +24,19 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 		   getHibernateTemplate().saveOrUpdate(user);
 	}
 
+	@Override
+	public ProvinceCenter getProvinceCenterByProvinceName(String ProvinceName) throws Exception {//根据省的名字获取省实体
+		   String hql = "from ProvinceCenter where province=?";
+	        Session session = null;
+	        ProvinceCenter province = null;
+	        try {
+	            session = getSession();
+	            province = (ProvinceCenter) session.createQuery(hql).setParameter(0, ProvinceName)
+	                    .uniqueResult();
+	        } finally {
+	            releaseSession(session);
+	        }
+	        return province;
+	}
+
 }

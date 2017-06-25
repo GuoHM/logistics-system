@@ -33,13 +33,13 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements IGoodsDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception {
-		String hql = "from Goods where senderCity=? and senderDistrict=?";
+	public List<Goods> getGoodsByDistrict(String district,String city, String province) throws Exception {//获取区县营业点未发往本省的商品订单链表
+		String hql = "from Goods where senderDistrict=? and senderCity=? and senderProvince=?";
 		Session session = null;
 		List<Goods> list = null;
 		try {
 			session = getSession();
-			list = (List<Goods>) session.createQuery(hql).setParameter(0, senderCity).setParameter(1, senderDistrict)
+			list = (List<Goods>) session.createQuery(hql).setParameter(0, district).setParameter(1, city).setParameter(2,province)
 					.list();
 		} finally {
 			releaseSession(session);

@@ -13,7 +13,7 @@ public interface IGoodsDao {
 
 	Goods getGoodsBygoodsId(String goodsId);
 
-	List<Goods> getGoodsByDistrict(String senderCity, String senderDistrict) throws Exception;
+	List<Goods> getGoodsByDistrict(String district,String city, String province) throws Exception;
 
 
 }

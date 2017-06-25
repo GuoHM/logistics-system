@@ -23,6 +23,14 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 		}
 	  
 	}
+	
+	public ProvinceCenter getProvinceCenterByProvinceName(String ProvinceName) throws Exception {
+		if(ProvinceName!=null)
+			return provinceCenterDao.getProvinceCenterByProvinceName(ProvinceName);
+		else
+			return null;
+		
+	}
 	public IProvinceCenterDao getProvinceCenterDao() {
 		return provinceCenterDao;
 	}
@@ -30,6 +38,8 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 	public void setProvinceCenterDao(IProvinceCenterDao provinceCenterDao) {
 		this.provinceCenterDao = provinceCenterDao;
 	}
+
+	
 
 
 }
