@@ -14,6 +14,9 @@
         <property name="destintion" type="string">
             <column name="destintion" length="10" not-null="true" />
         </property>
+         <property name="capacity" type="java.lang.Integer">
+            <column name="capacity" length="2" not-null="true" />
+        </property>
         <set name="transportationManagements" table="TransportationManagement" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="transportationID" length="5" not-null="true" />
