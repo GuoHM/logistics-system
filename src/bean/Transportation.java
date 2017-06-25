@@ -12,6 +12,7 @@ public class Transportation implements java.io.Serializable {
 	private String transportationId;
 	private String departure;
 	private String destintion;
+	private int capacity;
 	private Set transportationManagements = new HashSet(0);
 
 	public Transportation() {
@@ -61,5 +62,15 @@ public class Transportation implements java.io.Serializable {
 	public void setTransportationManagements(Set transportationManagements) {
 		this.transportationManagements = transportationManagements;
 	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+	
+	
 
 }
