@@ -32,21 +32,7 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	private IProvinceCenterService provinceCenterService;
 	private String depature;
 	private String destination;
-	/**
-	 * @return the provinceCenterService
-	 */
-	public IProvinceCenterService getProvinceCenterService() {
-		return provinceCenterService;
-	}
-
-	/**
-	 * @param provinceCenterService the provinceCenterService to set
-	 */
-	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
-		this.provinceCenterService = provinceCenterService;
-	}
-
-	
+	private String amount;
 
 	@SuppressWarnings({ "null", "unused" })
 	public String getGoodsByProvince() throws Exception {// 获取当前省未发往其他省的快递
@@ -131,6 +117,7 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		List<Transportation> list=provinceCenterService.getTransportationlistByDD(depature, destination);
 		context.getSession().put("transporationlist", list);
 		context.getSession().put("show", "show");
+		context.getSession().put("amount", amount);
 		return SUCCESS;
 	}
 
@@ -251,5 +238,35 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
+
+	/**
+	 * @return the provinceCenterService
+	 */
+	public IProvinceCenterService getProvinceCenterService() {
+		return provinceCenterService;
+	}
+
+	/**
+	 * @param provinceCenterService the provinceCenterService to set
+	 */
+	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
+		this.provinceCenterService = provinceCenterService;
+	}
+
+	/**
+	 * @return the amount
+	 */
+	public String getAmount() {
+		return amount;
+	}
+
+	/**
+	 * @param amount the amount to set
+	 */
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	
+	
 	
 	}

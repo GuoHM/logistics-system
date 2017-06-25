@@ -30,20 +30,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private IGoodsStatusService goodsStatusService;
 	private IConditionsService conditionsService;
 	private IProvinceCenterService provinceCenterService;
-	/**
-	 * @return the provinceCenterService
-	 */
-	public IProvinceCenterService getProvinceCenterService() {
-		return provinceCenterService;
-	}
-
-	/**
-	 * @param provinceCenterService the provinceCenterService to set
-	 */
-	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
-		this.provinceCenterService = provinceCenterService;
-	}
-
+	private String currentGoods;
 	private String searchGoodsId; // 输入的要查询单号
 	private String goodsId;
 	private String senderName;
@@ -71,6 +58,13 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 			addActionError("找不到该快递，请确认您的单号信息");
 			return INPUT;
 		}
+	}
+
+	public String viewGoods() throws Exception {
+		Goods goodsInfo = goodsService.getGoodsBygoodsId(currentGoods);
+		context.getSession().put("goodsInfo", goodsInfo);
+		context.getSession().put("show", "show");
+		return SUCCESS;
 	}
 
 	public String modifyGoodsinfo() throws Exception { // 单号查询显示后，进行修改
@@ -500,6 +494,36 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	 */
 	public void setConditionsService(IConditionsService conditionsService) {
 		this.conditionsService = conditionsService;
+	}
+
+	/**
+	 * @return the provinceCenterService
+	 */
+	public IProvinceCenterService getProvinceCenterService() {
+		return provinceCenterService;
+	}
+
+	/**
+	 * @param provinceCenterService
+	 *            the provinceCenterService to set
+	 */
+	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
+		this.provinceCenterService = provinceCenterService;
+	}
+
+	/**
+	 * @return the currentGoods
+	 */
+	public String getCurrentGoods() {
+		return currentGoods;
+	}
+
+	/**
+	 * @param currentGoods
+	 *            the currentGoods to set
+	 */
+	public void setCurrentGoods(String currentGoods) {
+		this.currentGoods = currentGoods;
 	}
 
 }
