@@ -30,6 +30,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	private IGoodsStatusService goodsStatusService;
 	private IConditionsService conditionsService;
 	private IProvinceCenterService provinceCenterService;
+	private String depature;
+	private String destination;
 	/**
 	 * @return the provinceCenterService
 	 */
@@ -48,11 +50,12 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 
 	@SuppressWarnings({ "null", "unused" })
 	public String getGoodsByProvince() throws Exception {// 获取当前省未发往其他省的快递
-		int sum=0;
+		int sum=1;
 		List<Goods> list = null;
 		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
 		List<Transportation> list3 = new ArrayList<Transportation>();
 		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
+		System.out.println((ProvinceCenter) context.getSession().get("login"));
 		list=goodsService.getGoodsByProvince(province.getProvince());
 		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
@@ -66,14 +69,17 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		for(int i=0;i<list2.size();i++){
 			String provinceName=list2.get(i).getReceiverProvince();
 			for(int j=i+1;j<list2.size();j++){
-				if(list2.get(j)==list2.get(i)){
+				if(list2.get(j).getReceiverProvince().equals(list2.get(i).getReceiverProvince())){
 					list2.remove(j);
-					sum++;
+					--j;
+					++sum;
 				}
 			}
+		
 			a[i][0]=provinceName;
 			a[i][1]=sum+"";
-			list3=provinceCenterService.getTransportationlistByDD(province.getProvince(), provinceName);
+		
+			//list3=provinceCenterService.getTransportationlistByDD(province.getProvince(), provinceName);
 		}
 		if (a != null&&list3!=null) {
 			context.getSession().put("senderProvincearray", a);
@@ -119,6 +125,13 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 			return "saveprovinceListStatusSuccess";
 		} else
 			return "saveprovinceListStatusFalse";
+	}
+	
+	public String viewTransportation() throws Exception {
+		List<Transportation> list=provinceCenterService.getTransportationlistByDD(depature, destination);
+		context.getSession().put("transporationlist", list);
+		context.getSession().put("show", "show");
+		return SUCCESS;
 	}
 
 	@Override
@@ -209,6 +222,34 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	 */
 	public HttpServletRequest getServletRequest() {
 		return servletRequest;
+	}
+
+	/**
+	 * @return the depature
+	 */
+	public String getDepature() {
+		return depature;
+	}
+
+	/**
+	 * @param depature the depature to set
+	 */
+	public void setDepature(String depature) {
+		this.depature = depature;
+	}
+
+	/**
+	 * @return the destination
+	 */
+	public String getDestination() {
+		return destination;
+	}
+
+	/**
+	 * @param destination the destination to set
+	 */
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 	
 	}

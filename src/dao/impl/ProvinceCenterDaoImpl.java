@@ -46,12 +46,12 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 
 	@SuppressWarnings("unchecked")
 	public List<Transportation> getTransportationlistByDD(String senderProvince, String receiverProvince) {
-		String hql = "from Transportation departuer=? where destintion=? ";
+		String hql = "from Transportation where departure=? and destintion=?";
 		Session session = null;
 		List<Transportation> list = null;
 		try {
 			session = getSession();
-			list = (List<Transportation>) session.createQuery(hql).setParameter(0, senderProvince).setParameter(0, receiverProvince).list();
+			list = (List<Transportation>) session.createQuery(hql).setParameter(0, senderProvince).setParameter(1, receiverProvince).list();
 		} finally {
 			releaseSession(session);
 		}
