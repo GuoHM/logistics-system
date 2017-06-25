@@ -59,13 +59,18 @@
 </tr>
 <tr>
 <td>2017.6.25</td>
-<td>Add sort pages</td>
+<td>Add sort pages in province center and district center pages,add select transporation in sort pages of province center</td>
 <td>Guo Haoming</td>
 </tr>
 <tr>
 <td>2017.6.25</td>
-<td>Add sent goods to its provincecenter ,modify its status,get province goods amount and its transporttion functions</td>
+<td>Add sent goods to its provincecenter,modify its status,get province goods amount and its transporttion functions</td>
 <td>Yang HanXiao</td>
+</tr>
+<tr>
+<td>2017.6.26</td>
+<td>Add show goods info function and fix some bugs in pages</td>
+<td>Guo Haoming</td>
 </tr>
 </table>
 
