@@ -1,7 +1,12 @@
 package dao.impl;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import bean.GoodsStatusId;
 import bean.ProvinceCenter;
+import bean.Transportation;
 import dao.IProvinceCenterDao;
 public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvinceCenterDao {    //���������˺�����������ݿ⣬�鿴�û��Ƿ����
 	 public ProvinceCenter getProvinceCenterByIDAndPwd(String login, String password) throws Exception {
@@ -37,6 +42,20 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 	            releaseSession(session);
 	        }
 	        return province;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Transportation> getTransportationlistByDD(String senderProvince, String receiverProvince) {
+		String hql = "from Transportation departuer=? where destintion=? ";
+		Session session = null;
+		List<Transportation> list = null;
+		try {
+			session = getSession();
+			list = (List<Transportation>) session.createQuery(hql).setParameter(0, senderProvince).setParameter(0, receiverProvince).list();
+		} finally {
+			releaseSession(session);
+		}
+		return list;
 	}
 
 }

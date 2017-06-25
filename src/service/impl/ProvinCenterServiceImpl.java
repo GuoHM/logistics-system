@@ -1,6 +1,9 @@
 package service.impl;
 
+import java.util.List;
+
 import bean.ProvinceCenter;
+import bean.Transportation;
 import dao.IProvinceCenterDao;
 import service.IProvinceCenterService;
 
@@ -31,6 +34,15 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 			return null;
 		
 	}
+
+	public List<Transportation> getTransportationlistByDD(String senderProvince, String receiverProvince) {
+		if(senderProvince!=null&&receiverProvince!=null){
+			return provinceCenterDao.getTransportationlistByDD(senderProvince, receiverProvince);
+		}else{
+			return null;
+		}
+	}
+
 	public IProvinceCenterDao getProvinceCenterDao() {
 		return provinceCenterDao;
 	}
