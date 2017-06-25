@@ -7,18 +7,18 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav">
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/modifyGoodsInfo.jsp">
-				<span>修改订单</span>
+			<a href="">
+				<span>新增区县营业点2</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/printinfo.jsp">
-				<span>打印订单</span>
-			</a>
-		</li>
-		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/sort.jsp">
+			<a href="elements.html">
 				<span>分拣</span>
+			</a>
+		</li>
+		<li>
+			<a href="charts.html">
+				<span>查询</span>
 			</a>
 		</li>
 		<li>
