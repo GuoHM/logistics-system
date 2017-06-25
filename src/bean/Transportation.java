@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-22 14:40:54 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-25 17:05:32 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,16 +18,19 @@ public class Transportation implements java.io.Serializable {
 	public Transportation() {
 	}
 
-	public Transportation(String transportationId, String departure, String destintion) {
+	public Transportation(String transportationId, String departure, String destintion, int capacity) {
 		this.transportationId = transportationId;
 		this.departure = departure;
 		this.destintion = destintion;
+		this.capacity = capacity;
 	}
 
-	public Transportation(String transportationId, String departure, String destintion, Set transportationManagements) {
+	public Transportation(String transportationId, String departure, String destintion, int capacity,
+			Set transportationManagements) {
 		this.transportationId = transportationId;
 		this.departure = departure;
 		this.destintion = destintion;
+		this.capacity = capacity;
 		this.transportationManagements = transportationManagements;
 	}
 
@@ -55,6 +58,14 @@ public class Transportation implements java.io.Serializable {
 		this.destintion = destintion;
 	}
 
+	public int getCapacity() {
+		return this.capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
 	public Set getTransportationManagements() {
 		return this.transportationManagements;
 	}
@@ -62,15 +73,5 @@ public class Transportation implements java.io.Serializable {
 	public void setTransportationManagements(Set transportationManagements) {
 		this.transportationManagements = transportationManagements;
 	}
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-	
-	
 
 }

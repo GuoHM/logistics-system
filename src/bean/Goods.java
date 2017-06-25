@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-6-22 14:40:54 by Hibernate Tools 3.5.0.Final
+// Generated 2017-6-25 17:05:32 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,28 +32,29 @@ public class Goods implements java.io.Serializable {
 	}
 
 	public Goods(String goodsId, String senderName, String senderPhone, String senderProvince, String senderCity,
-			String senderAddress, String receiverName, String receiverPhone, String receiverProvince,
-			String receiverCity, String receiverAddress,String senderDistrict,String receiverDistrict) {
+			String senderDistrict, String senderAddress, String receiverName, String receiverPhone,
+			String receiverProvince, String receiverCity, String receiverDistrict, String receiverAddress) {
 		this.goodsId = goodsId;
 		this.senderName = senderName;
 		this.senderPhone = senderPhone;
 		this.senderProvince = senderProvince;
 		this.senderCity = senderCity;
+		this.senderDistrict = senderDistrict;
 		this.senderAddress = senderAddress;
 		this.receiverName = receiverName;
 		this.receiverPhone = receiverPhone;
 		this.receiverProvince = receiverProvince;
 		this.receiverCity = receiverCity;
+		this.receiverDistrict = receiverDistrict;
 		this.receiverAddress = receiverAddress;
-		this.senderDistrict=senderDistrict;
-		this.receiverDistrict=receiverDistrict;
 	}
 
 	public Goods(String goodsId, DistrictCenter districtCenterByReceiveDistrictCenter,
 			DistrictCenter districtCenterBySendDestrictCenter, ProvinceCenter provinceCenterBySendProvinceCenter,
 			ProvinceCenter provinceCenterByReceiveProvinceCenter, String senderName, String senderPhone,
-			String senderProvince, String senderCity, String senderAddress, String receiverName, String receiverPhone,
-			String receiverProvince, String receiverCity, String receiverAddress, Set goodsStatuses,String senderDistrict,String receiverDistrict) {
+			String senderProvince, String senderCity, String senderDistrict, String senderAddress, String receiverName,
+			String receiverPhone, String receiverProvince, String receiverCity, String receiverDistrict,
+			String receiverAddress, Set goodsStatuses) {
 		this.goodsId = goodsId;
 		this.districtCenterByReceiveDistrictCenter = districtCenterByReceiveDistrictCenter;
 		this.districtCenterBySendDestrictCenter = districtCenterBySendDestrictCenter;
@@ -63,15 +64,15 @@ public class Goods implements java.io.Serializable {
 		this.senderPhone = senderPhone;
 		this.senderProvince = senderProvince;
 		this.senderCity = senderCity;
+		this.senderDistrict = senderDistrict;
 		this.senderAddress = senderAddress;
 		this.receiverName = receiverName;
 		this.receiverPhone = receiverPhone;
 		this.receiverProvince = receiverProvince;
 		this.receiverCity = receiverCity;
+		this.receiverDistrict = receiverDistrict;
 		this.receiverAddress = receiverAddress;
 		this.goodsStatuses = goodsStatuses;
-		this.senderDistrict=senderDistrict;
-		this.receiverDistrict=receiverDistrict;
 	}
 
 	public String getGoodsId() {
@@ -146,6 +147,14 @@ public class Goods implements java.io.Serializable {
 		this.senderCity = senderCity;
 	}
 
+	public String getSenderDistrict() {
+		return this.senderDistrict;
+	}
+
+	public void setSenderDistrict(String senderDistrict) {
+		this.senderDistrict = senderDistrict;
+	}
+
 	public String getSenderAddress() {
 		return this.senderAddress;
 	}
@@ -186,6 +195,14 @@ public class Goods implements java.io.Serializable {
 		this.receiverCity = receiverCity;
 	}
 
+	public String getReceiverDistrict() {
+		return this.receiverDistrict;
+	}
+
+	public void setReceiverDistrict(String receiverDistrict) {
+		this.receiverDistrict = receiverDistrict;
+	}
+
 	public String getReceiverAddress() {
 		return this.receiverAddress;
 	}
@@ -201,34 +218,5 @@ public class Goods implements java.io.Serializable {
 	public void setGoodsStatuses(Set goodsStatuses) {
 		this.goodsStatuses = goodsStatuses;
 	}
-
-	/**
-	 * @return the senderDistrict
-	 */
-	public String getSenderDistrict() {
-		return senderDistrict;
-	}
-
-	/**
-	 * @param senderDistrict the senderDistrict to set
-	 */
-	public void setSenderDistrict(String senderDistrict) {
-		this.senderDistrict = senderDistrict;
-	}
-
-	/**
-	 * @return the receiverDistrict
-	 */
-	public String getReceiverDistrict() {
-		return receiverDistrict;
-	}
-
-	/**
-	 * @param receiverDistrict the receiverDistrict to set
-	 */
-	public void setReceiverDistrict(String receiverDistrict) {
-		this.receiverDistrict = receiverDistrict;
-	}
-
 
 }
