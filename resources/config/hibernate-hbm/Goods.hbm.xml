@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-25 17:06:35 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="bean.Goods" table="Goods" catalog="logistics">
         <id name="goodsId" type="string">
@@ -56,7 +56,7 @@
         <property name="receiverAddress" type="string">
             <column name="receiverAddress" length="50" not-null="true" />
         </property>
-        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="false" fetch="select">
+        <set name="goodsStatuses" table="GoodsStatus" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="goodsID" length="15" not-null="true" />
             </key>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-6-22 14:40:31 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-6-25 17:06:35 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="bean.Transportation" table="Transportation" catalog="logistics">
         <id name="transportationId" type="string">
@@ -14,10 +14,10 @@
         <property name="destintion" type="string">
             <column name="destintion" length="10" not-null="true" />
         </property>
-         <property name="capacity" type="java.lang.Integer">
-            <column name="capacity" length="2" not-null="true" />
+        <property name="capacity" type="int">
+            <column name="capacity" not-null="true" />
         </property>
-        <set name="transportationManagements" table="TransportationManagement" inverse="true" lazy="false" fetch="select">
+        <set name="transportationManagements" table="TransportationManagement" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="transportationID" length="5" not-null="true" />
             </key>
