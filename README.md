@@ -62,6 +62,11 @@
 <td>Add sort pages</td>
 <td>Guo Haoming</td>
 </tr>
+<tr>
+<td>2017.6.25</td>
+<td>Add sent goods to its provincecenter ,modify its status,get province goods amount and its transporttion functions</td>
+<td>Yang HanXiao</td>
+</tr>
 </table>
 
 <h3>Author</h3>
