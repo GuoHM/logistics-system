@@ -20,8 +20,38 @@
 					<jsp:include page="sidebar.jsp"></jsp:include>
 				</div>
 				<div class="col-xs-10 column">
+					<form role="form" action="">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">出发地:</label>
+							<div>
+								<label class="checkbox-inline"> <select
+									class="form-control" id="school" name="depature"
+									id="receiverProvince">
+										<jsp:include page="../ToolsPage/provinceList.jsp"></jsp:include>
+								</select> </label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">目的地:</label>
+							<div>
+								<label class="checkbox-inline"> <select
+									class="form-control" id="school" name="destination"
+									id="receiverProvince">
+										<jsp:include page="../ToolsPage/provinceList.jsp"></jsp:include>
+								</select> </label>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-1 col-sm-10">
+								<label class="checkbox-inline"> <input type="submit"
+									value="确定" class="btn btn-default"> </label>
+							</div>
+						</div>
+					</form>
+
 					<jsp:include page="../ToolsPage/listTransportation.jsp"></jsp:include>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
