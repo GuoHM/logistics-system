@@ -7,8 +7,8 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav ">
 		<li>
-			<a href="<%=basePath%>/ProvinceCenterPages/sort.jsp">
-				<span>运输管理</span>
+			<a href="getGoodsByProvince.action">
+				<span>分拣运输</span>
 			</a>
 		</li>
 		<li>
