@@ -57,6 +57,11 @@
 <td>Add print function and showDistrictlist function</td>
 <td>Yang HanXiao</td>
 </tr>
+<tr>
+<td>2017.6.25</td>
+<td>Add sort pages</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
