@@ -48,6 +48,12 @@
          <action name="senditsDistrict" method="adddistrictListStatus" class="districtCenterAction">
             <result name="savedistrictListStatusSuccess">/DistrictCenterPages/sort.jsp</result>
         </action>
+         <action name="getGoodsByProvince" method="getGoodsByProvince" class="provinceCenterAction">
+            <result name="getGoodsBysenderProvinceSuccess">/ProvinceCenterPages/sort.jsp</result>
+        </action>
+        <action name="viewTransportation" method="viewTransportation" class="provinceCenterAction">
+            <result name="success">/ProvinceCenterPages/sort.jsp</result>
+        </action>
 		 <action name="logout" method="logout" class="allAction">
             <result name="success">/index.jsp</result>
         </action>
