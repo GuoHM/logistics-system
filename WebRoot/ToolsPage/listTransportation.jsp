@@ -77,6 +77,7 @@
 						<tbody>
 							<%
 								List<Transportation> list = (List<Transportation>) session.getAttribute("transporationlist");
+								String s = null;
 												if (list != null) {
 													for (Transportation n : list) {
 														out.print("<tr>");
@@ -86,9 +87,10 @@
 														out.print("<td>" + n.getCapacity() + "</td>");
 														out.print("<td><input type=\"checkbox\" name=\"box\" value=\""+n.getTransportationId()+"\">");
 														out.print("</tr>");
-														out.print("<input type=\"hidden\" name=\"centerName\" value=\""+n.getDestintion()+"\">");
+														s=n.getDestintion();
 													}
 													
+													out.print("<input type=\"hidden\" name=\"centerName\" value=\""+s+"\">");
 												}
 							%>
 						</tbody>
