@@ -62,6 +62,10 @@
 		<action name="viewGoods" method="viewGoods" class="districtCenterAction">
 			<result name="success">/DistrictCenterPages/sort.jsp</result>
 		</action>
+		<action name="selectedTransportation" method="selectedTransportation" class="provinceCenterAction">
+			<result name="success">/ProvinceCenterPages/sort.jsp</result>
+		</action>
+		
 		<action name="logout" method="logout" class="allAction">
 			<result name="success">/index.jsp</result>
 		</action>
