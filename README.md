@@ -72,6 +72,11 @@
 <td>Add show goods info function and fix some bugs in pages</td>
 <td>Guo Haoming</td>
 </tr>
+<tr>
+<td>2017.6.26</td>
+<td>Add status when sent from province to province function,add get amount by district function and add status when sent from provice to district</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
