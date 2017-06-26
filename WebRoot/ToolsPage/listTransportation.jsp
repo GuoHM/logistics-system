@@ -25,7 +25,7 @@
 			<tr>
 				<th data-field="departure">到达省份</th>
 				<th data-field="capacity">件数</th>
-				<th data-field="capacity">已选择车辆</th>
+				<th data-field="transportation">已选择车辆</th>
 				<th class="col-xs-2" data-field="action">车辆选择</th>
 			</tr>
 		</thead>
@@ -37,7 +37,7 @@
 					String depature = a.getProvince();
 					if (centerProvincearray != null) {
 						for (int i = 0; i < centerProvincearray.length; i++) {
-							if (centerProvincearray[i][0] != null) {
+							if (centerProvincearray[i][0] != null&&centerProvincearray[i][1] != null) {
 								out.print("<tr>");
 								out.print("<td>" + centerProvincearray[i][0] + "</td>");
 								out.print("<td>" + centerProvincearray[i][1] + "</td>");
@@ -63,7 +63,7 @@
 					aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="myModalLabel">选择车辆</h4>
 				<label>当前货物量：<%=amount%></label>
-				<form class="form-horizontal" role="form" method="post">
+				<form class="form-horizontal" role="form" method="post" action="selectedTransportation">
 					<table class="table table-hover" id="showWorksTable">
 						<thead>
 							<tr>
@@ -86,7 +86,7 @@
 														out.print("<td>" + n.getCapacity() + "</td>");
 														out.print("<td><input type=\"checkbox\" name=\"box\" value=\""+n.getTransportationId()+"\">");
 														out.print("</tr>");
-														out.print("<input type=\"hidden\" name=\"centerName\" value=\""+n.getDestintion()+"\"");
+														out.print("<input type=\"hidden\" name=\"centerName\" value=\""+n.getDestintion()+"\">");
 													}
 													
 												}
