@@ -89,6 +89,16 @@
 							%>
 						</tbody>
 					</table>
+					<div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <label class="checkbox-inline">
+                                    <input type="submit" value="确定" class="btn btn-default">
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="reset" value="重置" class="btn btn-default">
+                                </label>
+                            </div>
+                        </div>
 				</form>
 			</div>
 		</div>
