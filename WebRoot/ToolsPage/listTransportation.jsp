@@ -25,13 +25,14 @@
 			<tr>
 				<th data-field="departure">到达省份</th>
 				<th data-field="capacity">件数</th>
+				<th data-field="capacity">已选择车辆</th>
 				<th class="col-xs-2" data-field="action">车辆选择</th>
 			</tr>
 		</thead>
 		<tbody>
 			<%
 				String[][] centerProvincearray = (String[][]) session.getAttribute("senderProvincearray");
-					System.out.println(centerProvincearray);
+					String selectedTransportation =(String) session.getAttribute("selectedTransportation");
 					ProvinceCenter a = (ProvinceCenter) session.getAttribute("login");
 					String depature = a.getProvince();
 					if (centerProvincearray != null) {
@@ -40,6 +41,7 @@
 								out.print("<tr>");
 								out.print("<td>" + centerProvincearray[i][0] + "</td>");
 								out.print("<td>" + centerProvincearray[i][1] + "</td>");
+								out.print("<td>" + selectedTransportation + "</td>");
 								out.print("<td><a href=\"viewTransportation?depature=" + depature + "&destination="
 										+ centerProvincearray[i][0] + "&amount=" + centerProvincearray[i][1] + "\">查看车辆</a>");
 								out.print("</tr>");
@@ -61,7 +63,7 @@
 					aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="myModalLabel">选择车辆</h4>
 				<label>当前货物量：<%=amount%></label>
-				<form class="form-horizontal" role="form" method="post" >
+				<form class="form-horizontal" role="form" method="post">
 					<table class="table table-hover" id="showWorksTable">
 						<thead>
 							<tr>
@@ -90,15 +92,13 @@
 						</tbody>
 					</table>
 					<div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <label class="checkbox-inline">
-                                    <input type="submit" value="确定" class="btn btn-default">
-                                </label>
-                                <label class="checkbox-inline">
-                                    <input type="reset" value="重置" class="btn btn-default">
-                                </label>
-                            </div>
-                        </div>
+						<div class="col-sm-offset-2 col-sm-10">
+							<label class="checkbox-inline"> <input type="submit"
+								value="确定" class="btn btn-default"> </label> <label
+								class="checkbox-inline"> <input type="reset" value="重置"
+								class="btn btn-default"> </label>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
