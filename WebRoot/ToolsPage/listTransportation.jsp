@@ -86,7 +86,9 @@
 														out.print("<td>" + n.getCapacity() + "</td>");
 														out.print("<td><input type=\"checkbox\" name=\"box\" value=\""+n.getTransportationId()+"\">");
 														out.print("</tr>");
+														out.print("<input type=\"hidden\" name=\"centerName\" value=\""+n.getDestintion()+"\"");
 													}
+													
 												}
 							%>
 						</tbody>
@@ -99,6 +101,7 @@
 								class="btn btn-default"> </label>
 						</div>
 					</div>
+					
 				</form>
 			</div>
 		</div>
