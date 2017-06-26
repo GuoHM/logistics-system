@@ -12,10 +12,10 @@
                 <column name="conditionID" length="2" />
             </key-property>
         </composite-id>
-        <many-to-one name="goods" class="bean.Goods" update="false" insert="false" fetch="select">
+        <many-to-one name="goods" class="bean.Goods" update="false" insert="false" fetch="select" lazy="false">
             <column name="goodsID" length="15" not-null="true" />
         </many-to-one>
-        <many-to-one name="conditions" class="bean.Conditions" update="false" insert="false" fetch="select">
+        <many-to-one name="conditions" class="bean.Conditions" update="false" insert="false" fetch="select" lazy="false">
             <column name="conditionID" length="2" not-null="true" />
         </many-to-one>
     </class>
