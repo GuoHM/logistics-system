@@ -2,14 +2,28 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
+	String show = (String) session.getAttribute("show");
+%>
 <head>
 <meta charset="UTF-8">
 <title>派送</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="<%=basePath%>/css/style.css">
+<link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>/css/bootstrapValidator.min.css">
+<script src="<%=basePath%>/js/jquery.min.js"></script>
+	<!-- 包含了所有编译插件 -->
+	<script src="<%=basePath%>/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>/js/bootstrap-table.js"></script>
+<script src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
+<script src="<%=basePath%>/js/initTable.js"></script>
+<link href="<%=basePath%>/css/bootstrap-table.css" rel="stylesheet" />
+<script src="<%=basePath%>/js/bootstrap-table-export.js"></script>
 </head>
 <body onload="today()">
 	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
@@ -46,7 +60,7 @@
 							</tbody>
 						</table>
 					</div>
-					<form class="form-horizontal" role="form" method="post" action="">
+					<form class="form-horizontal" role="form" method="post" action="addsenderDistrictListStatus">
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline"> <input type="submit"
@@ -58,6 +72,6 @@
 			</div>
 		</div>
 
-		<script src="../js/main.js"></script>
+		<script src="<%=basePath%>/js/main.js"></script>
 </body>
 </html>

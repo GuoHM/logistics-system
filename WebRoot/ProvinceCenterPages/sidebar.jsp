@@ -12,7 +12,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/ProvinceCenterPages/dispatch.jsp">
+			<a href="getByreceiverProvince.action">
 				<span>派送</span>
 			</a>
 		</li>
