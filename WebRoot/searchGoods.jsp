@@ -9,7 +9,6 @@
 	System.out.println(goodsStatus);
 	if (goodsinfo == null) {
 		goodsinfo = new Goods();
-
 	}
 %>
 <%!public String change(String s) {
@@ -55,25 +54,30 @@
 						String s = null;
 						if (goodsStatus != null) {
 							for (GoodsStatus n : goodsStatus) {
+								String sendDistrict = n.getGoods().getSenderDistrict();
+								String sendProvince = n.getGoods().getSenderProvince();
+								String receiveProvince = n.getGoods().getReceiverProvince();
+								String receiveDistrict = n.getGoods().getReceiverDistrict();
+								System.out.println(receiveDistrict);
 								switch (n.getConditions().getConditionId()) {
 								case "1":
 									s = res.getString(n.getConditions().getConditionId()) + "单号：" + n.getGoods().getGoodsId();
 									break;
 								case "2":
-									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
-											n.getGoods().getSenderDistrict());
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("A",
+											sendDistrict);
 									break;
 								case "3":
-									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
-											n.getGoods().getSenderProvince());
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("A",
+											sendProvince);
 									break;
 								case "4":
-									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
-											n.getGoods().getReceiverProvince());
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("A",
+											receiveProvince);
 									break;
 								case "5":
-									s = res.getString(n.getConditions().getConditionId()).replaceAll("?",
-											n.getGoods().getReceiverDistrict());
+									s = res.getString(n.getConditions().getConditionId()).replaceAll("A",
+											receiveDistrict);
 									break;
 								}
 								out.println("<label>" + s + "</label><br/>");
