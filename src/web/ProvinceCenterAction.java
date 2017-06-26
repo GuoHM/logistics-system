@@ -43,43 +43,113 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 
 	@SuppressWarnings({ "null", "unused" })
 	public String getGoodsByProvince() throws Exception {// 获取当前省未发往其他省的快递
-		int sum=1;
+		int sum = 1;
 		List<Goods> list = null;
-		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
+		List<Goods> list2 = new ArrayList<Goods>();// list2存放本省的未发过去的订单
 		List<Transportation> list3 = new ArrayList<Transportation>();
 		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
 		System.out.println((ProvinceCenter) context.getSession().get("login"));
-		list=goodsService.getGoodsByProvince(province.getProvince());
+		list = goodsService.getGoodsByProvince(province.getProvince());
 		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
 				Goods goods = list.get(i);
-				if (goods.getProvinceCenterBySendProvinceCenter() != null&&goods.getProvinceCenterByReceiveProvinceCenter()==null) {
+				if (goods.getProvinceCenterBySendProvinceCenter() != null
+						&& goods.getProvinceCenterByReceiveProvinceCenter() == null) {
 					list2.add(list.get(i));
 				}
 			}
 		}
-		String a[][]=new String[list2.size()][2];
-		for(int i=0;i<list2.size();i++){
-			String provinceName=list2.get(i).getReceiverProvince();
-			for(int j=i+1;j<list2.size();j++){
-				if(list2.get(j).getReceiverProvince().equals(list2.get(i).getReceiverProvince())){
+		String a[][] = new String[list2.size()][2];
+		for (int i = 0; i < list2.size(); i++) {
+			String provinceName = list2.get(i).getReceiverProvince();
+			for (int j = i + 1; j < list2.size(); j++) {
+				if (list2.get(j).getReceiverProvince().equals(list2.get(i).getReceiverProvince())) {
 					list2.remove(j);
 					--j;
 					++sum;
 				}
 			}
-		
-			a[i][0]=provinceName;
-			a[i][1]=sum+"";
-		
-			//list3=provinceCenterService.getTransportationlistByDD(province.getProvince(), provinceName);
+
+			a[i][0] = provinceName;
+			a[i][1] = sum + "";
+
+			// list3=provinceCenterService.getTransportationlistByDD(province.getProvince(),
+			// provinceName);
 		}
-		if (a != null&&list3!=null) {
+		if (a != null && list3 != null) {
 			context.getSession().put("senderProvincearray", a);
 			context.getSession().put("transportationList", list3);
 			return "getGoodsBysenderProvinceSuccess";
 		} else {
 			return "getGoodsBysenderProvinceFalse";
+		}
+	}
+
+	public String viewTransportation() throws Exception {
+		List<Transportation> list = provinceCenterService.getTransportationlistByDD(depature, destination);
+		context.getSession().put("transporationlist", list);
+		context.getSession().put("show", "show");
+		context.getSession().put("amount", amount);
+		return SUCCESS;
+	}
+
+	public String selectedTransportation() throws Exception {// 获取已选择车辆
+		TransportationManagement transportation = new TransportationManagement();
+		String s = new String();
+		for (int i = 0; i < box.length; i++) {
+			s += box[i];
+			if (i + 1 != box.length)
+				s += ",";
+			ProvinceCenter province = provinceCenterService.getProvinceCenterByProvinceName(centerName);
+			System.out.print(province.getCenterId());
+			TransportationManagementId transportationManagementId = new TransportationManagementId();
+			transportationManagementId.setCenterId(province.getCenterId());
+			transportationManagementId.setTransportationId(box[i]);
+			transportation.setId(transportationManagementId);
+			transportation.setProvinceCenter(province);
+			transportation.setTransportation(provinceCenterService.getTransportationByID(box[i]));
+			System.out.print(transportation);
+			provinceCenterService.save(transportation);
+		}
+		context.getSession().put("selectedTransportation", s);
+		return "success";
+	}
+
+	@SuppressWarnings({ "null", "unused" })
+	public String getByreceiverProvince() throws Exception { // 获取本省快递链表
+		int sum = 1;
+		List<Goods> list = null;
+		List<Goods> list2 = new ArrayList<Goods>();// list2存放本省的未发过去的订单
+		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
+		list = goodsService.getGoodsByreceiverProvince(province.getProvince());
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				if (goods.getProvinceCenterByReceiveProvinceCenter() != null
+						&& goods.getDistrictCenterByReceiveDistrictCenter() == null) {
+					list2.add(list.get(i));
+				}
+			}
+		}
+		String a[][] = new String[list2.size()][2];
+		for (int i = 0; i < list2.size(); i++) {
+			String districtName = list2.get(i).getReceiverDistrict();
+			for (int j = i + 1; j < list2.size(); j++) {
+				if (list2.get(j).getReceiverDistrict().equals(list2.get(i).getReceiverDistrict())) {
+					list2.remove(j);
+					--j;
+					++sum;
+				}
+			}
+
+			a[i][0] = districtName;
+			a[i][1] = sum + "";
+		}
+		if (a != null) {
+			context.getSession().put("senderDistrictarray", a);
+			return "getByreceiverProvinceSuccess";
+		} else {
+			return "getByreceiverProvinceFalse";
 		}
 	}
 
@@ -89,11 +159,12 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		List<Goods> list = null;
 		List<Goods> list2 = new ArrayList<Goods>();
 		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
-		list=goodsService.getGoodsByProvince(province.getProvince());
+		list = goodsService.getGoodsByProvince(province.getProvince());
 		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
 				Goods goods = list.get(i);
-				if (goods.getProvinceCenterBySendProvinceCenter() != null&&goods.getProvinceCenterByReceiveProvinceCenter()==null) {
+				if (goods.getProvinceCenterBySendProvinceCenter() != null
+						&& goods.getProvinceCenterByReceiveProvinceCenter() == null) {
 					list2.add(list.get(i));
 				}
 			}
@@ -119,84 +190,19 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		} else
 			return "saveprovinceListStatusFalse";
 	}
-	
-	public String viewTransportation() throws Exception {
-		List<Transportation> list=provinceCenterService.getTransportationlistByDD(depature, destination);
-		context.getSession().put("transporationlist", list);
-		context.getSession().put("show", "show");
-		context.getSession().put("amount", amount);
-		return SUCCESS;
-	}
 
-	public String selectedTransportation() throws Exception{//获取已选择车辆
-		TransportationManagement transportation=new TransportationManagement();
-		String s=new String();
-		for(int i=0;i<box.length;i++){
-			s+=box[i];
-			if(i+1!=box.length)
-				s+=",";
-			ProvinceCenter province=provinceCenterService.getProvinceCenterByProvinceName(centerName);
-			System.out.print(province.getCenterId());
-			TransportationManagementId transportationManagementId=new TransportationManagementId();
-			transportationManagementId.setCenterId(province.getCenterId());
-			transportationManagementId.setTransportationId(box[i]);
-			transportation.setId(transportationManagementId);
-			transportation.setProvinceCenter(province);
-			transportation.setTransportation(provinceCenterService.getTransportationByID(box[i]));
-			System.out.print(transportation);
-			provinceCenterService.save(transportation);
-		}
-		context.getSession().put("selectedTransportation", s);
-		return "success";
-	}
-	
-	@SuppressWarnings({ "null", "unused" })
-	public String getByreceiverProvince() throws Exception {    // 获取本省快递链表
-		int sum=1;
-		List<Goods> list = null;
-		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
-		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
-		list=goodsService.getGoodsByreceiverProvince(province.getProvince());
-		if (list != null) {
-			for (int i = 0; i < list.size(); i++) {
-				Goods goods = list.get(i);
-				if (goods.getProvinceCenterByReceiveProvinceCenter()!=null&&goods.getDistrictCenterByReceiveDistrictCenter()==null) {
-					list2.add(list.get(i));
-				}
-			}
-		}
-		String a[][]=new String[list2.size()][2];
-		for(int i=0;i<list2.size();i++){
-			String districtName=list2.get(i).getReceiverDistrict();
-			for(int j=i+1;j<list2.size();j++){
-				if(list2.get(j).getReceiverDistrict().equals(list2.get(i).getReceiverDistrict())){
-					list2.remove(j);
-					--j;
-					++sum;
-				}
-			}
-		
-			a[i][0]=districtName;
-			a[i][1]=sum+"";
-		}
-		if (a != null) {
-			context.getSession().put("senderDistrictarray", a);
-			return "getByreceiverProvinceSuccess";
-		} else {
-			return "getByreceiverProvinceFalse";
-		}
-	}
 	@SuppressWarnings("null")
 	public String addsenderDistrictListStatus() throws Exception {// 发往相应区县营业点，将这些商品链表都加上状态信息
 		int j = 0;
 		List<Goods> list = null;
-		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
+		List<Goods> list2 = new ArrayList<Goods>();// list2存放本省的未发过去的订单
 		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
-		list=goodsService.getGoodsByreceiverProvince(province.getProvince());
+		list = goodsService.getGoodsByreceiverProvince(province.getProvince());
 		if (list != null) {
 			for (int i = 0; i < list.size(); i++) {
 				Goods goods = list.get(i);
-				if (goods.getProvinceCenterByReceiveProvinceCenter()!=null&&goods.getDistrictCenterByReceiveDistrictCenter()==null) {
+				if (goods.getProvinceCenterByReceiveProvinceCenter() != null
+						&& goods.getDistrictCenterByReceiveDistrictCenter() == null) {
 					list2.add(list.get(i));
 				}
 			}
@@ -209,14 +215,14 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 			goodsStatusId.setConditionId("5");
 			GoodsStatus goodsStatus = new GoodsStatus();
 			goodsStatus.setId(goodsStatusId);
-			DistrictCenter districtCenter = districtCenterService.getDistrictCenter(goods.getReceiverDistrict(), goods.getReceiverCity(), goods.getReceiverProvince());
+			DistrictCenter districtCenter = districtCenterService.getDistrictCenter(goods.getReceiverDistrict(),
+					goods.getReceiverCity(), goods.getReceiverProvince());
 			goods.setDistrictCenterByReceiveDistrictCenter(districtCenter);
 			goodsService.save(goods);
 			goods = goodsService.getGoodsBygoodsId(goods.getGoodsId());
 			System.out.println(goods.getGoodsId());
 			goodsStatus.setGoods(goods);
 			goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("5"));
-			System.out.println(goodsStatus.getConditions().getConditionId()+goodsStatus.getId().getConditionId());
 			goodsStatusService.save(goodsStatus);
 		}
 		if (j == list2.size()) {
@@ -224,10 +230,11 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		} else
 			return "addsenderDistrictListStatusFalse";
 	}
+
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -238,7 +245,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param context the context to set
+	 * @param context
+	 *            the context to set
 	 */
 	public void setContext(ActionContext context) {
 		this.context = context;
@@ -252,7 +260,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param logger the logger to set
+	 * @param logger
+	 *            the logger to set
 	 */
 	public void setLogger(Logger logger) {
 		this.logger = logger;
@@ -266,7 +275,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param goodsService the goodsService to set
+	 * @param goodsService
+	 *            the goodsService to set
 	 */
 	public void setGoodsService(IGoodsService goodsService) {
 		this.goodsService = goodsService;
@@ -280,7 +290,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param goodsStatusService the goodsStatusService to set
+	 * @param goodsStatusService
+	 *            the goodsStatusService to set
 	 */
 	public void setGoodsStatusService(IGoodsStatusService goodsStatusService) {
 		this.goodsStatusService = goodsStatusService;
@@ -294,7 +305,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param conditionsService the conditionsService to set
+	 * @param conditionsService
+	 *            the conditionsService to set
 	 */
 	public void setConditionsService(IConditionsService conditionsService) {
 		this.conditionsService = conditionsService;
@@ -322,7 +334,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param depature the depature to set
+	 * @param depature
+	 *            the depature to set
 	 */
 	public void setDepature(String depature) {
 		this.depature = depature;
@@ -336,7 +349,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param destination the destination to set
+	 * @param destination
+	 *            the destination to set
 	 */
 	public void setDestination(String destination) {
 		this.destination = destination;
@@ -350,7 +364,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param provinceCenterService the provinceCenterService to set
+	 * @param provinceCenterService
+	 *            the provinceCenterService to set
 	 */
 	public void setProvinceCenterService(IProvinceCenterService provinceCenterService) {
 		this.provinceCenterService = provinceCenterService;
@@ -364,7 +379,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param amount the amount to set
+	 * @param amount
+	 *            the amount to set
 	 */
 	public void setAmount(String amount) {
 		this.amount = amount;
@@ -378,7 +394,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param box the box to set
+	 * @param box
+	 *            the box to set
 	 */
 	public void setBox(String[] box) {
 		this.box = box;
@@ -392,7 +409,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param centerName the centerName to set
+	 * @param centerName
+	 *            the centerName to set
 	 */
 	public void setCenterName(String centerName) {
 		this.centerName = centerName;
@@ -406,10 +424,11 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @param districtCenterService the districtCenterService to set
+	 * @param districtCenterService
+	 *            the districtCenterService to set
 	 */
 	public void setDistrictCenterService(IDistrictCenterService districtCenterService) {
 		this.districtCenterService = districtCenterService;
 	}
-	
-	}
+
+}
