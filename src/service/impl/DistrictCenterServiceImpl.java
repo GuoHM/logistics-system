@@ -23,6 +23,13 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 	}
 
 
+	public DistrictCenter getDistrictCenter(String district, String city, String province) throws Exception {
+		if(district!=null&&city!=null&&province!=null){
+			return districtCenterDao.getDistrictCenter(district, city, province);
+		}else{
+		return null;
+		}
+	}
 	public IDistrictCenterDao getDistrictCenterDao() {
 		return districtCenterDao;
 	}
@@ -30,6 +37,7 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 	public void setDistrictCenterDao(IDistrictCenterDao districtCenterDao) {
 		this.districtCenterDao = districtCenterDao;
 	}
+
 	
 
 

@@ -45,6 +45,13 @@ public class GoodsServiceImpl implements IGoodsService {
 			return null;
 	}
 
+	@Override
+	public List<Goods> getGoodsByreceiverProvince(String province) throws Exception {
+		if (province != null) {
+			return goodsDao.getGoodsByreceiverProvince(province);
+		} else
+			return null;
+	}
 
 	// public List<GoodsStatus> getGoodsStatusBygoodsId(String goodsId) throws
 	// Exception {

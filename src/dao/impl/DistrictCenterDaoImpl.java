@@ -28,6 +28,21 @@ public class DistrictCenterDaoImpl extends HibernateDaoSupport implements IDistr
 		
 	}
 
+	@Override
+	public DistrictCenter getDistrictCenter(String district, String city, String province) throws Exception {
+		String hql = "from DistrictCenter where district=? and city=? and province=?";
+        Session session = null;
+        DistrictCenter user = null;
+        try {
+            session = getSession();
+            user = (DistrictCenter) session.createQuery(hql).setParameter(0,district).setParameter(1, city).setParameter(2, province)
+                    .uniqueResult();
+        } finally {
+            releaseSession(session);
+        }
+        return user;
+	}
+
 }
 
 

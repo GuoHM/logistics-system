@@ -81,4 +81,18 @@ public class GoodsDaoImpl extends HibernateDaoSupport implements IGoodsDao {
 		}
 		return list;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Goods> getGoodsByreceiverProvince(String province) throws Exception {
+		String hql = "from Goods where receiverProvince=?";
+		Session session = null;
+		List<Goods> list = null;
+		try {
+			session = getSession();
+			list = (List<Goods>) session.createQuery(hql).setParameter(0, province).list();
+		} finally {
+			releaseSession(session);
+		}
+		return list;
+	}
 }

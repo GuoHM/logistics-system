@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
+import bean.DistrictCenter;
 import bean.Goods;
 import bean.GoodsStatus;
 import bean.GoodsStatusId;
@@ -19,6 +20,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 
 import service.IConditionsService;
+import service.IDistrictCenterService;
 import service.IGoodsService;
 import service.IGoodsStatusService;
 import service.IProvinceCenterService;
@@ -32,6 +34,7 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	private IGoodsStatusService goodsStatusService;
 	private IConditionsService conditionsService;
 	private IProvinceCenterService provinceCenterService;
+	private IDistrictCenterService districtCenterService;
 	private String depature;
 	private String destination;
 	private String amount;
@@ -81,7 +84,7 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	}
 
 	@SuppressWarnings("null")
-	public String addsenderProvinceListStatus() throws Exception {// 发往本省时，将商品链表都加上状态信息
+	public String addsenderProvinceListStatus() throws Exception {// 发往相应省份时，将这些商品链表都加上状态信息
 		int j = 0;
 		List<Goods> list = null;
 		List<Goods> list2 = new ArrayList<Goods>();
@@ -128,13 +131,11 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	public String selectedTransportation() throws Exception{//获取已选择车辆
 		TransportationManagement transportation=new TransportationManagement();
 		String s=new String();
-		System.out.print(box.length);
 		for(int i=0;i<box.length;i++){
 			s+=box[i];
 			if(i+1!=box.length)
 				s+=",";
 			ProvinceCenter province=provinceCenterService.getProvinceCenterByProvinceName(centerName);
-		//	int s1=province.getCenterId();
 			System.out.print(province.getCenterId());
 			TransportationManagementId transportationManagementId=new TransportationManagementId();
 			transportationManagementId.setCenterId(province.getCenterId());
@@ -147,6 +148,81 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		}
 		context.getSession().put("selectedTransportation", s);
 		return "success";
+	}
+	
+	@SuppressWarnings({ "null", "unused" })
+	public String getByreceiverProvince() throws Exception {    // 获取本省快递链表
+		int sum=1;
+		List<Goods> list = null;
+		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
+		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
+		list=goodsService.getGoodsByreceiverProvince(province.getProvince());
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				if (goods.getProvinceCenterByReceiveProvinceCenter()!=null&&goods.getDistrictCenterByReceiveDistrictCenter()==null) {
+					list2.add(list.get(i));
+				}
+			}
+		}
+		String a[][]=new String[list2.size()][2];
+		for(int i=0;i<list2.size();i++){
+			String districtName=list2.get(i).getReceiverDistrict();
+			for(int j=i+1;j<list2.size();j++){
+				if(list2.get(j).getReceiverDistrict().equals(list2.get(i).getReceiverDistrict())){
+					list2.remove(j);
+					--j;
+					++sum;
+				}
+			}
+		
+			a[i][0]=districtName;
+			a[i][1]=sum+"";
+		}
+		if (a != null) {
+			context.getSession().put("senderDistrictarray", a);
+			return "getByreceiverProvinceSuccess";
+		} else {
+			return "getByreceiverProvinceFalse";
+		}
+	}
+	@SuppressWarnings("null")
+	public String addsenderDistrictListStatus() throws Exception {// 发往相应区县营业点，将这些商品链表都加上状态信息
+		int j = 0;
+		List<Goods> list = null;
+		List<Goods> list2 = new ArrayList<Goods>();//list2存放本省的未发过去的订单
+		ProvinceCenter province = (ProvinceCenter) context.getSession().get("login");
+		list=goodsService.getGoodsByreceiverProvince(province.getProvince());
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				if (goods.getProvinceCenterByReceiveProvinceCenter()!=null&&goods.getDistrictCenterByReceiveDistrictCenter()==null) {
+					list2.add(list.get(i));
+				}
+			}
+		}
+		for (j = 0; j < list2.size(); j++) {
+			Goods goods = list2.get(j);
+			GoodsStatusId goodsStatusId = new GoodsStatusId();
+			goodsStatusId.setGoodsId(goods.getGoodsId());
+			System.out.println(goods.getGoodsId());
+			goodsStatusId.setConditionId("5");
+			GoodsStatus goodsStatus = new GoodsStatus();
+			goodsStatus.setId(goodsStatusId);
+			DistrictCenter districtCenter = districtCenterService.getDistrictCenter(goods.getReceiverDistrict(), goods.getReceiverCity(), goods.getReceiverProvince());
+			goods.setDistrictCenterByReceiveDistrictCenter(districtCenter);
+			goodsService.save(goods);
+			goods = goodsService.getGoodsBygoodsId(goods.getGoodsId());
+			System.out.println(goods.getGoodsId());
+			goodsStatus.setGoods(goods);
+			goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("5"));
+			System.out.println(goodsStatus.getConditions().getConditionId()+goodsStatus.getId().getConditionId());
+			goodsStatusService.save(goodsStatus);
+		}
+		if (j == list2.size()) {
+			return "addsenderDistrictListStatusSuccess";
+		} else
+			return "addsenderDistrictListStatusFalse";
 	}
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
@@ -321,7 +397,19 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	public void setCenterName(String centerName) {
 		this.centerName = centerName;
 	}
-	
-	
+
+	/**
+	 * @return the districtCenterService
+	 */
+	public IDistrictCenterService getDistrictCenterService() {
+		return districtCenterService;
+	}
+
+	/**
+	 * @param districtCenterService the districtCenterService to set
+	 */
+	public void setDistrictCenterService(IDistrictCenterService districtCenterService) {
+		this.districtCenterService = districtCenterService;
+	}
 	
 	}

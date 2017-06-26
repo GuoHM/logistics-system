@@ -114,6 +114,30 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 		}
 	}
 
+	public String addStatus() throws Exception {// 保存状态信息，并将区县营业点加入goods表中
+		Goods goods = new Goods();
+		goods = goodsService.getGoodsBygoodsId(goodsId);
+		GoodsStatusId goodsStatusId = new GoodsStatusId();
+		goodsStatusId.setGoodsId(goodsId);
+		goodsStatusId.setConditionId("2");
+		GoodsStatus goodsStatus = new GoodsStatus();
+		goodsStatus.setId(goodsStatusId);
+		DistrictCenter district = (DistrictCenter) context.getSession().get("login");
+		System.out.println(goods);
+		System.out.println(goodsId);
+		goods.setDistrictCenterBySendDestrictCenter(district);
+		goodsService.save(goods);
+		goods = goodsService.getGoodsBygoodsId(goodsId);
+		goodsStatus.setGoods(goods);
+		goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("2"));
+		goodsStatusService.save(goodsStatus);
+		if (goodsStatus != null) {
+			return "saveStatusSuccess";
+		} else
+			return "saveStatusFalse";
+
+	}
+
 	@SuppressWarnings("null")
 	public String adddistrictListStatus() throws Exception {// 发往本省时，将商品链表都加上状态信息
 		int j = 0;
@@ -153,29 +177,6 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 
 	}
 
-	public String addStatus() throws Exception {// 保存状态信息，并将区县营业点加入goods表中
-		Goods goods = new Goods();
-		goods = goodsService.getGoodsBygoodsId(goodsId);
-		GoodsStatusId goodsStatusId = new GoodsStatusId();
-		goodsStatusId.setGoodsId(goodsId);
-		goodsStatusId.setConditionId("2");
-		GoodsStatus goodsStatus = new GoodsStatus();
-		goodsStatus.setId(goodsStatusId);
-		DistrictCenter district = (DistrictCenter) context.getSession().get("login");
-		System.out.println(goods);
-		System.out.println(goodsId);
-		goods.setDistrictCenterBySendDestrictCenter(district);
-		goodsService.save(goods);
-		goods = goodsService.getGoodsBygoodsId(goodsId);
-		goodsStatus.setGoods(goods);
-		goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("2"));
-		goodsStatusService.save(goodsStatus);
-		if (goodsStatus != null) {
-			return "saveStatusSuccess";
-		} else
-			return "saveStatusFalse";
-
-	}
 	
 	// public String printGoodsinfo() throws Exception { //打印快递单信息
 	// Goods goods = new Goods();
