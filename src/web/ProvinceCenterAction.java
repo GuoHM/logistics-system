@@ -11,6 +11,8 @@ import bean.GoodsStatus;
 import bean.GoodsStatusId;
 import bean.ProvinceCenter;
 import bean.Transportation;
+import bean.TransportationManagement;
+import bean.TransportationManagementId;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -33,6 +35,8 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	private String depature;
 	private String destination;
 	private String amount;
+	private String[] box;
+	private String centerName;
 
 	@SuppressWarnings({ "null", "unused" })
 	public String getGoodsByProvince() throws Exception {// 获取当前省未发往其他省的快递
@@ -121,6 +125,29 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 		return SUCCESS;
 	}
 
+	public String selectedTransportation() throws Exception{//获取已选择车辆
+		TransportationManagement transportation=new TransportationManagement();
+		String s=new String();
+		System.out.print(box.length);
+		for(int i=0;i<box.length;i++){
+			s+=box[i];
+			if(i+1!=box.length)
+				s+=",";
+			ProvinceCenter province=provinceCenterService.getProvinceCenterByProvinceName(centerName);
+		//	int s1=province.getCenterId();
+			System.out.print(province.getCenterId());
+			TransportationManagementId transportationManagementId=new TransportationManagementId();
+			transportationManagementId.setCenterId(province.getCenterId());
+			transportationManagementId.setTransportationId(box[i]);
+			transportation.setId(transportationManagementId);
+			transportation.setProvinceCenter(province);
+			transportation.setTransportation(provinceCenterService.getTransportationByID(box[i]));
+			System.out.print(transportation);
+			provinceCenterService.save(transportation);
+		}
+		context.getSession().put("selectedTransportation", s);
+		return "success";
+	}
 	@Override
 	public void setServletRequest(HttpServletRequest arg0) {
 		// TODO Auto-generated method stub
@@ -265,6 +292,34 @@ public class ProvinceCenterAction extends ActionSupport implements ServletReques
 	 */
 	public void setAmount(String amount) {
 		this.amount = amount;
+	}
+
+	/**
+	 * @return the box
+	 */
+	public String[] getBox() {
+		return box;
+	}
+
+	/**
+	 * @param box the box to set
+	 */
+	public void setBox(String[] box) {
+		this.box = box;
+	}
+
+	/**
+	 * @return the centerName
+	 */
+	public String getCenterName() {
+		return centerName;
+	}
+
+	/**
+	 * @param centerName the centerName to set
+	 */
+	public void setCenterName(String centerName) {
+		this.centerName = centerName;
 	}
 	
 	

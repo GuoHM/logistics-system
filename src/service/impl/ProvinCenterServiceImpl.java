@@ -4,6 +4,8 @@ import java.util.List;
 
 import bean.ProvinceCenter;
 import bean.Transportation;
+import bean.TransportationManagement;
+import bean.TransportationManagementId;
 import dao.IProvinceCenterDao;
 import service.IProvinceCenterService;
 
@@ -42,6 +44,21 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 			return null;
 		}
 	}
+	@Override
+	public void save(TransportationManagement transportation) throws Exception {
+		if(transportation!=null){
+			provinceCenterDao.save(transportation);
+		}
+		
+	}
+	@Override
+	public Transportation getTransportationByID(String ID) throws Exception {
+		if(ID!=null){
+			return 	provinceCenterDao.getTransportationByID(ID);
+		}else{
+			return null;
+		}
+	}
 
 	public IProvinceCenterDao getProvinceCenterDao() {
 		return provinceCenterDao;
@@ -51,6 +68,7 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 		this.provinceCenterDao = provinceCenterDao;
 	}
 
+	
 	
 
 

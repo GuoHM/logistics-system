@@ -7,6 +7,8 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import bean.GoodsStatusId;
 import bean.ProvinceCenter;
 import bean.Transportation;
+import bean.TransportationManagement;
+import bean.TransportationManagementId;
 import dao.IProvinceCenterDao;
 public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvinceCenterDao {    //���������˺�����������ݿ⣬�鿴�û��Ƿ����
 	 public ProvinceCenter getProvinceCenterByIDAndPwd(String login, String password) throws Exception {
@@ -56,6 +58,27 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 			releaseSession(session);
 		}
 		return list;
+	}
+
+	@Override
+	public void save(TransportationManagement transportation) throws Exception {
+		 getHibernateTemplate().saveOrUpdate(transportation);
+		
+	}
+
+	@Override
+	public Transportation getTransportationByID(String ID) throws Exception {
+		 String hql = "from Transportation where transportationID=?";
+	        Session session = null;
+	        Transportation transportation = null;
+	        try {
+	            session = getSession();
+	            transportation = (Transportation) session.createQuery(hql).setParameter(0, ID)
+	                    .uniqueResult();
+	        } finally {
+	            releaseSession(session);
+	        }
+	        return transportation;
 	}
 
 }

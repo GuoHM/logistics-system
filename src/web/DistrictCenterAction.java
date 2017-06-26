@@ -11,6 +11,7 @@ import bean.Goods;
 import bean.GoodsStatus;
 import bean.GoodsStatusId;
 import bean.ProvinceCenter;
+import bean.TransportationManagement;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -175,6 +176,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 			return "saveStatusFalse";
 
 	}
+	
 	// public String printGoodsinfo() throws Exception { //打印快递单信息
 	// Goods goods = new Goods();
 	// goods.setGoodsId((String)context.getSession().get(searchGoodsId));
@@ -525,5 +527,8 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	public void setCurrentGoods(String currentGoods) {
 		this.currentGoods = currentGoods;
 	}
+
+
+
 
 }
