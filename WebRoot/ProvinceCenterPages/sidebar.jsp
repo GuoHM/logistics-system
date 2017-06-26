@@ -12,8 +12,8 @@
 			</a>
 		</li>
 		<li>
-			<a href="charts.html">
-				<span>查询</span>
+			<a href="<%=basePath%>/ProvinceCenterPages/dispatch.jsp">
+				<span>派送</span>
 			</a>
 		</li>
 		<li>
