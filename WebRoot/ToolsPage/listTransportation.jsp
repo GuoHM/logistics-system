@@ -82,7 +82,7 @@
 														out.print("<td>" + n.getDeparture() + "</td>");
 														out.print("<td>" + n.getDestintion() + "</td>");
 														out.print("<td>" + n.getCapacity() + "</td>");
-														out.print("<td><input type=\"checkbox\" value=\""+n.getTransportationId()+"\">");
+														out.print("<td><input type=\"checkbox\" name=\"box\" value=\""+n.getTransportationId()+"\">");
 														out.print("</tr>");
 													}
 												}
