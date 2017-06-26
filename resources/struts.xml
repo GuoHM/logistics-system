@@ -65,7 +65,18 @@
 		<action name="selectedTransportation" method="selectedTransportation" class="provinceCenterAction">
 			<result name="success">/ProvinceCenterPages/sort.jsp</result>
 		</action>
+		<action name="addsenderProvinceListStatus" method="addsenderProvinceListStatus" class="provinceCenterAction">
+			<result name="saveprovinceListStatusSuccess">/ProvinceCenterPages/sort.jsp</result>
+		</action>
 		
+		<action name="getByreceiverProvince" method="getByreceiverProvince"
+			class="provinceCenterAction">
+			<result name="getByreceiverProvinceSuccess">/ProvinceCenterPages/dispatch.jsp</result>
+		</action>
+		<action name="addsenderDistrictListStatus" method="addsenderDistrictListStatus"
+			class="provinceCenterAction">
+			<result name="addsenderDistrictListStatusSuccess">/ProvinceCenterPages/dispatch.jsp</result>
+		</action>
 		<action name="logout" method="logout" class="allAction">
 			<result name="success">/index.jsp</result>
 		</action>
