@@ -7,7 +7,7 @@
 		<global-results>
 			<result name="districtCenter">/DistrictCenterPages/districtCenter.jsp</result>
 			<result name="provinceCenter">/ProvinceCenterPages/provinceCenter.jsp</result>
-			<result name="admin">/AdminCenterPages/admin.jsp</result>
+			<result name="admin">/AdminPages/admin.jsp</result>
 		</global-results>
 		<action name="login" method="login" class="allAction">
 			<result name="input">/login.jsp</result>
@@ -84,6 +84,33 @@
 		<action name="addreceiverDistrictListStatus" method="addreceiverDistrictListStatus"
 			class="districtCenterAction">
 			<result name="savereceiverDistrictListStatusSuccess">/DistrictCenterPages/dispatch.jsp</result>
+		</action>
+		
+		<action name="addProvince" method="addProvince"
+			class="adminAction">
+			<result name="addProvinceSuccess">/AdminPages/addProvinceCenter.jsp</result>
+		</action>
+		<action name="addDistrict" method="addDistrict"
+			class="adminAction">
+			<result name="addDistrictSuccess">/AdminPages/addDistrictCenter.jsp</result>
+		</action>
+		<action name="getDistrictList" method="getDistrictList"
+			class="adminAction">
+			<result name="getDistrictlistSuccess">/AdminPages/viewDistrictCenter.jsp</result>
+		</action>
+		<action name="getProvinceList" method="getProvinceList"
+			class="adminAction">
+			<result name="getProvincelistSuccess">/AdminPages/viewProvinceCenter.jsp</result>
+		</action>
+		
+		
+		<action name="deleteProvince" method="deleteProvince"
+			class="adminAction">
+			<result name="success">/AdminPages/viewProvinceCenter.jsp</result>
+		</action>
+		<action name="deleteDistrict" method="deleteDistrict"
+			class="adminAction">
+			<result name="success">/AdminPages/viewDistrictCenter.jsp</result>
 		</action>
 		<action name="logout" method="logout" class="allAction">
 			<result name="success">/index.jsp</result>
