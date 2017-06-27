@@ -53,7 +53,7 @@
 							</thead>
 							<tbody>
 								<%
-									List<Goods> goodslist = (List<Goods>) session.getAttribute("DistrictList");
+									List<Goods> goodslist = (List<Goods>) session.getAttribute("receiverDistrictList");
 								                if (goodslist != null) {
 								                    for (Goods n : goodslist) {
 								                        out.print("<tr>");
@@ -106,7 +106,7 @@
 
 
 					<form class="form-horizontal" role="form" method="post"
-						action="senditsDistrict">
+						action="addreceiverDistrictListStatus">
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline"> <input type="submit"

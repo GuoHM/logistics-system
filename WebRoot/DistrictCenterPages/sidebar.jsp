@@ -22,6 +22,11 @@
 			</a>
 		</li>
 		<li>
+			<a href="getGoodsByreceiverDistrict.action">
+				<span>派送</span>
+			</a>
+		</li>
+		<li>
 			<a href="<%=basePath%>/DistrictCenterPages/modifyPassword.jsp">
 				<span>修改密码</span>
 			</a>

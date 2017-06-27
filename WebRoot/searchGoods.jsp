@@ -79,6 +79,9 @@
 									s = res.getString(n.getConditions().getConditionId()).replaceAll("A",
 											receiveDistrict);
 									break;
+								case "6":
+									s = res.getString(n.getConditions().getConditionId());
+									break;
 								}
 								out.println("<label>" + s + "</label><br/>");
 							}
