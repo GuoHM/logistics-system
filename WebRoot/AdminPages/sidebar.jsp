@@ -7,22 +7,22 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav">
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/addDistrictCenter.jsp">
+			<a href="<%=basePath%>/AdminPages/addDistrictCenter.jsp">
 				<span>新增区县营业点</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/viewDistrictCenter.jsp">
+			<a href="<%=basePath%>/AdminPages/viewDistrictCenter.jsp">
 				<span>查看区县营业点信息</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/addProvinceCenter.jsp">
+			<a href="<%=basePath%>/AdminPages/addProvinceCenter.jsp">
 				<span>新增省分拣中心</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/viewDistrictCenter.jsp">
+			<a href="<%=basePath%>/AdminPages/viewDistrictCenter.jsp">
 				<span>查看省分拣中心信息</span>
 			</a>
 		</li>
