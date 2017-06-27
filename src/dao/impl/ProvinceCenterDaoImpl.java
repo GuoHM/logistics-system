@@ -4,6 +4,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import bean.DistrictCenter;
 import bean.GoodsStatusId;
 import bean.ProvinceCenter;
 import bean.Transportation;
@@ -81,4 +82,18 @@ public class ProvinceCenterDaoImpl extends HibernateDaoSupport implements IProvi
 	        return transportation;
 	}
 
-}
+	@Override
+	public ProvinceCenter getProvinceCenterByID(int id) throws Exception {
+		String hql = "from ProvinceCenter where centerId=?";
+        Session session = null;
+        ProvinceCenter user = null;
+        try {
+            session = getSession();
+            user = (ProvinceCenter) session.createQuery(hql).setParameter(0, id)
+                    .uniqueResult();
+        } finally {
+            releaseSession(session);
+        }
+        return user;
+	}
+	}

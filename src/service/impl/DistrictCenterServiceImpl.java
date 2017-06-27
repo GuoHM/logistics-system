@@ -30,6 +30,10 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 		return null;
 		}
 	}
+	@Override
+	public DistrictCenter getDistrictCenterByID(int id) throws Exception {
+			return districtCenterDao.getDistrictCenterByID(id);
+	}
 	public IDistrictCenterDao getDistrictCenterDao() {
 		return districtCenterDao;
 	}
@@ -37,6 +41,7 @@ public class DistrictCenterServiceImpl implements IDistrictCenterService {
 	public void setDistrictCenterDao(IDistrictCenterDao districtCenterDao) {
 		this.districtCenterDao = districtCenterDao;
 	}
+
 
 	
 

@@ -43,6 +43,21 @@ public class DistrictCenterDaoImpl extends HibernateDaoSupport implements IDistr
         return user;
 	}
 
+	@Override
+	public DistrictCenter getDistrictCenterByID(int id) throws Exception {
+		String hql = "from DistrictCenter where centerId=?";
+        Session session = null;
+        DistrictCenter user = null;
+        try {
+            session = getSession();
+            user = (DistrictCenter) session.createQuery(hql).setParameter(0, id)
+                    .uniqueResult();
+        } finally {
+            releaseSession(session);
+        }
+        return user;
+	}
+
 }
 
 

@@ -13,4 +13,5 @@ public interface IProvinceCenterService {
 	 List<Transportation> getTransportationlistByDD(String senderProvince,String receiverProvince);
 	void save(TransportationManagement transportation) throws Exception;
 	Transportation getTransportationByID(String ID)throws Exception;
+	ProvinceCenter getProvinceCenterByID(int id)throws Exception;
 }

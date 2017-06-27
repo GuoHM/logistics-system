@@ -46,6 +46,7 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	private String receiverAddress;
 	private String senderDistrict;
 	private String receiverDistrict;
+	
 
 	public String searchByGoodsID() throws Exception { // 根据单号查询快递单信息
 		Goods goods = new Goods();
@@ -182,7 +183,6 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	
 	@SuppressWarnings({ "null", "unused" })
 	public String getGoodsByreceiverDistrict() throws Exception {// 获取当前区县营业点未配送的的所有快递单
-		System.out.print("地方的广泛的风格梵蒂冈地方广发华福更好地发货的风格胜多负少");
 		List<Goods> list = null;
 		List<Goods> list2 = new ArrayList<Goods>();
 		DistrictCenter district = (DistrictCenter) context.getSession().get("login");
@@ -235,7 +235,9 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 			return "savereceiverDistrictListStatusFalse";
 
 	}
+   
 
+	
 	// public String printGoodsinfo() throws Exception { //打印快递单信息
 	// Goods goods = new Goods();
 	// goods.setGoodsId((String)context.getSession().get(searchGoodsId));

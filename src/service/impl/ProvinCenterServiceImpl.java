@@ -59,7 +59,10 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 			return null;
 		}
 	}
-
+	@Override
+	public ProvinceCenter getProvinceCenterByID(int id) throws Exception {
+			return provinceCenterDao.getProvinceCenterByID(id);
+	}
 	public IProvinceCenterDao getProvinceCenterDao() {
 		return provinceCenterDao;
 	}
@@ -67,6 +70,8 @@ public class ProvinCenterServiceImpl implements IProvinceCenterService {
 	public void setProvinceCenterDao(IProvinceCenterDao provinceCenterDao) {
 		this.provinceCenterDao = provinceCenterDao;
 	}
+
+
 
 	
 	
