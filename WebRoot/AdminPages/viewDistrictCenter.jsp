@@ -41,13 +41,6 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-4 control-label">区县</label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" name="district"
-									placeholder="请输入区县" required="required">
-							</div>
-						</div>
-						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline"> <input type="submit"
 									value="提交" class="btn btn-default"> </label> <label
