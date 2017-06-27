@@ -79,7 +79,7 @@
 </tr>
 <tr>
 <td>2017.6.27</td>
-<td>Fix bug in show status function</td>
+<td>Fix bug in show status function,upload admin pages</td>
 <td>Guo Haoming</td>
 </tr>
 <tr>
