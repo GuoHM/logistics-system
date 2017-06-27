@@ -22,7 +22,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/AdminPages/viewDistrictCenter.jsp">
+			<a href="getProvinceList.action">
 				<span>查看省分拣中心信息</span>
 			</a>
 		</li>

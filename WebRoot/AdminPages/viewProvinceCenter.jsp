@@ -70,16 +70,14 @@
 								</thead>
 								<tbody>
 									<%
-										List<DistrictCenter> districtlist = (List<DistrictCenter>) session.getAttribute("senderProvincearray");
+										List<ProvinceCenter> districtlist = (List<ProvinceCenter>) session.getAttribute("Provincelist");
 										if (districtlist != null) {
-											for (DistrictCenter n : districtlist) {
+											for (ProvinceCenter n : districtlist) {
 												out.print("<tr>");
 												out.print("<td>" + n.getCenterId() + "</td>");
 												out.print("<td>" + n.getProvince() + "</td>");
-												out.print("<td>" + n.getCity() + "</td>");
-												out.print("<td>" + n.getDistrict() + "</td>");
 												out.print("<td>" + n.getPwd() + "</td>");
-												out.print("<td><a href=\"deleteDistrictCenter?centerId="
+												out.print("<td><a href=\"deleteProvince?centerId="
 														+ n.getCenterId() + "\">删除</a>");
 												out.print("</tr>");
 											}

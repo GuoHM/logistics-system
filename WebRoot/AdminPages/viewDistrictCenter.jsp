@@ -37,12 +37,12 @@
 				</div>
 				<div class="col-xs-10 column">
 					<form class="form-horizontal" role="form" method="post"
-						id="modifyPwd" action="">
+						id="modifyPwd" action="getDistrictList">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">省份</label>
 							<div>
 								<label class="checkbox-inline"> <select
-									class="form-control" id="school" name="province">
+									class="form-control" id="school" name="provinceName">
 										<jsp:include page="../ToolsPage/provinceList.jsp"></jsp:include>
 								</select> </label>
 							</div>
@@ -50,7 +50,7 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">城市</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="city"
+								<input type="text" class="form-control" name="cityName"
 									placeholder="请输入城市" required="required">
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 								<tbody>
 									<%
 										List<DistrictCenter> districtlist = (List<DistrictCenter>) session
-												.getAttribute("senderProvincearray");
+												.getAttribute("Districtlist");
 										if (districtlist != null) {
 											for (DistrictCenter n : districtlist) {
 												out.print("<tr>");
@@ -89,7 +89,7 @@
 												out.print("<td>" + n.getCity() + "</td>");
 												out.print("<td>" + n.getDistrict() + "</td>");
 												out.print("<td>" + n.getPwd() + "</td>");
-												out.print("<td><a href=\"deleteDistrictCenter?centerId="
+												out.print("<td><a href=\"deleteDistrict?centerId="
 														+ n.getCenterId() + "\">删除</a>");
 												out.print("</tr>");
 											}

@@ -20,7 +20,7 @@
 				</div>
 				<div class="col-xs-5 column">
 					<form class="form-horizontal" role="form" method="post"
-						id="modifyPwd" action="">
+						id="modifyPwd" action="addProvince">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">省份</label>
 							<div>
