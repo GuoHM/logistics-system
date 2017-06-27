@@ -7,23 +7,18 @@
 <nav class="hidden-print hidden-xs hidden-sm affix">
 	<ul class="nav">
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/addDistrictCenter.jsp">
-				<span>新增区县营业点</span>
+			<a href="<%=basePath%>/DistrictCenterPages/modifyGoodsInfo.jsp">
+				<span>修改订单</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/viewDistrictCenter.jsp">
-				<span>查看区县营业点信息</span>
+			<a href="<%=basePath%>/DistrictCenterPages/printinfo.jsp">
+				<span>打印订单</span>
 			</a>
 		</li>
 		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/addProvinceCenter.jsp">
-				<span>新增省分拣中心</span>
-			</a>
-		</li>
-		<li>
-			<a href="<%=basePath%>/DistrictCenterPages/viewDistrictCenter.jsp">
-				<span>查看省分拣中心信息</span>
+			<a href="getGoodsByDistrict.action">
+				<span>分拣</span>
 			</a>
 		</li>
 		<li>
