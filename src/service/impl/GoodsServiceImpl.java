@@ -37,7 +37,13 @@ public class GoodsServiceImpl implements IGoodsService {
 			return null;
 	}
 
-	
+	@Override
+	public List<Goods> getGoodsByreceiverDistrict(String district, String city, String province) throws Exception {
+		if (district != null && city != null&& province != null) {
+			return goodsDao.getGoodsByreceiverDistrict(district, city, province);
+		} else
+			return null;
+	}
 	public List<Goods> getGoodsByProvince(String province) throws Exception {//根据省筛选出所有订单链表，包含已成交订单
 		if (province != null) {
 			return goodsDao.getGoodsByProvince(province);
@@ -81,6 +87,8 @@ public class GoodsServiceImpl implements IGoodsService {
 	public void setGoodsDao(IGoodsDao goodsDao) {
 		this.goodsDao = goodsDao;
 	}
+
+
 
 
 }

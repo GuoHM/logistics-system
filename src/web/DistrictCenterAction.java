@@ -178,6 +178,64 @@ public class DistrictCenterAction extends ActionSupport implements ServletReques
 	}
 
 	
+	
+	
+	@SuppressWarnings({ "null", "unused" })
+	public String getGoodsByreceiverDistrict() throws Exception {// 获取当前区县营业点未配送的的所有快递单
+		System.out.print("地方的广泛的风格梵蒂冈地方广发华福更好地发货的风格胜多负少");
+		List<Goods> list = null;
+		List<Goods> list2 = new ArrayList<Goods>();
+		DistrictCenter district = (DistrictCenter) context.getSession().get("login");
+		list = goodsService.getGoodsByreceiverDistrict(district.getDistrict(), district.getCity(), district.getProvince());
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				if (goods.getDistrictCenterByReceiveDistrictCenter()!= null) {
+					list2.add(list.get(i));
+				}
+			}
+		}
+		if (list2 != null) {
+			context.getSession().put("receiverDistrictList", list2);
+			return "getGoodsByreceiverDistrictSuccess";
+		} else {
+			return "getGoodsByreceiverDistrictFalse";
+		}
+	}
+
+	@SuppressWarnings("null")
+	public String addreceiverDistrictListStatus() throws Exception {// 配送时，将商品链表都加上状态信息
+		int j = 0;
+		List<Goods> list = null;
+		List<Goods> list2 = new ArrayList<Goods>();
+		DistrictCenter district = (DistrictCenter) context.getSession().get("login");
+		list = goodsService.getGoodsByreceiverDistrict(district.getDistrict(), district.getCity(), district.getProvince());
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				if (goods.getDistrictCenterByReceiveDistrictCenter()!= null) {
+					list2.add(list.get(i));
+				}
+			}
+		}
+		for (j = 0; j < list2.size(); j++) {
+			Goods goods = list2.get(j);
+			GoodsStatusId goodsStatusId = new GoodsStatusId();
+			goodsStatusId.setGoodsId(goods.getGoodsId());
+			goodsStatusId.setConditionId("6");
+			GoodsStatus goodsStatus = new GoodsStatus();
+			goodsStatus.setId(goodsStatusId);
+			goodsStatus.setGoods(goods);
+			goodsStatus.setConditions(conditionsService.getConditionsByConditonsId("6"));
+			goodsStatusService.save(goodsStatus);
+		}
+		if (j == list2.size()) {
+			return "savereceiverDistrictListStatusSuccess";
+		} else
+			return "savereceiverDistrictListStatusFalse";
+
+	}
+
 	// public String printGoodsinfo() throws Exception { //打印快递单信息
 	// Goods goods = new Goods();
 	// goods.setGoodsId((String)context.getSession().get(searchGoodsId));
