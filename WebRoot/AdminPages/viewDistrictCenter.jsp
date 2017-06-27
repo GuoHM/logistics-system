@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@page import="bean.*"%>
 <%@page import="java.util.*"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +14,18 @@
 <title>查看区县营业点</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+<link rel="stylesheet" href="<%=basePath%>/css/style.css">
+<link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
+<script src="<%=basePath%>/js/jquery.min.js"></script>
+<!-- 包含了所有编译插件 -->
+<script src="<%=basePath%>/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>/js/bootstrap-table.js"></script>
+<script src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
+<script src="<%=basePath%>/js/initTable.js"></script>
+<link href="<%=basePath%>/css/bootstrap-table.css" rel="stylesheet" />
+<script src="<%=basePath%>/js/bootstrap-table-export.js"></script>
+<script
+	src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 </head>
 <body onload="today()">
 	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
@@ -90,9 +104,7 @@
 		</div>
 	</div>
 
-	<script src="../js/jquery.min.js"></script>
-	<!-- 包含了所有编译插件 -->
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/main.js"></script>
+
+	<script src="<%=basePath%>/js/main.js"></script>
 </body>
 </html>
