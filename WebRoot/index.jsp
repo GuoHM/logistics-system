@@ -58,7 +58,7 @@
 		<hr style="border-top: 1px ridge rgba(6, 3, 9, 0.47)">
 		<div class="row clearfix">
 			<div class="col-md-4 column" style="text-align: center">
-				<a class="btn" href="<%=basePath %>/info.jsp" style="color: black">
+				<a class="btn" href="<%=basePath %>/centerSearch.jsp" style="color: black">
 					<h2>
 						<span class="glyphicon glyphicon-comment">网点查询</span>
 					</h2>
