@@ -60,7 +60,7 @@
 			<result name="success">/ProvinceCenterPages/sort.jsp</result>
 		</action>
 		<action name="viewGoods" method="viewGoods" class="districtCenterAction">
-			<result name="success">/DistrictCenterPages/sort.jsp</result>
+			<result name="success">/DistrictCenterPages/dispatch.jsp</result>
 		</action>
 		<action name="selectedTransportation" method="selectedTransportation" class="provinceCenterAction">
 			<result name="success">/ProvinceCenterPages/sort.jsp</result>
@@ -97,6 +97,10 @@
 		<action name="getDistrictList" method="getDistrictList"
 			class="adminAction">
 			<result name="getDistrictlistSuccess">/AdminPages/viewDistrictCenter.jsp</result>
+		</action>
+		<action name="getDistrictListFront" method="getDistrictList"
+			class="adminAction">
+			<result name="getDistrictlistSuccess">/centerSearch.jsp</result>
 		</action>
 		<action name="getProvinceList" method="getProvinceList"
 			class="adminAction">
