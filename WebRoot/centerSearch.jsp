@@ -28,7 +28,7 @@
 	src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 </head>
 <body onload="today()">
-	<jsp:include page="../ToolsPage/header.jsp"></jsp:include>
+	<jsp:include page="ToolsPage/header.jsp"></jsp:include>
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
@@ -40,7 +40,7 @@
 							<div>
 								<label class="checkbox-inline"> <select
 									class="form-control" id="school" name="provinceName">
-										<jsp:include page="../ToolsPage/provinceList.jsp"></jsp:include>
+										<jsp:include page="ToolsPage/provinceList.jsp"></jsp:include>
 								</select> </label>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 						</div>
 					</form>
 					<form class="form-horizontal" role="form" method="post"
-						id="modifyPwd" action="">
+						id="modifyPwd" action="getDistrictListFront">
 						<div class="panel-body" style="padding-bottom: 0px;">
 							<table class="table table-hover" id="showWorksTable">
 								<thead>

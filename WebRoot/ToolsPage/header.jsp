@@ -49,7 +49,7 @@
 			<li><a href="getGoodsID.action"> <span
 					class="glyphicon glyphicon-envelope">寄快递</span> </a>
 			</li>
-			<li><a href="<%=basePath%>/news.jsp"> <span
+			<li><a href="<%=basePath%>/centerSearch.jsp"> <span
 					class="glyphicon glyphicon glyphicon-lock">网点查询</span> </a>
 			</li>
 			<li><a href="<%=basePath%>/searchGoods.jsp"> <span

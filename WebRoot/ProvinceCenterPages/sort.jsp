@@ -21,7 +21,7 @@
 				<div class="col-xs-10 column">
 					<jsp:include page="../ToolsPage/listTransportation.jsp"></jsp:include>
 				</div>
-				<form class="form-horizontal" role="form" method="post" action="">
+				<form class="form-horizontal" role="form" method="post" action="addsenderProvinceListStatus">
 				<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<label class="checkbox-inline"> <input type="submit"
