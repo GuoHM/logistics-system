@@ -87,6 +87,11 @@
 <td>Add admin functions</td>
 <td>Yang HanXiao</td>
 </tr>
+<tr>
+<td>2017.6.28</td>
+<td>Fix bug</td>
+<td>Guo Haoming</td>
+</tr>
 </table>
 
 <h3>Author</h3>
