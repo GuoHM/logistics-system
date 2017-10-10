@@ -94,6 +94,13 @@
 </tr>
 </table>
 
+<h3>Visit the website</h3>
+<p>The web application is already deploy on our sever,visit the site through the URL below</p>
+<a>47.95.216.245:8080/logistics-system/index.jsp</a><br/>
+<p>We are really appreciated if there are any suggestions or any improvements you made on this application,and if you want further contact with me, please send email to fsguohaoming@hotmail.com</p>
+
+
+
 <h3>Author</h3>
 <p>
 Guo Haoming<br/>
