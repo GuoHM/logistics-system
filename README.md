@@ -94,10 +94,14 @@
 </tr>
 </table>
 
-<h3>Visit the website</h3>
-<p>The web application is already deploy on our sever,visit the site through the URL below</p>
-<a href="http:47.95.216.245:8080/logistics-system/index.jsp">47.95.216.245:8080/logistics-system/index.jsp</a><br/>
-<p>We are really appreciated if there are any suggestions or any improvements you made on this application,and if you want further contact with me, please send email to fsguohaoming@hotmail.com</p>
+<h3>Demo image for the web</h3>
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%986.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%98.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%982.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%983.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%984.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%985.png?raw=true">
+<img src="https://github.com/GuoHM/logistics_System/blob/master/WebRoot/img/%E6%97%A0%E6%A0%87%E9%A2%986.png?raw=true">
 
 
 
